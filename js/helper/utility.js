@@ -3,7 +3,7 @@
 //Creation Date : 7th Dec 2015
 //Description : Contains basic methods or extensions or shorthand for some commonly used javascript steps
 
-var util = (function(){
+/*var util = (function(){
 	return {
 		isDef : function(elem){
 			if(typeof(elem)!=="undefined")
@@ -14,4 +14,4 @@ var util = (function(){
 		},
 		message : function() { return "message";}
 	}
-})();
+})();*/

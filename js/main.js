@@ -3,12 +3,19 @@
 //Creation Date : 7th Dec 2015
 //Description : Beginning of Javascript execution
 
-/*if(typeof(browserloginenable)!=="undefine")
-{
-	console.log('Browser login');
-}
 
+define(function(require){
+	//Import Depedencies
+		var loginHandler = require('browser-login');
+	//Login
+		loginHandler.login();
+	//Load Configuration
+	//Render
+		require(['angularapp'],function(app){
+			angular.bootstrap(document,["sfapp"]);
+		});
+	//Initialize Angular
 
-var client = new forcetk.Client(SFDC.clientId, SFDC.loginUrl, SFDC.proxyUrl);
-*/
-console.log("[Module Start] main.js");
+	//Add Controller and Other Functionality
+});
+

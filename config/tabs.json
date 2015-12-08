@@ -1,0 +1,22 @@
+[
+	{
+		"name" : "Lead",
+		"label" : "Lead",
+		"objRef" : "Lead"
+	},
+	{
+		"name" : "Account",
+		"label" : "Account",
+		"objRef" : "Account"
+	},
+	{
+		"name" : "Opportunity",
+		"label" : "Opportunity",
+		"objRef" : "Opportunity"
+	},
+	{
+		"name" : "Contact",
+		"label" : "Contact",
+		"objRef" : "Contact"
+	}
+]
