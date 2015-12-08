@@ -1,0 +1,783 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"input",
+				"inputParam"
+			],
+			[
+				"ZMV",
+				"ZMVGR3"
+			],
+			[
+				"MVG",
+				"MVGR2"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"li",
+				"list-style"
+			],
+			[
+				"A",
+				"ANRED"
+			],
+			[
+				"r",
+				"response"
+			],
+			[
+				"force",
+				"forcetkClient"
+			],
+			[
+				"DateTime",
+				"Datetime	[Standard Apex Class]"
+			],
+			[
+				"out",
+				"apex:outputText"
+			],
+			[
+				"c",
+				"apex:column"
+			],
+			[
+				"page",
+				"apex:pageBlockTable"
+			],
+			[
+				"inpu",
+				"apex:inputField"
+			],
+			[
+				"pag",
+				"apex:pageBlockSection"
+			],
+			[
+				"pageBlock",
+				"apex:pageBlockSection"
+			],
+			[
+				"F",
+				"FirstName"
+			],
+			[
+				"Man",
+				"ManagerID"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1075,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/browser-login.js",
+			"settings":
+			{
+				"buffer_size": 1112,
+				"line_ending": "Windows",
+				"name": "//Desktop Salesforce Login Process"
+			}
+		},
+		{
+			"file": "oauthcallback.html",
+			"settings":
+			{
+				"buffer_size": 539,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/helper/utility.js",
+			"settings":
+			{
+				"buffer_size": 369,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/main.js",
+			"settings":
+			{
+				"buffer_size": 273,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/forcetk/example.html",
+			"settings":
+			{
+				"buffer_size": 7308,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/sfdcproperty.js",
+			"settings":
+			{
+				"buffer_size": 378,
+				"line_ending": "Windows",
+				"name": "//Salesforce Login Details"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 480.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"Package Control: Install Package",
+			"restart",
+			"print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"dh = hashlib.sha256(by).hexdigest()",
+			"by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read()",
+			"urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) )",
+			"ipp = sublime.installed_packages_path(); ",
+			"pf = 'Package Control.sublime-package'",
+			" pf = 'Package Control.sublime-package';",
+			";",
+			" pf = 'Package Control.sublime-package'",
+			"h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'",
+			"import urllib.request,os,hashlib;"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": false,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": true,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/xampp/htdocs/sfapp",
+		"/C/xampp/htdocs/sfapp/js",
+		"/C/xampp/htdocs/sfapp/js/helper"
+	],
+	"file_history":
+	[
+		"/C/xampp/htdocs/forcetk/static/wsdl.xml",
+		"/C/xampp/htdocs/sfapp/proxy.php",
+		"/C/xampp/htdocs/salesforceapp/index.html",
+		"/C/xampp/htdocs/sfapp/lib/jquery-cookie/jquery.cookie.js",
+		"/C/xampp/htdocs/sfapp/lib/jquery-popup/jquery.popupWindow.js",
+		"/C/xampp/htdocs/sfapp/oauthcallback.html",
+		"/C/xampp/htdocs/forcetk/jquery.popupWindow.js",
+		"/C/xampp/htdocs/sfapp/lib/requirejs/requireconfig.js",
+		"/C/xampp/htdocs/sfapp/js/main.js",
+		"/C/xampp/htdocs/sfapp/js/utility.js",
+		"/C/xampp/htdocs/sfapp/README.md",
+		"/C/xampp/tomcat/webapps/test/WEB-INF/classes/src/sample/test.java",
+		"/C/xampp/tomcat/webapps/test/WEB-INF/classes/config.properties",
+		"/C/xampp/htdocs/order/index.html",
+		"/C/xampp/tomcat/webapps/test/WEB-INF/classes/src/sample/sample.java",
+		"/C/Workspace/ComproConnector/bin/Debug/config/mappingConfig.xml",
+		"/F/Archive/GIA/config/mappingConfig.xml",
+		"/C/Developer Edition - Connector/config/mappingConfig2.xml",
+		"/C/Developer Edition - Connector/config/mappingConfig.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/src/core/objmapping-config.xml",
+		"/C/Workspace/ComproConnector/config/mappingConfig.xml",
+		"/C/Workspace/ComproConnector-r17/config/mappingConfig.xml",
+		"/C/Workspace/Compro_To_Be_Committed/config/mappingConfig.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/src/core/objmapping-config_original.xml",
+		"/C/xampp/tomcat/webapps/test/WEB-INF/web.xml",
+		"/C/xampp/tomcat/webapps/jco/run.jsp",
+		"/C/xampp/tomcat/webapps/jco/index.jsp",
+		"/C/xampp/tomcat/webapps/jco/jquery.js",
+		"/C/Users/Vaibhaw/Desktop/PicklistIssue.java",
+		"/C/xampp/tomcat/webapps/test/hello.jsp",
+		"/C/xampp/tomcat/webapps/test/run.jsp",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/core/application-config.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/log/connector.log",
+		"/C/xampp/tomcat/webapps/test/WEB-INF/classes/sap/plugin-config.xml",
+		"/C/xampp/tomcat/logs/localhost.2015-12-02.log",
+		"/C/xampp/tomcat/webapps/test/WEB-INF/classes/core/application-config.xml",
+		"/C/xampp/tomcat/logs/manager.2015-12-02.log",
+		"/C/xampp/tomcat/logs/catalina.2015-12-02.log",
+		"/C/xampp/tomcat/webapps/test/WEB-INF/classes/log4j.properties",
+		"/C/xampp/tomcat/logs/localhost.2015-12-01.log",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/objmapping-config.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/objmapping-config_backup.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/objmapping-config 2.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/src/salesforce/plugin-config.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/src/core/application-config.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/core/objmapping-config.xml",
+		"/C/xampp/tomcat/webapps/test/WEB-INF/classes/sample/test.java",
+		"/C/xampp/tomcat/webapps/test/WEB-INF/classes/sample.java",
+		"/C/xampp/tomcat/logs/catalina.2015-12-01.log",
+		"/C/Workspace/ComproConnector/bin/Debug/config/mappingConfig_nilkamal.xml",
+		"/C/Workspace/ComproConnector/bin/Debug/config/object-map.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/src/objmapping-config.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/src/objmapping-config 2.xml",
+		"/C/NKL Interface/TomCo/build/classes/core/application-config.xml",
+		"/C/NKL Interface/TomCo/src/core/application-config.xml",
+		"/C/NKL Interface/TomCo/src/sap/plugin-config.xml",
+		"/C/NKL Interface/TomCo/src/config.properties",
+		"/C/NKL Interface/TomCo/src/com/compro/sap/util/SAPLogin.java",
+		"/C/xampp/tomcat/webapps/HelloWorld/WEB-INF/web.xml",
+		"/C/xampp/tomcat/webapps/HelloWorld/WEB-INF/sun-jaxws.xml",
+		"/C/xampp/tomcat/webapps/examples/WEB-INF/web.xml",
+		"/C/NKL Interface/TomCo/src/log4j.properties",
+		"/D/eclipse-jee-mars-R-win32-x86_64/eclipse/http",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/config/objmapping-config_backup.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/config/objmapping-config.xml",
+		"/C/NKL Interface/TomCo/build/classes/sap/plugin-config.xml",
+		"/C/NKL Interface/TomCo/connector.log",
+		"/C/NKL Interface/TomCo/build/classes/log4j.properties",
+		"/C/NKL Interface/TomCo/build/classes/config.properties",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/log4j.properties",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/salesforce/plugin-config.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/core/objmapping-config_backup.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/sap/plugin-config.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/core/schedule-config.xml",
+		"/C/Users/Vaibhaw/AppData/Local/Temp/Rar$DIa0.097/application-config.xml",
+		"/C/Users/Vaibhaw/AppData/Local/Temp/Rar$DIa0.603/objmapping-config.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/config.properties",
+		"/C/xampp/htdocs/forcetk/example.html",
+		"/C/Users/Vaibhaw/Documents/Metadata/metadata.xml",
+		"/C/xampp/htdocs/xmlview/index.html",
+		"/C/xampp/htdocs/xmlview/jquery.js",
+		"/C/Users/Vaibhaw/Downloads/arc-response-2015 Nov 10 17-23-14.xml",
+		"/C/Users/Vaibhaw/Documents/Metadata/enterprise.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/core/objmapping-config.out.xml",
+		"/C/Users/Vaibhaw/Desktop/index.html",
+		"/C/Users/Vaibhaw/Documents/JCO Connector.gliffy",
+		"/C/Workspace/ComproConnector/bin/Debug/log/LogFile.log",
+		"/C/Users/Vaibhaw/Desktop/Oyo Room Backup/CreateAudit_FreshUp.cls",
+		"/C/Users/Vaibhaw/Desktop/Oyo Room Backup/CreateAudit_Backup.cls",
+		"/C/Users/Vaibhaw/Downloads/CreateAudit (2).tgr",
+		"/C/Users/Vaibhaw/Downloads/apex-07L9000004rrZ4SEAU.log",
+		"/C/Workspace/ComproConnector/bin/Debug/config/object-map_bak.xml",
+		"/C/Workspace/ComproConnector-r17/bin/Debug/log/LogFile.log",
+		"//sfdc/Salesforce/Accounts/Lazada.com/Connector Fix/20-10-2015/specialCharacters.properties",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/log4j.properties",
+		"/C/Workspace/ComproConnector-r17/bin/Debug/config/object-map.xml",
+		"//vaibhaw/Eclipse_Workspace/cosmo_sap_connector/bin/sap/plugin-config.xml",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/log/connector.log-2015.10.16_14-59-28.log",
+		"/C/xampp/htdocs/www2/index.html",
+		"/C/Developer Edition - Connector/config/object-map.xml",
+		"/C/Users/Vaibhaw/Downloads/apex-07LN000000QAMpFMAX.log",
+		"/C/Users/Vaibhaw/Desktop/mobileapp/sfdcionic/ionicapp/www/index.html",
+		"/C/Workspace/ComproConnector-r17/bin/Debug/config/object-map_.xml",
+		"/C/Workspace/ComproConnector-r17/bin/Debug/config/specialCharacters.properties",
+		"/C/Workspace/ComproConnector-r17/bin/Debug/config/mappingConfig.xml",
+		"/C/Users/Vaibhaw/Desktop/Oyo Room Backup/New Text Document.cls",
+		"/C/Workspace/ComproConnector/bin/Debug/config/specialCharacters.properties",
+		"/C/xampp/htdocs/www2/js/forcetk.mobilesdk.js",
+		"/C/GIA/config/mappingConfig.xml",
+		"/C/xampp/htdocs/forcetk/index.html",
+		"/C/GIA/config/object-map.xml",
+		"/C/Workspace/Compro_To_Be_Committed/src/Data/CSVHandler.cs",
+		"/C/Users/Vaibhaw/Desktop/Komli - Integration Connector/config/mappingConfig.xml",
+		"/C/Users/Vaibhaw/Desktop/Oyo Room Backup/Send For Approval Javascript Code",
+		"/C/Users/Vaibhaw/Desktop/Oyo Room Backup/CRSIntegrationHelper.cls",
+		"/C/Users/Vaibhaw/Desktop/Oyo Room Backup/AssignPropertyActivationToProduction.cls",
+		"/C/xampp/htdocs/www2/js/controllers.js",
+		"/C/xampp/htdocs/www2/js/salesforce_data.js",
+		"/C/xampp/htdocs/www2/templates/account_edit.html",
+		"/C/xampp/htdocs/www2/js/app.js",
+		"/C/Users/Vaibhaw/Downloads/mappingConfig.xml",
+		"/C/Lazada - Compro Connector - VN/config/object-map.xml",
+		"/C/Lazada - Compro Connector - VN/config/mappingConfig.xml",
+		"/C/lazaada/config/mappingConfig.xml",
+		"/C/lazaada/config/object-map.xml",
+		"/C/xampp/htdocs/www/templates/accounts.html",
+		"/C/xampp/htdocs/www/cordova.js",
+		"/C/xampp/htdocs/www/js/controllers.js"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"C:\\Workspace\\ComproConnector\\src"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"window",
+			">\n",
+			"login",
+			"(){\n",
+			"load",
+			"		\n",
+			"c",
+			"connector",
+			"DropDown",
+			"Picklist",
+			"soap",
+			"username",
+			"auth",
+			"login",
+			"[196]",
+			"return",
+			"[153]",
+			"139",
+			"00590000004vP00",
+			"[153]",
+			"a0890000014hdcC",
+			"00590000004vUEq",
+			"acco",
+			"account",
+			"account_Revenue",
+			"ajax(",
+			"prototype.ajax(",
+			"ajax(",
+			" ajax(",
+			"ajax(",
+			"apex(",
+			"(",
+			"ajax",
+			"query",
+			"direction",
+			"ajax",
+			"callback",
+			"update",
+			"cordova/exec",
+			"cordova.exec",
+			"require",
+			"processMessage",
+			"();\n",
+			"innerHTML",
+			"load",
+			"glyphicon",
+			"scroll",
+			"scrollable",
+			"nav",
+			"push",
+			"update",
+			"cordovaPlatformVersion",
+			"category",
+			"createHybridApp",
+			"copying template",
+			"androidExePath",
+			"salesforcesdk",
+			"copying",
+			"getAndroidSDKToolPath",
+			"androidExePath",
+			"native",
+			"cordovaPlatformVersion",
+			"category",
+			"float",
+			"”",
+			"“",
+			"\"",
+			"messageText",
+			"getRecords",
+			"getReferenceKey",
+			"insertRec",
+			"insertRecor",
+			"insertRecord",
+			"insertRecords",
+			"insertRe",
+			"getRecords",
+			"classMap",
+			"Dictionary",
+			"classMap",
+			"objDataHandler",
+			"getRecords",
+			"objDataHandler",
+			"dataRows",
+			"DataFlowManager",
+			"fetchRecords",
+			"Product",
+			">\n",
+			"Email"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"",
+			"'"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "C:\\xampp\\htdocs\\sfapp"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1075,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								929,
+								929
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"file": "js/browser-login.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1112,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								544,
+								544
+							]
+						],
+						"settings":
+						{
+							"auto_name": "//Desktop Salesforce Login Process",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 45.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "oauthcallback.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								459,
+								459
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "js/helper/utility.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 369,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								289,
+								289
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "js/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 273,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								265,
+								265
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/xampp/htdocs/forcetk/example.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7308,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4714,
+								4655
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1170.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "js/sfdcproperty.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 378,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								352,
+								352
+							]
+						],
+						"settings":
+						{
+							"auto_name": "//Salesforce Login Details",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			],
+			[
+				1,
+				1,
+				2,
+				2
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			0.5,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.MavensMate-OutputPanel":
+	{
+		"height": 28.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 3,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 139.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
