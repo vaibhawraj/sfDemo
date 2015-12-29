@@ -1,0 +1,26 @@
+{
+	"name" : "SFDC Data",
+	"tabs" : [],
+	"sObjects" : [
+		{ "name" : "" }
+	],
+	"metadata" : [
+		{
+			"sObject" : "",
+			"tab" : "",
+			"fields" : [
+				{
+					"name" : "",
+					"label" : "",
+					"creatable" : false,
+					"readable" : false,
+					"custom" : false,
+					"formula" : false,
+					"datatype" : ""
+				}
+			]
+		}
+	],
+	"userInfo" : {},
+	"org" : {}
+}

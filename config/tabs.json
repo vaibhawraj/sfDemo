@@ -2,21 +2,25 @@
 	{
 		"name" : "Lead",
 		"label" : "Lead",
-		"objRef" : "Lead"
+		"objRef" : "Lead",
+		"sfobject" : true
 	},
 	{
 		"name" : "Account",
 		"label" : "Account",
-		"objRef" : "Account"
+		"objRef" : "Account",
+		"sfobject" : true
 	},
 	{
 		"name" : "Opportunity",
 		"label" : "Opportunity",
-		"objRef" : "Opportunity"
+		"objRef" : "Opportunity",
+		"sfobject" : true
 	},
 	{
 		"name" : "Contact",
 		"label" : "Contact",
-		"objRef" : "Contact"
+		"objRef" : "Contact",
+		"sfobject" : true
 	}
 ]

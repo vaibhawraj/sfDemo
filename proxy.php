@@ -276,7 +276,6 @@ if ( !$url ) {
   } else if (isset($_SERVER['REMOTE_ADDR'])) {
 	array_push($headers, "X-Forwarded-For: ".$_SERVER['REMOTE_ADDR'] );
   }
-
   if ( count($headers) > 0 ) {
 	curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers );
   }

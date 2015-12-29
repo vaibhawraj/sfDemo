@@ -1,0 +1,331 @@
+<html>
+<head>
+	<script src="lib/jquery/jquery.js"></script>
+	<style>
+		#view {
+			position:absolute;
+			-webkit-perspective:500px;
+			-webkit-perspective-origin:50% 50%;
+			-moz-perspective:500px;
+			-moz-perspective-origin:50% 50%;
+			height:100%;
+			width:100%;
+			left:0px;
+			top:0px;
+			border:solid 1px black;
+			overflow:hidden;
+		}
+		#camera{
+			width:100%;
+			height:100%;
+			prespective:inherit;
+			background:rgba(0,0,0,0.7);
+		}
+		#camera_shadow{
+			position:absolute;
+			top:0px;left:0px;
+			width:100%;
+			height:100%;
+			background:rgba(255,0,0,0.3);
+			z-index:100;
+			cursor:none;
+		}
+		#viewport{
+			width:100%;
+			height:100%;
+			-webkit-transform-style:preserve-3d;
+			-moz-transform-style:preserve-3d;
+			border:solid 1px black;
+			transform: translate3D(0,0,-600px) rotateX(0deg) rotateY(0deg);
+		}
+		body {
+			-webkit-user-select: none;
+			-moz-user-select: none;
+		}
+		div{
+			-webkit-backface-visibility: visible;
+			-moz-backface-visibility: visible;
+			backface-visibility: visible;
+		}
+		.pillar-blocks {
+			position:absolute;
+			bottom:0px;
+			left:0px;
+			width:50px;
+			height:1000px;
+			-webkit-backface-visibility: visible;
+			-moz-backface-visibility: visible;
+			backface-visibility: visible;
+			-webkit-transform: translate3D(0px ,0px,0px);
+		}
+		.electric-shock {
+			position:absolute;
+			top:0px;
+			left:0px;
+			box-shadow:0px 0px 10px 2px rgba(0,0,255,0.5), 0px 0px 5px 2px rgba(255,255,0,0.5);
+			border-radius:30px;
+			width:1px;
+			height:30px;
+			-webkit-transform: translate3D(0px ,0px,0px);
+			backface-visibility: visible;
+			animation-name: example0;
+    		animation-duration: 0.3s;
+    		animation-iteration-count: infinite;
+		}
+		.shock {
+			position:absolute;
+			top:0px;
+			left:0px;
+			width:100px;
+			height:50000px;
+			background:rgba(255,255,255,0.7);
+			transform-style:inherit;
+			prespective:inherit;
+			transform-origin:center top;
+			animation-name: wave;
+    		animation-duration: 0.3s;
+    		animation-iteration-count: infinite;
+		}
+		@keyframes wave {
+ 		   0% {
+ 		   	box-shadow:0px 0px 2px 1px rgba(0,255,255,0.8);}
+    		50% {box-shadow:0px 0px 50px 1px rgba(0,255,255,0.8);}
+    		100% {box-shadow:0px 0px 2px 1px rgba(0,255,255,0.8);}
+		}
+		@keyframes example2 {
+ 		   0% {transform: rotateX(90deg);background:rgba(255,0,0,0.6);
+ 		   }
+    		50% {transform: rotateX(270deg);
+    		background:rgba(255,255,255,0.6);}
+    		100% {transform: rotateX(90deg);background:rgba(255,0,0,0.6);}
+		}
+		@keyframes example3 {
+ 		   0% {transform: rotateX(135deg);
+ 		   background:rgba(255,255,255,0.6);}
+    		50% {transform: rotateX(315deg);background:rgba(255,0,0,0.6);}
+    		100% {transform: rotateX(135deg);
+    		background:rgba(255,255,255,0.6);}
+		}
+		@keyframes example4 {
+ 		   0% {transform: rotateX(90deg);background:rgba(255,0,0,0.6);}
+    		50% {transform: rotateX(270deg);background:rgba(255,255,255,0.6);}
+    		100% {transform: rotateX(90deg);background:rgba(255,0,0,0.6);}
+		}
+		@keyframes example5 {
+ 		   0% {transform: rotateX(0deg);background:rgba(255,255,255,0.6);}
+    		50% {transform: rotateX(180deg);background:rgba(255,0,0,0.6);}
+    		100% {transform: rotateX(0deg);background:rgba(255,255,255,0.6);}
+		}
+	</style>
+</head>
+<body style="">
+	<div id="view">
+		<div id="camera">
+			<div id="viewport">
+			</div>
+		</div>
+		<div id="camera_shadow"></div>
+	</div>
+	<div style = "width:200px;position:fixed;top:0px;right:0px;color:green;">
+		<tt>
+			p.drag : <span id="p_drag"></span><br>
+			rot : <span id="s_rot"></span><br>
+			delta_X : <span id="d_x"></span><br>
+			View_X : <span id="d_view_x"></span><br><br>
+			delta_z : <span id="d_z"></span><br>
+			View_Z : <span id="d_view_z"></span><br>
+
+
+		</tt>
+	</div>
+<script>
+	var p = [];
+	var view = new point(0,0,0);
+	var rot = new point(0,0,0);
+	rot.basey=0;
+	function point(x,y,z) {
+		this.x = x;
+		this.y = y;
+		this.z= z;
+		return this;
+	}
+	function digest(){
+		var str = "[ ";
+		for(i=0;i<p.length;i++) {
+			str += p[i].drag + " ";
+		}
+		str += "]"
+		//$("#p_drag").html(str);
+		$("#s_rot").html(rot.y);
+	}
+	$(document).ready(function(){
+		for(i=0;i<50;i++) {
+			p.push(pillar(100,800,-i*600));
+			p.push(pillar(1000,800,-i*600));
+		}
+		var s=[];
+		$("#viewport").append(p);
+			s.push(shock(187,10,650));
+			s.push(shock(787,10,650));
+
+		$("#viewport").append(s);
+		$("body").mouseup(function(event){
+			for (var i = p.length - 1; i >= 0; i--) {
+				if(p[i].drag == true) {
+				var cur = new point(event.screenX,event.screenY,0);
+				var newPos = new point(p[i].translate.x + (cur.x - p[i].startPoint.x),p[i].translate.y + (cur.y - p[i].startPoint.y),p[i].translate.z);
+				p[i].drag = false;
+				p[i].translate = newPos;
+			};
+			digest();
+			}
+		});
+		$("body").mousemove(function(event){
+			for (var i = p.length - 1; i >= 0; i--) {
+				if(p[i].drag) {
+						var cur = new point(event.screenX,event.screenY);
+						var newPos = new point(p[i].translate.x + (cur.x - p[i].startPoint.x),p[i].translate.y + (cur.y - p[i].startPoint.y),p[i].translate.z);
+						p[i].css("-webkit-transform","translate3D("+newPos.x+"px,"+newPos.y+"px,"+newPos.z+"px)");
+						p[i].css("-moz-transform","translate3D("+newPos.x+"px,"+newPos.y+"px,"+newPos.z+"px)");
+					}
+			}
+
+			digest();
+		});
+		$("#camera_shadow").mousemove(function(event){
+			var max=180;var min=-180;
+			var y = (event.offsetX/1366)*(max-min) + min;
+			rot.y=rot.basey+y;
+			$("#viewport").css("transform","rotateY("+(y)+"deg) translate3D("+view.x+"px,"+view.y+"px,"+view.z+"px) rotateX(0deg)");
+		});
+		$(window).mouseout(function(event){
+			return;
+			$(this).css("border","solid 1px black");
+			console.log("mouseout");
+			for (var i = p.length - 1; i >= 0; i--) {
+				if(p[i].drag){
+					var cur = new point(event.screenX,event.screenY);
+					var newPos = new point(p[i].translate.x + (cur.x - p[i].startPoint.x),p[i].translate.y + (cur.y - p[i].startPoint.y),p[i].translate.z);
+					p[i].drag = false;
+					p[i].translate = newPos;
+					p[i].css("-webkit-transform","translate3D("+newPos.x+"px,"+newPos.y+"px,"+newPos.z+"px)");
+					p[i].css("-moz-transform","translate3D("+newPos.x+"px,"+newPos.y+"px,"+newPos.z+"px)");
+				}
+			}
+			digest();
+		});
+		$(document).keyup(function(event){
+			console.log(event.keyCode);
+			if(event.keyCode == 87){ //UP W
+				moveahead(rot.y);
+			}else if(event.keyCode == 83){ //UP S
+			}else if(event.keyCode == 65){
+				moveahead(rot.y-90);
+			}else if(event.keyCode == 68){
+				moveahead(rot.y+90);
+			}
+			$("#viewport").css("transform","rotateY("+(rot.y)+"deg) translate3D("+view.x+"px,0px,"+view.z+"px) rotateX(0deg)");
+		});
+		$(document).keydown(function(event){
+			if(event.keyCode == 87){ //UP W
+				moveahead(rot.y);
+			}else if(event.keyCode == 83){ //UP S
+			}else if(event.keyCode == 65){
+				moveahead(rot.y-90);
+			}else if(event.keyCode == 68){
+				moveahead(rot.y+90);
+			}
+			$("#viewport").css("transform","rotateY("+(rot.y)+"deg) translate3D("+view.x+"px,0px,"+view.z+"px) rotateX(0deg)");
+		});
+	});
+	function pillar(x,y,z) {
+		var front = $("<div></div>");
+		var back = $("<div></div>");
+		var left = $("<div></div>");
+		var right = $("<div></div>");
+		front.css({"background":"rgba(255,0,0,1)"});
+		back.css({"background":"rgba(255,0,255,1)",
+			"-webkit-transform":"translateZ(-50px)",
+			"-moz-transform":"translateZ(-50px)"
+		});
+		left.css({"background":"rgba(0,255,0,1)",
+			"-webkit-transform":"rotateY(90deg)",
+			"-moz-transform":"rotateY(90deg)",
+			"-webkit-transform-origin":"left bottom",
+			"-moz-transform-origin":"left bottom"
+		});
+		right.css({"background":"rgba(0,0,255,1)",
+			"-webkit-transform":"rotateY(-90deg)",
+			"-moz-transform":"rotateY(-90deg)",
+			"-webkit-transform-origin":"right bottom",
+			"-moz-transform-origin":"right bottom"
+		});
+		var pi = $("<div class=\"pillar\"></div>");
+		
+		back.addClass("pillar-blocks");
+		left.addClass("pillar-blocks");
+		right.addClass("pillar-blocks");
+		front.addClass("pillar-blocks");
+
+		
+		pi.append(right);
+		pi.append(left);
+		pi.append(back);
+		pi.append(front);
+		pi.css({"position":"absolute",
+					"height":"100px",
+					"width":"50px",
+					"top":"0px",
+					"left":"0px",
+					"-webkit-transform-style":"inherit",
+					"-moz-transform-style":"inherit",
+					"-webkit-transform":"translate3D("+x+"px,"+y+"px,"+z+"px)",
+					"-moz-transform":"translate3D("+x+"px,"+y+"px,"+z+"px)",
+					"border":"solid 1px blue"});
+		pi.drag = false;
+		pi.startPoint = new point(-1,-1);
+		pi.translate = new point(x,y,z);
+		pi.mousedown(function(event){
+			console.log("event.which <" + event.which + "> || event.button : <" + event.button +">");
+			if(event.button == 0){ //left button down
+				pi.drag = true;
+				pi.startPoint.x = event.screenX;
+				pi.startPoint.y = event.screenY;
+			} else if(event.button == 2){  //right button down
+
+			}
+			digest();
+		});
+		pi.dblclick(function(){
+			p.push(pillar(0,0,pi.translate.z));
+			$("#viewport").append(p[p.length - 1]);
+		});
+		return pi;
+	}
+	function moveahead(dir) {
+		var pie = 3.14;
+		dir = ((90+dir) * pie)/180;  //y-degree rotation in radian
+		//z-component of 
+		view.z += (Math.sin(dir)*100);
+		view.x += (Math.cos(dir)*100);
+		$("#d_z").html( Math.round(Math.sin(dir)*100));
+		$("#d_x").html( Math.round(Math.cos(dir)*100));
+		$("#d_view_z").html(view.z);
+		$("#d_view_x").html(view.x);
+	}
+	function shock(x,y,z) {
+		var s = $("<div class=\"shock\"></div>");
+		/*for(i=0;i<=60;i++)
+		{
+			var a = $("<div></div>");
+			a.addClass("electric-shock");
+			a.css({"transform":"rotateX(0deg)","top":i*50,"animation-name":"example"+(i%6)});
+			s.append(a);
+
+		}*/
+		s.css({"transform":"rotateX(-90deg) translate3D("+x+"px,"+y+"px,"+z+"px)"});
+		return s;
+	}
+</script>
+</body>
+</html>

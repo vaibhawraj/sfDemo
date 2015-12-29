@@ -7,8 +7,8 @@ define(["json!appconfig"],
 	//console.log($.cookie);
 	var loginHandler = {
 		login:function(){
-			if(!$.cookie('access_token')){
-				loginHandler.setForcetkAccessToken($.cookie('access_token'),$.cookie('instance_url'));
+			if($.cookie('access_token')){
+				loginHandler.setForcetkAccessToken($.cookie('access_token'),$.cookie('instance_url'),$.cookie('refresh_token'));
 			}
 			else{
 				$('<div></div>').popupWindow({
@@ -26,15 +26,24 @@ define(["json!appconfig"],
 			'&redirect_uri='+escape(redirectUri);
 		},
 		sessionCallback:function(oauth){
-			
-			    	$.cookie("access_token",oauth.access_token);
+					console.log(oauth);
+					G.oauth = oauth;
+			    	$.cookie("access_token",oauth.access_token,1);
 			    	$.cookie("instance_url",oauth.instance_url);
-			    	loginHandler.setForcetkAccessToken(oauth.access_token,oauth.instance_url);
+			    	$.cookie("userid",oauth.id.split('/')[5]);
+			    	$.cookie("orgid",oauth.id.split('/')[4]);
+			    	$.cookie("refresh_token",oauth.refresh_token);
+			    	loginHandler.setForcetkAccessToken(oauth.access_token,oauth.instance_url,oauth.refresh_token);
 			    
 		},
-		setForcetkAccessToken:function(access_token,instance_url) {
-			 G.client.setSessionToken(access_token, null,
+		setForcetkAccessToken:function(access_token,instance_url,refresh_token) {
+			 //Sets access_token for forcetk client
+			 G.client.setSessionToken(access_token, SFDC.api_version,
 			            instance_url);
+			 G.client.setRefreshToken(refresh_token);
+			 //Since this process asynchronous therefore to resume and tell angular app to resume processing, scope.$apply() needs to call externally
+			 var scope = angular.element($("#load")).scope();
+			 scope.resume(G.client);
 		}
 	};
 	G.sessionCallback = loginHandler.sessionCallback;

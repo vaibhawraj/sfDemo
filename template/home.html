@@ -1,0 +1,21 @@
+<!-- Home Template -->
+  <div data-role="header">
+  	<a href="#menupanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">=</a>
+    <h1>{{ userInfo.FirstName }} {{userInfo.LastName }}</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <div>
+	<ul data-role="listview">
+		<li ng-repeat="tab in tabs">{{ tab.label }}</li>
+	</ul>
+	</div>
+  </div>
+
+  <div data-role="footer">
+    <h1>Salesforce Mobile App</h1>
+  </div>
+
+<!-- Menu -->
+<div data-role="panel" data-dismissible="true" data-swipe-close="true" 
+id="menupanel" ng-controller="menucontroller"></div>	
