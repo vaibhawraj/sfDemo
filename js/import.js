@@ -29,6 +29,7 @@ require.config({
         "jquerypopupwindow" : "../lib/jquery-popup/jquery.popupwindow",
         "underscore" : ["../lib/underscore/underscore",
         				"../lib/underscore/underscore-min"],
+        "xml2json" : "../lib/xml2json/xml2json",
 
         //Angular Controller
         "loginController" : "controller/loginController",
@@ -73,6 +74,6 @@ require.config({
 });
 
 //requirejs loads js file in global aspects. Dev Note: Include only those files which are required in global space
-requirejs(["underscore","jquerymobile"]);
+requirejs(["xml2json","underscore","jquerymobile"]);
 //require loads a module and execute callback method once module is load
 require(["main"],function(){console.log("All Script Loaded");});
