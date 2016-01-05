@@ -5,9 +5,28 @@ define(['json!tabs'],function(tabs){
 	return {
 		name:'Retrieve Tab Metadata',
 		status: 'Loading Tab Metadata',
-		firstTime: true,
+		onlyFirstTime: false,
 		method:function(client,callback,error){
-			client.ajax('/v34.0' + '/tabs', function(response){
+			client.SOAP.describeTabs(function(response){
+				for (app in response.result)
+				{
+					if(response.result[app].selected == "true") {
+						break;
+					}
+				}
+				appScope.tabs = [];
+				console.log(response.result[app]);
+				for ( rt in response.result[app].tabs)
+				{
+					appScope.tabs.push(response.result[app].tabs[rt]);
+					console.log(response.result[app].tabs[rt].label);
+				}
+				localStorage.setItem("appScope",JSON.stringify(appScope));
+				callback(client);
+			},function(error){
+				console.log(error.responseJSON[0]);
+			});
+			/*client.ajax('/v34.0' + '/tabs', function(response){
 				for ( rt in response)
 				{
 					for ( t in tabs) {
@@ -22,7 +41,7 @@ define(['json!tabs'],function(tabs){
 			},function(error){
 				console.log(error.responseJSON[0]);
 				//callback(client);
-			});
+			});*/
 		}
 	};
 });
