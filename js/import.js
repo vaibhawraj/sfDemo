@@ -26,7 +26,7 @@ require.config({
         			"https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular"],
         "angular-route" : "../lib/angularjs/angular-route.min",
         "jquerycookie" : "../lib/jquery-cookie/jquery.cookie",
-        "jquerypopupwindow" : "../lib/jquery-popup/jquery.popupwindow",
+        "jquerypopupwindow" : "../lib/jquery-popup/jquery.popupWindow",
         "underscore" : ["../lib/underscore/underscore",
         				"../lib/underscore/underscore-min"],
         "xml2json" : "../lib/xml2json/xml2json",
