@@ -10,7 +10,7 @@ define(['browser-login','helper/loader'],
 		$scope.queue = queue;
 		console.log($scope.queue);
 		$scope.cur = 0;
-		$scope.firstTime = false;
+		$scope.firstTime = true;
 		$scope.resume = function(client) {
 			//Dev Note : scope.$$phase ensure that $apply is not already in progress as
 			/*
@@ -52,8 +52,10 @@ define(['browser-login','helper/loader'],
 			if($scope.cur < $scope.queue.length)
 			{
 				console.log($scope.queue[$scope.cur].status);
-				if($scope.queue[$scope.cur].firstTime == $scope.firstTime)
+				if($scope.queue[$scope.cur].onlyFirstTime && $scope.firstTime)
 				{
+					$scope.queue[$scope.cur].method(client,$scope.callback,$scope.errorfn);
+				}else if(!$scope.queue[$scope.cur].onlyFirstTime) {
 					$scope.queue[$scope.cur].method(client,$scope.callback,$scope.errorfn);
 				}
 				else $scope.callback(client);	

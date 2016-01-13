@@ -29,6 +29,8 @@ require.config({
         "jquerypopupwindow" : "../lib/jquery-popup/jquery.popupwindow",
         "underscore" : ["../lib/underscore/underscore",
         				"../lib/underscore/underscore-min"],
+        "xml2json" : "../lib/xml2json/xml2json",
+        "forcetkextn" : "../lib/forcetk/forcetkextn",
 
         //Angular Controller
         "loginController" : "controller/loginController",
@@ -68,11 +70,14 @@ require.config({
     	},
     	"jquerymobile" : {
     		deps:["jquery"]
+    	},
+    	"forcetkextn" : {
+    		deps:["xml2json"]
     	}
     }
 });
 
 //requirejs loads js file in global aspects. Dev Note: Include only those files which are required in global space
-requirejs(["underscore","jquerymobile"]);
+requirejs(["xml2json","forcetkextn","underscore","jquerymobile"]);
 //require loads a module and execute callback method once module is load
 require(["main"],function(){console.log("All Script Loaded");});
