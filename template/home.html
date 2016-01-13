@@ -1,21 +1,21 @@
 <!-- Home Template -->
-  <div data-role="header">
-  	<a href="#menupanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">=</a>
+  <div data-role="header" data-position="fixed">
+  	<a ng-click="toggle(event)" href="#menupanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">=</a>
     <h1>{{ userInfo.FirstName }} {{userInfo.LastName }}</h1>
   </div>
 
   <div data-role="main" class="ui-content">
     <div>
 	<ul data-role="listview">
-		<li ng-repeat="tab in tabs">{{ tab.label }}</li>
+		<li ng-repeat="tab in tabs track by $index">{{ tab.label }}</li>
 	</ul>
 	</div>
   </div>
 
-  <div data-role="footer">
+  <div data-role="footer" data-position="fixed">
     <h1>Salesforce Mobile App</h1>
   </div>
 
 <!-- Menu -->
-<div data-role="panel" data-dismissible="true" data-swipe-close="true" 
-id="menupanel" ng-controller="menucontroller"></div>	
+<div data-theme="b" data-role="panel" data-dismissible="true" data-swipe-close="true" data-position-fixed="true" data-display="overlay"
+id="menupanel" ng-controller="menucontroller"></div>  

@@ -11,5 +11,9 @@ define(function(){
 			console.log($scope.userInfo);
 			$scope.$apply();
 		}
+		$scope.toggle =function(){
+			console.log(event);
+			
+		}
 	}
 });

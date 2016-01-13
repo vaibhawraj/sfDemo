@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"x",
+				"x2js"
+			],
+			[
+				"pr",
+				"proxyUrl"
+			],
+			[
+				"force",
+				"forcetkextn"
+			],
+			[
 				"anim",
 				"animation-name"
 			],
@@ -72,10 +84,6 @@
 				"response"
 			],
 			[
-				"force",
-				"forcetkClient"
-			],
-			[
 				"DateTime",
 				"Datetime	[Standard Apex Class]"
 			],
@@ -119,15 +127,47 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 1525,
+				"buffer_size": 1528,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "anim.html",
+			"file": "/C/Program Files (x86)/Git/doc/git/html/git-push.html",
 			"settings":
 			{
-				"buffer_size": 9653,
+				"buffer_size": 52502,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/php/index.php",
+			"settings":
+			{
+				"buffer_size": 2089,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "//vega/D/Compro Portal/index.html",
+			"settings":
+			{
+				"buffer_size": 106,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lib/forcetk/forcetk.js",
+			"settings":
+			{
+				"buffer_size": 29175,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/forcetk/forcetkextn.js",
+			"settings":
+			{
+				"buffer_size": 4630,
 				"line_ending": "Windows"
 			}
 		},
@@ -144,7 +184,7 @@
 			"file": "template/home.html",
 			"settings":
 			{
-				"buffer_size": 573,
+				"buffer_size": 682,
 				"line_ending": "Windows",
 				"name": "<!-- Home Template -->"
 			}
@@ -153,18 +193,9 @@
 			"file": "template/menu.html",
 			"settings":
 			{
-				"buffer_size": 254,
+				"buffer_size": 270,
 				"line_ending": "Windows",
 				"name": "<!-- Menu Layout Html -->"
-			}
-		},
-		{
-			"file": "js/controller/loginController.js",
-			"settings":
-			{
-				"buffer_size": 2575,
-				"line_ending": "Windows",
-				"name": "//Login Controller"
 			}
 		},
 		{
@@ -173,15 +204,6 @@
 			{
 				"buffer_size": 330,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/controller/menuController.js",
-			"settings":
-			{
-				"buffer_size": 325,
-				"line_ending": "Windows",
-				"name": "/*"
 			}
 		},
 		{
@@ -205,8 +227,13 @@
 			"file": "js/import.js",
 			"settings":
 			{
+<<<<<<< HEAD
 				"buffer_size": 2849,
 				"line_ending": "Unix"
+=======
+				"buffer_size": 3031,
+				"line_ending": "Windows"
+>>>>>>> master
 			}
 		},
 		{
@@ -238,7 +265,7 @@
 			"file": "js/sfdc/retrieveTabMetadata.js",
 			"settings":
 			{
-				"buffer_size": 734,
+				"buffer_size": 1290,
 				"line_ending": "Windows",
 				"name": "//loadTabs Module"
 			}
@@ -320,12 +347,35 @@
 	},
 	"expanded_folders":
 	[
+<<<<<<< HEAD
 		"C:\\xampp\\htdocs\\sfapp"
 	],
 	"file_history":
 	[
 		"/C/Users/Vaibhaw/node_modules/xml2js/lib/xml2js.js",
+=======
+		"/C/xampp/htdocs/sfapp",
+		"/C/xampp/htdocs/sfapp/css",
+		"/C/xampp/htdocs/sfapp/js",
+		"/C/xampp/htdocs/sfapp/js/controller",
+		"/C/xampp/htdocs/sfapp/js/routeprovider",
+		"/C/xampp/htdocs/sfapp/js/sfdc",
+		"/C/xampp/htdocs/sfapp/lib",
+		"/C/xampp/htdocs/sfapp/lib/xml2json",
+		"/C/xampp/htdocs/sfapp/template"
+	],
+	"file_history":
+	[
+		"//vega/D/Compro Portal/index.html",
+		"/C/Program Files (x86)/Git/doc/git/html/git-push.html",
+		"/C/Workspace/ComproConnector-r20/bin/Debug/log/LogFile.log",
+		"/C/xampp/htdocs/sfapp/js/controller/menuController.js",
+		"/C/xampp/htdocs/sfapp/js/controller/loginController.js",
+>>>>>>> master
 		"/C/xampp/htdocs/sfapp/anim.html",
+		"/C/Program Files (x86)/Git/doc/git/html/git-branch.html",
+		"/C/Eclipse_Workspace/cosmo_sap_connector/src/salesforce/plugin-config.xml",
+		"/C/Program Files (x86)/Git/doc/git/html/git-remote.html",
 		"/C/Users/Vaibhaw/node_modules/xml2js/lib/processors.js",
 		"/C/Workspace/ITQ backup with hyphen/src/Salesforce/SFDataManagerService.cs",
 		"/C/Workspace/ITQ backup with hyphen/src/Salesforce/SFDataManagerDao.cs",
@@ -395,7 +445,6 @@
 		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/objmapping-config.xml",
 		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/objmapping-config_backup.xml",
 		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/objmapping-config 2.xml",
-		"/C/Eclipse_Workspace/cosmo_sap_connector/src/salesforce/plugin-config.xml",
 		"/C/Eclipse_Workspace/cosmo_sap_connector/src/core/application-config.xml",
 		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/core/objmapping-config.xml",
 		"/C/xampp/tomcat/webapps/test/WEB-INF/classes/sample/test.java",
@@ -445,6 +494,7 @@
 		"//sfdc/Salesforce/Accounts/Lazada.com/Connector Fix/20-10-2015/specialCharacters.properties",
 		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/log4j.properties",
 		"/C/Workspace/ComproConnector-r17/bin/Debug/config/object-map.xml",
+<<<<<<< HEAD
 		"//vaibhaw/Eclipse_Workspace/cosmo_sap_connector/bin/sap/plugin-config.xml",
 		"/C/Eclipse_Workspace/cosmo_sap_connector/log/connector.log-2015.10.16_14-59-28.log",
 		"/C/xampp/htdocs/www2/index.html",
@@ -452,6 +502,9 @@
 		"/C/Users/Vaibhaw/Downloads/apex-07LN000000QAMpFMAX.log",
 		"/C/Users/Vaibhaw/Desktop/mobileapp/sfdcionic/ionicapp/www/index.html",
 		"/C/Workspace/ComproConnector-r17/bin/Debug/config/object-map_.xml"
+=======
+		"//vaibhaw/Eclipse_Workspace/cosmo_sap_connector/bin/sap/plugin-config.xml"
+>>>>>>> master
 	],
 	"find":
 	{
@@ -470,6 +523,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ajax",
+			"sessionId",
+			"Processing",
 			"view",
 			"10px",
 			"			\n",
@@ -604,7 +660,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -613,15 +669,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1525,
+						"buffer_size": 1528,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1437,
-								1437
+								1369,
+								1369
 							]
 						],
 						"settings":
@@ -631,43 +687,193 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 70.0,
+						"translation.y": 510.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "anim.html",
+					"file": "/C/Program Files (x86)/Git/doc/git/html/git-push.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9653,
+						"buffer_size": 52502,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2115,
-								2115
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
+<<<<<<< HEAD
 						"translation.y": 708.0,
+=======
+						"translation.y": 0.0,
+>>>>>>> master
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "/C/xampp/htdocs/php/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2089,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2069,
+								2069
+							]
+						],
+						"settings":
+						{
+<<<<<<< HEAD
+							"auto_name": "<!-- splashscreen -->",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+=======
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+>>>>>>> master
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+<<<<<<< HEAD
+					"stack_index": 16,
+=======
+					"stack_index": 1,
+>>>>>>> master
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "//vega/D/Compro Portal/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 106,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+<<<<<<< HEAD
+							"auto_name": "<!-- Home Template -->",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+=======
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+>>>>>>> master
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+<<<<<<< HEAD
+					"stack_index": 15,
+=======
+					"stack_index": 0,
+>>>>>>> master
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "lib/forcetk/forcetk.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 29175,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10547,
+								10560
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3209.0,
+						"zoom_level": 1.0
+					},
+<<<<<<< HEAD
+					"stack_index": 10,
+=======
+					"stack_index": 8,
+>>>>>>> master
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "lib/forcetk/forcetkextn.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3191,
+								3191
+							]
+						],
+						"settings":
+						{
+<<<<<<< HEAD
+							"auto_name": "//Login Controller",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+=======
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+>>>>>>> master
+						},
+						"translation.x": 0.0,
+						"translation.y": 900.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "template/splash.html",
 					"semi_transient": false,
 					"settings":
@@ -685,63 +891,75 @@
 						],
 						"settings":
 						{
-							"auto_name": "<!-- splashscreen -->",
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+<<<<<<< HEAD
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
+=======
+							"auto_name": "<!-- splashscreen -->",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+>>>>>>> master
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 7,
 					"file": "template/home.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 573,
+						"buffer_size": 682,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								564,
-								564
+								70,
+								70
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
+							"auto_name": "/*",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+=======
 							"auto_name": "<!-- Home Template -->",
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+>>>>>>> master
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+<<<<<<< HEAD
+					"stack_index": 7,
+=======
+					"stack_index": 6,
+>>>>>>> master
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 8,
 					"file": "template/menu.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 254,
+						"buffer_size": 270,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								254,
-								254
+								242,
+								242
 							]
 						],
 						"settings":
@@ -753,47 +971,17 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
-					"buffer": 5,
-					"file": "js/controller/loginController.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2575,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								811,
-								855
-							]
-						],
-						"settings":
-						{
-							"auto_name": "//Login Controller",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 784.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
+					"buffer": 9,
 					"file": "js/controller/homeController.js",
 					"semi_transient": false,
 					"settings":
@@ -805,54 +993,23 @@
 						"selection":
 						[
 							[
-								197,
-								169
+								189,
+								189
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "js/controller/menuController.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 325,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								280,
-								280
-							]
-						],
-						"settings":
-						{
-							"auto_name": "/*",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
+					"buffer": 10,
 					"file": "js/angularapp.js",
 					"semi_transient": false,
 					"settings":
@@ -875,20 +1032,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
+<<<<<<< HEAD
 						"translation.y": 66.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
+=======
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+>>>>>>> master
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
-					"buffer": 9,
+					"buffer": 11,
 					"file": "js/main.js",
 					"semi_transient": false,
 					"settings":
@@ -913,24 +1077,37 @@
 						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 12,
+=======
+					"stack_index": 20,
+>>>>>>> master
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 12,
 					"file": "js/import.js",
 					"semi_transient": false,
 					"settings":
 					{
+<<<<<<< HEAD
 						"buffer_size": 2849,
+=======
+						"buffer_size": 3031,
+>>>>>>> master
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								0,
 								0
+=======
+								2646,
+								2646
+>>>>>>> master
 							]
 						],
 						"settings":
@@ -940,14 +1117,18 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 817.0,
+						"translation.y": 897.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 4,
+=======
+					"stack_index": 15,
+>>>>>>> master
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 13,
 					"file": "js/sfdc/soap.js",
 					"semi_transient": false,
 					"settings":
@@ -966,6 +1147,37 @@
 						"settings":
 						{
 							"auto_name": "var conn = {",
+<<<<<<< HEAD
+=======
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1847.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "/C/Users/Vaibhaw/node_modules/xml2js/lib/xml2js.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17509,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17509,
+								17509
+							]
+						],
+						"settings":
+						{
+>>>>>>> master
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
@@ -974,11 +1186,19 @@
 						"translation.y": 1847.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 12,
+=======
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+>>>>>>> master
 					"file": "proxy.php",
 					"semi_transient": false,
 					"settings":
@@ -1004,11 +1224,19 @@
 						"translation.y": 3555.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 13,
+=======
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+>>>>>>> master
 					"file": "js/helper/utility.js",
 					"semi_transient": false,
 					"settings":
@@ -1033,7 +1261,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 5,
+=======
+					"stack_index": 19,
+>>>>>>> master
 					"type": "text"
 				}
 			]
@@ -1043,20 +1275,24 @@
 			"sheets":
 			[
 				{
+<<<<<<< HEAD
 					"buffer": 14,
+=======
+					"buffer": 17,
+>>>>>>> master
 					"file": "js/sfdc/retrieveTabMetadata.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 734,
+						"buffer_size": 1290,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								200,
-								200
+								382,
+								382
 							]
 						],
 						"settings":
@@ -1073,7 +1309,11 @@
 					"type": "text"
 				},
 				{
+<<<<<<< HEAD
 					"buffer": 15,
+=======
+					"buffer": 18,
+>>>>>>> master
 					"file": "config/appScope.json",
 					"semi_transient": false,
 					"settings":
@@ -1099,11 +1339,19 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 13,
 					"type": "text"
 				},
 				{
 					"buffer": 16,
+=======
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+>>>>>>> master
 					"file": "js/helper/loader.js",
 					"semi_transient": false,
 					"settings":
@@ -1128,11 +1376,19 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 17,
 					"type": "text"
 				},
 				{
 					"buffer": 17,
+=======
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+>>>>>>> master
 					"file": "js/sfdcproperty.js",
 					"semi_transient": false,
 					"settings":
@@ -1157,7 +1413,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 14,
+=======
+					"stack_index": 13,
+>>>>>>> master
 					"type": "text"
 				}
 			]
@@ -1203,13 +1463,13 @@
 		"cols":
 		[
 			0.0,
-			0.934645318442,
+			0.95247148289,
 			1.0
 		],
 		"rows":
 		[
 			0.0,
-			0.946294307197,
+			0.917160816736,
 			1.0
 		]
 	},
