@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"x",
+				"x2js"
+			],
+			[
+				"pr",
+				"proxyUrl"
+			],
+			[
+				"force",
+				"forcetkextn"
+			],
+			[
 				"anim",
 				"animation-name"
 			],
@@ -72,10 +84,6 @@
 				"response"
 			],
 			[
-				"force",
-				"forcetkClient"
-			],
-			[
 				"DateTime",
 				"Datetime	[Standard Apex Class]"
 			],
@@ -119,15 +127,31 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 1578,
+				"buffer_size": 1528,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "anim.html",
+			"file": "/C/Program Files (x86)/Git/doc/git/html/git-push.html",
 			"settings":
 			{
-				"buffer_size": 9653,
+				"buffer_size": 52502,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/xampp/htdocs/php/index.php",
+			"settings":
+			{
+				"buffer_size": 2089,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "//vega/D/Compro Portal/index.html",
+			"settings":
+			{
+				"buffer_size": 106,
 				"line_ending": "Windows"
 			}
 		},
@@ -140,13 +164,10 @@
 			}
 		},
 		{
-			"contents": "/*\n\n	ForceTk Extension JS file add feature in existing forcetk to use SOAP \n	communication and hence can access metadata and other information using SOAP\n	API\n\n*/\n\n\nif (forcetk.Client !== undefined) {\n		console.log(\"Processing\");\n		forcetk.Client.prototype.SOAPHeader = function(){\n			var header;\n			header = \n		};\n\n	}",
 			"file": "lib/forcetk/forcetkextn.js",
-			"file_size": 373,
-			"file_write_time": 130963837545358521,
 			"settings":
 			{
-				"buffer_size": 318,
+				"buffer_size": 4630,
 				"line_ending": "Windows"
 			}
 		},
@@ -163,7 +184,7 @@
 			"file": "template/home.html",
 			"settings":
 			{
-				"buffer_size": 573,
+				"buffer_size": 682,
 				"line_ending": "Windows",
 				"name": "<!-- Home Template -->"
 			}
@@ -172,18 +193,9 @@
 			"file": "template/menu.html",
 			"settings":
 			{
-				"buffer_size": 254,
+				"buffer_size": 270,
 				"line_ending": "Windows",
 				"name": "<!-- Menu Layout Html -->"
-			}
-		},
-		{
-			"file": "js/controller/loginController.js",
-			"settings":
-			{
-				"buffer_size": 2575,
-				"line_ending": "Windows",
-				"name": "//Login Controller"
 			}
 		},
 		{
@@ -192,15 +204,6 @@
 			{
 				"buffer_size": 330,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/controller/menuController.js",
-			"settings":
-			{
-				"buffer_size": 325,
-				"line_ending": "Windows",
-				"name": "/*"
 			}
 		},
 		{
@@ -224,7 +227,7 @@
 			"file": "js/import.js",
 			"settings":
 			{
-				"buffer_size": 2908,
+				"buffer_size": 3031,
 				"line_ending": "Windows"
 			}
 		},
@@ -265,7 +268,7 @@
 			"file": "js/sfdc/retrieveTabMetadata.js",
 			"settings":
 			{
-				"buffer_size": 734,
+				"buffer_size": 1290,
 				"line_ending": "Windows",
 				"name": "//loadTabs Module"
 			}
@@ -359,10 +362,15 @@
 	],
 	"file_history":
 	[
+		"//vega/D/Compro Portal/index.html",
+		"/C/Program Files (x86)/Git/doc/git/html/git-push.html",
+		"/C/Workspace/ComproConnector-r20/bin/Debug/log/LogFile.log",
+		"/C/xampp/htdocs/sfapp/js/controller/menuController.js",
+		"/C/xampp/htdocs/sfapp/js/controller/loginController.js",
+		"/C/xampp/htdocs/sfapp/anim.html",
 		"/C/Program Files (x86)/Git/doc/git/html/git-branch.html",
 		"/C/Eclipse_Workspace/cosmo_sap_connector/src/salesforce/plugin-config.xml",
 		"/C/Program Files (x86)/Git/doc/git/html/git-remote.html",
-		"/C/xampp/htdocs/sfapp/anim.html",
 		"/C/Users/Vaibhaw/node_modules/xml2js/lib/processors.js",
 		"/C/Workspace/ITQ backup with hyphen/src/Salesforce/SFDataManagerService.cs",
 		"/C/Workspace/ITQ backup with hyphen/src/Salesforce/SFDataManagerDao.cs",
@@ -481,12 +489,7 @@
 		"//sfdc/Salesforce/Accounts/Lazada.com/Connector Fix/20-10-2015/specialCharacters.properties",
 		"/C/Eclipse_Workspace/cosmo_sap_connector/bin/log4j.properties",
 		"/C/Workspace/ComproConnector-r17/bin/Debug/config/object-map.xml",
-		"//vaibhaw/Eclipse_Workspace/cosmo_sap_connector/bin/sap/plugin-config.xml",
-		"/C/Eclipse_Workspace/cosmo_sap_connector/log/connector.log-2015.10.16_14-59-28.log",
-		"/C/xampp/htdocs/www2/index.html",
-		"/C/Developer Edition - Connector/config/object-map.xml",
-		"/C/Users/Vaibhaw/Downloads/apex-07LN000000QAMpFMAX.log",
-		"/C/Users/Vaibhaw/Desktop/mobileapp/sfdcionic/ionicapp/www/index.html"
+		"//vaibhaw/Eclipse_Workspace/cosmo_sap_connector/bin/sap/plugin-config.xml"
 	],
 	"find":
 	{
@@ -505,6 +508,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ajax",
 			"sessionId",
 			"Processing",
 			"view",
@@ -641,7 +645,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -650,15 +654,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1578,
+						"buffer_size": 1528,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								806,
-								806
+								1369,
+								1369
 							]
 						],
 						"settings":
@@ -668,43 +672,101 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 85.0,
+						"translation.y": 510.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "anim.html",
+					"file": "/C/Program Files (x86)/Git/doc/git/html/git-push.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9653,
+						"buffer_size": 52502,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								501,
-								501
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "/C/xampp/htdocs/php/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2089,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2069,
+								2069
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "//vega/D/Compro Portal/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 106,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "lib/forcetk/forcetk.js",
 					"semi_transient": false,
 					"settings":
@@ -716,8 +778,8 @@
 						"selection":
 						[
 							[
-								3741,
-								3716
+								10547,
+								10560
 							]
 						],
 						"settings":
@@ -727,27 +789,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1398.0,
+						"translation.y": 3209.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 5,
 					"file": "lib/forcetk/forcetkextn.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 318,
+						"buffer_size": 4630,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								309,
-								309
+								3191,
+								3191
 							]
 						],
 						"settings":
@@ -755,14 +817,14 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 900.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "template/splash.html",
 					"semi_transient": false,
 					"settings":
@@ -787,24 +849,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 19,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "template/home.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 573,
+						"buffer_size": 682,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								564,
-								564
+								70,
+								70
 							]
 						],
 						"settings":
@@ -816,24 +878,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 8,
 					"file": "template/menu.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 254,
+						"buffer_size": 270,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								254,
-								254
+								242,
+								242
 							]
 						],
 						"settings":
@@ -845,46 +907,17 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
-					"buffer": 7,
-					"file": "js/controller/loginController.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2575,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								811,
-								855
-							]
-						],
-						"settings":
-						{
-							"auto_name": "//Login Controller",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 784.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "js/controller/homeController.js",
 					"semi_transient": false,
 					"settings":
@@ -896,8 +929,8 @@
 						"selection":
 						[
 							[
-								197,
-								169
+								189,
+								189
 							]
 						],
 						"settings":
@@ -908,36 +941,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "js/controller/menuController.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 325,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								280,
-								280
-							]
-						],
-						"settings":
-						{
-							"auto_name": "/*",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -963,10 +967,10 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 195.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1000,7 +1004,7 @@
 						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
@@ -1009,15 +1013,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2908,
+						"buffer_size": 3031,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2738,
-								2738
+								2646,
+								2646
 							]
 						],
 						"settings":
@@ -1025,10 +1029,10 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 672.0,
+						"translation.y": 897.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -1057,7 +1061,7 @@
 						"translation.y": 1847.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
@@ -1087,7 +1091,7 @@
 						"translation.y": 7352.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
@@ -1117,7 +1121,7 @@
 						"translation.y": 3555.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
@@ -1146,7 +1150,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 19,
 					"type": "text"
 				}
 			]
@@ -1161,15 +1165,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 734,
+						"buffer_size": 1290,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								200,
-								200
+								382,
+								382
 							]
 						],
 						"settings":
@@ -1181,7 +1185,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -1210,7 +1214,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -1239,7 +1243,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -1268,7 +1272,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 13,
 					"type": "text"
 				}
 			]
@@ -1314,13 +1318,13 @@
 		"cols":
 		[
 			0.0,
-			0.553466611218,
+			0.95247148289,
 			1.0
 		],
 		"rows":
 		[
 			0.0,
-			0.280343716434,
+			0.917160816736,
 			1.0
 		]
 	},
@@ -1367,7 +1371,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 2,
+	"selected_group": 0,
 	"settings":
 	{
 	},

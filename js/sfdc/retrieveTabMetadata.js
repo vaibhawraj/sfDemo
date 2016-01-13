@@ -5,21 +5,29 @@ define(['json!tabs'],function(tabs){
 	return {
 		name:'Retrieve Tab Metadata',
 		status: 'Loading Tab Metadata',
-		onlyFirstTime: false,
+		onlyFirstTime: true,
 		method:function(client,callback,error){
 			client.SOAP.describeTabs(function(response){
-				for (app in response.result)
-				{
-					if(response.result[app].selected == "true") {
-						break;
-					}
+				var app = {};
+				if(typeof(response.result.length)!=="number") {
+					console.log(response.result);
+					throw "Error: response.result is "+typeof(response.result)+".It is suppossed to be Array";
 				}
+				var app = _.find(response.result,function(app){return (app.selected=="true");});
 				appScope.tabs = [];
-				console.log(response.result[app]);
-				for ( rt in response.result[app].tabs)
-				{
-					appScope.tabs.push(response.result[app].tabs[rt]);
-					console.log(response.result[app].tabs[rt].label);
+				if(typeof(app)==="undefined") {
+					throw "[retrieveTabMetadata.js] No App Founded";
+				}
+				if(typeof(app.tabs.length)!=="number") {
+					appScope.tabs.push(app.tabs);
+				}
+				else {
+					_.each(app.tabs,function(tab){
+						if(tab.sobjectName == "") {
+							return;
+						}
+						appScope.tabs.push(tab);
+					});
 				}
 				localStorage.setItem("appScope",JSON.stringify(appScope));
 				callback(client);
