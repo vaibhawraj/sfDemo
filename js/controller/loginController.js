@@ -22,7 +22,6 @@ define(['browser-login','helper/loader'],
 			var userInfoQuery = "SELECT Id, FirstName,LastName, State, Country FROM USER WHERE ID = '"+ $.cookie("userid") +"'";
 			console.log("[loginController.js] User Info Query : " + userInfoQuery);
 			client.query(userInfoQuery,function(response){
-				$.cookie("access_token",client.sessionId,1);
 				$scope.userInfo=response.records[0];
 				if(typeof(appScope.userInfo.Id) !== "undefine" && appScope.userInfo.Id == $scope.userInfo.Id) {
 					$scope.firstTime = false;
@@ -51,14 +50,17 @@ define(['browser-login','helper/loader'],
 		$scope.beginLoading = function(client) {
 			if($scope.cur < $scope.queue.length)
 			{
-				console.log($scope.queue[$scope.cur].status);
-				if($scope.queue[$scope.cur].onlyFirstTime && $scope.firstTime)
-				{
-					$scope.queue[$scope.cur].method(client,$scope.callback,$scope.errorfn);
-				}else if(!$scope.queue[$scope.cur].onlyFirstTime) {
-					$scope.queue[$scope.cur].method(client,$scope.callback,$scope.errorfn);
+				if($scope.firstTime) {
+						console.log($scope.queue[$scope.cur].status);
+						$scope.queue[$scope.cur].method(client,$scope.callback,$scope.errorfn);
 				}
-				else $scope.callback(client);	
+				else {
+					if(!$scope.queue[$scope.cur].onlyFirstTime) { //Only Those who is not for onlyFirstTime
+						console.log($scope.queue[$scope.cur].status);
+						$scope.queue[$scope.cur].method(client,$scope.callback,$scope.errorfn);
+					}
+					else $scope.callback(client);
+				}
 			}
 			else {
 				console.log("redirecting to actual page");

@@ -8,7 +8,16 @@ define(["json!appconfig"],
 	var loginHandler = {
 		login:function(){
 			if($.cookie('access_token')){
-				loginHandler.setForcetkAccessToken($.cookie('access_token'),$.cookie('instance_url'),$.cookie('refresh_token'));
+				G.client.setSessionToken($.cookie('access_token'),SFDC.api_version,$.cookie('instance_url'));
+				G.client.setRefreshToken($.cookie('refresh_token'));
+				G.client.refreshAccessToken(function (oauthResponse) {
+						$.cookie('access_token',oauthResponse.access_token,1)
+						loginHandler.setForcetkAccessToken(oauthResponse.access_token,oauthResponse.instance_url,$.cookie('refresh_token'));
+                },function(){
+                	console.log("Login Failure");
+                	//$.removeCookie('access_token');
+                	loginHandler.login();
+                });
 			}
 			else{
 				$('<div></div>').popupWindow({
