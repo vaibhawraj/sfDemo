@@ -6,6 +6,7 @@
 define(function(require){
 	//Import Depedencies
 		//var loginHandler = require('browser-login');
+		
 		require(['jquerymobile'],function(mobile){
     		$.mobile.linkBindingEnabled = false;
     		$.mobile.hashListeningEnabled = false;
