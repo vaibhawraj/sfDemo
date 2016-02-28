@@ -17,7 +17,7 @@ var log = new function(){
  		ERROR:1,
  		WARN:2,
  		DEBUG:3,
- 		INFO:4,
+ 		INFO:-1,
  		LOG:5,
  		ALL:6
  	};
@@ -45,14 +45,12 @@ var log = new function(){
  		}	
  	}
  	this.info=function(message){
- 		if(that.LogLevel >= that.Level.INFO) {
+ 		if(that.LogLevel == that.Level.INFO || that.LogLevel == that.Level.ALL) {
  			console.info('[Info ' + that.parseError() + ']',message);
  		}	
  	}
  	this.log=function(message){
- 		if(that.LogLevel >= that.Level.LOG) {
  			console.log('[UserLog ' + that.parseError() + ']',message);
- 		}	
  	}
  	return this;
  }

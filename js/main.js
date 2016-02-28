@@ -6,7 +6,7 @@
 define(function(require){
 	//Import Depedencies
 		//var loginHandler = require('browser-login');
-		
+
 		require(['jquerymobile'],function(mobile){
     		$.mobile.linkBindingEnabled = false;
     		$.mobile.hashListeningEnabled = false;
@@ -16,7 +16,7 @@ define(function(require){
 	//Load Configuration
 		var temp = localStorage.getItem("appScope");
 		appScope = (temp == null)?require("json!appScope"):JSON.parse(temp);
-		console.log(appScope.tabs);
+		log.debug(appScope.tabs);
 	//Render
 		var splashHtml = require("text!../template/splash.html");
 		var homeHtml = require("text!../template/home.html");
@@ -30,6 +30,5 @@ define(function(require){
 			angular.bootstrap(document,["sfapp"]);
 		});
 
-	//Add Controller and Other Functionality
 });
 
