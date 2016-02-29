@@ -45,6 +45,7 @@ require.config({
         "appconfig" : "../config/appconfig.json",
         "tabs" : "../config/tabs.json",
 
+        //Helper
         "logger" : "helper/logger"
     },
     shim:{
@@ -80,6 +81,6 @@ require.config({
 });
 
 //requirejs loads js file in global aspects. Dev Note: Include only those files which are required in global space
-requirejs(["xml2json","forcetkextn","underscore","jquerymobile"]);
+requirejs(["xml2json","forcetkextn","underscore","jquerymobile","logger"]);
 //require loads a module and execute callback method once module is load
 require(["main"],function(){log.info("All Script Loaded");});

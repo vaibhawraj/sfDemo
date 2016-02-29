@@ -1,4 +1,5 @@
 /*
+<<<<<<< HEAD
  *	Name : logger.js
  *	Description : Log Levels	Description
  					OFF			No Display

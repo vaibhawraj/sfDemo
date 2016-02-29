@@ -5,7 +5,7 @@ define(['browser-login','helper/loader'],
 		$scope.status = "Login Done";
 		$scope.greetings = "";
 		$scope.status = "";
-		$scope.userInfo = {};
+		$scope.identity = {};
 		$scope.userLocation = "";
 		$scope.queue = queue;
 		console.log($scope.queue);
@@ -19,19 +19,31 @@ define(['browser-login','helper/loader'],
 				Load Tabs
 				Load SObject Metadata
 			*/
+<<<<<<< HEAD // TO-DO
 			var userInfoQuery = "SELECT Id, FirstName,LastName, State, Country FROM USER WHERE ID = '"+ $.cookie("userid") +"'";
 			console.log("[loginController.js] User Info Query : " + userInfoQuery);
 			client.query(userInfoQuery,function(response){
 				$scope.userInfo=response.records[0];
 				if(typeof(appScope.userInfo.Id) !== "undefine" && appScope.userInfo.Id == $scope.userInfo.Id) {
+=======
+			var path = '/id/' + $.cookie("orgid") + '/' + $.cookie("userid") + '/';
+			log('Identity Path :'+path,'Info');
+
+			client.ajaxUrl(path,function(response){
+
+				log("Identity Response Object : ",'Detail');
+				log(response,'Detail');
+
+				$scope.identity=response;
+				if(typeof(appScope.identity.user_id) !== "undefine" && appScope.identity.user_id == $scope.identity.user_id) {
+>>>>>>> loadMetadata
 					$scope.firstTime = false;
 				}
 				else $scope.firstTime = true;
-				appScope.userInfo = response.records[0];
+				appScope.identity = response;
 				localStorage.setItem("appScope",JSON.stringify(appScope));
 
-				console.log(response.records[0]);
-				$scope.greetings = $scope.userInfo.FirstName + " " + $scope.userInfo.LastName;
+				$scope.greetings = $scope.identity.display_name;
 				$scope.status = "Hi " + $scope.greetings + "!";
 				$scope.status += ($scope.firstTime)?"Let me configure your app for first time":"Loading";
 

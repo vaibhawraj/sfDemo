@@ -15,6 +15,7 @@ define(function(require){
 		});
 	//Load Configuration
 		var temp = localStorage.getItem("appScope");
+		log("Loading appScope from localStorage","Detail");
 		appScope = (temp == null)?require("json!appScope"):JSON.parse(temp);
 		log.debug(appScope.tabs);
 	//Render
