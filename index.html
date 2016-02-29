@@ -30,6 +30,7 @@
   <script>
     var G = {};
     var appScope = {};
+    var loglevel = "All";
   </script>
   <style>
     #load{ 
@@ -45,7 +46,12 @@
 
 <div data-role="page" id="splash"></div>
 <div data-role="page" id="home" ng-controller="homecontroller"></div>
-
+<div data-role="page" id="listview" ng-controller="listcontroller"></div>
+<div data-role="page" id="detailview" ng-controller="detailcontroller"></div>
+<div data-role="page" id="editview" ng-controller="editcontroller"></div>
+<!-- Menu -->
+<div data-theme="b" data-role="panel" data-dismissible="true" data-swipe-close="true" data-position-fixed="true" data-display="overlay"
+id="menupanel" ng-controller="menucontroller"></div>  
 
 </body>
 <script data-main="js/import" src="lib/requirejs/require.js"></script>

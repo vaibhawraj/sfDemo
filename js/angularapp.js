@@ -14,5 +14,8 @@ define(["loginController",
 	app.controller("logincontroller",loginController);
 	app.controller("homecontroller",homeController);
 	app.controller("menucontroller",menuController);
+	app.controller("listcontroller",menuController);
+	app.controller("detailcontroller",menuController);
+	app.controller("editcontroller",menuController);
 	return app;
 })
