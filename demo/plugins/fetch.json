@@ -1,0 +1,20 @@
+{
+    "com.phonegap.plugins.PushPlugin": {
+        "source": {
+            "type": "local",
+            "path": "/home/mendex/workspace/PushPlugin"
+        }
+    },
+    "com.salesforce": {
+        "source": {
+            "type": "local",
+            "path": "/home/mendex/workspace/SalesforceMobileSDK-CordovaPlugin"
+        }
+    },
+    "org.apache.cordova.device": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.device"
+        }
+    }
+}

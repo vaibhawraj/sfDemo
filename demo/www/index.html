@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Include meta tag to ensure proper rendering and touch zooming -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Include jQuery Mobile stylesheets -->
+  <link rel="stylesheet" href="lib/jquery-mobile/jquery.mobile-1.4.5.css">
+  <!-- Include the jQuery library -->
+  <!--<script src="lib/jquery/jquery.js"></script>-->
+  <!-- Include the jQuery Mobile library -->
+  <!--<script src="lib/jquery-mobile/jquery.mobile-1.4.5.js"></script>-->
+  <script>
+
+  </script>
+  <!--<script src="lib/jquery-popup/jquery.popupWindow.js"></script>
+  <script src="lib/jquery-cookie/jquery.cookie.js"></script>-->
+  <!-- Include the AngularJS library -->
+  <!--<script src="lib/angularjs/angular.min.js"></script>-->
+  <!-- Include the forceTk library -->
+  <script src="lib/forcetk/forcetk.js"></script>
+  <script src="js/helper/logger.js"></script>
+  <script src="cordova.js"></script>
+  
+  
+  <!-- Include the Utility JS -->
+  <!--<script src="js/helper/utility.js"></script>
+  <script src="js/sfdcproperty.js"></script>
+  <script src="js/browser-login.js"></script>
+  <script src="js/main.js"></script>-->
+
+  <!-- Include RequireJs -->
+  <script>
+    var G = {};
+    var appScope = {};
+    var loglevel = "All";
+  </script>
+  <style>
+    #load{ 
+      position:absolute;
+      top:50%;
+      left:50%;
+      margin-top:-128px;
+      margin-left:-128px;
+    }
+    
+    .ui-panel-dismiss {
+      background: rgba(0,0,0,0.4);
+      z-index:1000;
+    }
+  .ui-panel-dismiss-open.ui-panel-dismiss-position-left {
+      left:0px;
+      width:100%;
+    }
+    .ui-panel-inner {
+        position: absolute;
+        top: 1px;
+        left: 0;
+        right: 0;
+        bottom: 0px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+  </style>
+</head>
+<body>
+
+<div data-role="page" id="splash"></div>
+<div data-role="page" id="home" ng-controller="homecontroller"></div>
+<div data-role="page" id="listview" ng-controller="listcontroller"></div>
+<div data-role="page" id="detailview" ng-controller="detailcontroller"></div>
+<div data-role="page" id="editview" ng-controller="editcontroller"></div>
+<!-- Menu -->
+<div data-theme="b" data-role="panel" data-dismissible="true" data-swipe-close="true" data-position-fixed="true" data-display="overlay"
+id="menupanel" ng-controller="menucontroller"></div>  
+
+</body>
+<script data-main="js/import" src="lib/requirejs/require.js"></script>
+</html>

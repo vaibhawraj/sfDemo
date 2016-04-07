@@ -20,6 +20,7 @@ define(["json!appconfig"],
                 });
 			}
 			else{
+				
 				$('<div></div>').popupWindow({
 					windowURL: loginHandler.getAuthorizeUrl(SFDC.loginUrl, SFDC.clientId, SFDC.redirectUri),
 					windowName: 'Connect',
