@@ -30,7 +30,6 @@ module.exports = function(grunt) {
 
 
               //Src Copy
-              {expand: true,cwd: 'src/',src: ['config/*'], dest: 'build/'},
               {expand: true,cwd: 'src/',src: ['images/**/*'], dest: 'build/'},
               {expand: true,cwd: 'src/',src: ['img/**/*'], dest: 'build/'},
               ]
@@ -57,6 +56,29 @@ module.exports = function(grunt) {
               cwd : "src",
               dest : "build",
               expand : true
+          },
+          build_config_dev : {
+            options: {
+              srcDir : 'src',
+              context: {NODE_ENV: 'development',COMPRESS:false}  //NODE_ENV -- developement / apk
+            },
+            files: {
+                "build/config/appconfig.json": "src/config/appconfig.js",
+                "build/config/appScope.json": "src/config/appScope.json"
+            }
+          },
+
+          //** BUILD FOR ANDROID **//
+          build_config_apk : {
+            options: {
+              srcDir : 'src',
+              context: {NODE_ENV: 'apk',COMPRESS:false}  //NODE_ENV -- developement / apk
+            },
+            files: {
+                "build/config/appconfig.json": "src/config/appconfig.json",
+                "build/config/appScope.json": "src/config/appScope.json",
+                "build/bootconfig.json" : "src/config/bootconfig.json",
+            }
           }
     }
   });
@@ -64,7 +86,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks("grunt-preprocess");
 
-  grunt.registerTask('build-dev',['copy:build_dev','preprocess:build_dev','preprocess:build_js_dev']);
+  grunt.registerTask('build-dev',['copy:build_dev','preprocess:build_dev','preprocess:build_js_dev','preprocess:build_config_dev']);
   grunt.registerTask('build',['build-dev']);
   grunt.registerTask('default', 'Log some stuff.', function() {
     console.log('Please use following syntax');
