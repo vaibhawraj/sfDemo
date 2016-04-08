@@ -113,6 +113,14 @@
 	config.defaults = {};
 
 	$.removeCookie = function (key, options) {
+		if(localStorage.getItem('cookie')==null) {localStorage.setItem('cookie','{}')};
+		var cookie = JSON.parse(localStorage.getItem('cookie'));
+		if(typeof (cookie[encode(key)]) !== "undefined" ) 
+			return false;
+		delete cookie[encode(key)];
+		localStorage.setItem('cookie',JSON.stringify(cookie));
+		return true;
+		
 		if ($.cookie(key) === undefined) {
 			return false;
 		}

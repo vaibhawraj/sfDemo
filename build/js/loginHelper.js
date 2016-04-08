@@ -20,7 +20,6 @@ define(["json!appconfig"],
                 });
 			}
 			else{
-				
 				$('<div></div>').popupWindow({
 					windowURL: loginHandler.getAuthorizeUrl(SFDC.loginUrl, SFDC.clientId, SFDC.redirectUri),
 					windowName: 'Connect',
@@ -36,15 +35,21 @@ define(["json!appconfig"],
 			'&redirect_uri='+escape(redirectUri);
 		},
 		sessionCallback:function(oauth){
-					console.log(oauth);
+					log.debug(oauth);
 					G.oauth = oauth;
 			    	$.cookie("access_token",oauth.access_token,1);
 			    	$.cookie("instance_url",oauth.instance_url);
-			    	$.cookie("userid",oauth.id.split('/')[5]);
-			    	$.cookie("orgid",oauth.id.split('/')[4]);
+			    	if(typeof(oauth.userId)!=="undefined")
+			    		$.cookie("userid",oauth.userId);
+			    	else	
+						$.cookie("userid",oauth.id.split('/')[5]);
+					if(typeof(oauth.orgId)!=="undefined")
+			    		$.cookie("orgid",oauth.orgId);
+			    	else	
+			    		$.cookie("orgid",oauth.id.split('/')[4]);
 			    	$.cookie("refresh_token",oauth.refresh_token);
-			    	loginHandler.setForcetkAccessToken(oauth.access_token,oauth.instance_url,oauth.refresh_token);
-			    
+			    	$.cookie("identity_url",oauth.id);
+			    	loginHandler.setForcetkAccessToken(oauth.access_token,oauth.instance_url,oauth.refresh_token);			    
 		},
 		setForcetkAccessToken:function(access_token,instance_url,refresh_token) {
 			 //Sets access_token for forcetk client

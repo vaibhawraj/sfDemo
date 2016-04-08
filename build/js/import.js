@@ -44,7 +44,7 @@ require.config({
         "appScope" : "../config/appScope.json",
         "appconfig" : "../config/appconfig.json",
         "tabs" : "../config/tabs.json",
-
+        "localDB" : "localDB/localDB",
         //Helper
         "logger" : "helper/logger"
     },
@@ -76,11 +76,14 @@ require.config({
     	},
     	"forcetkextn" : {
     		deps:["xml2json"]
-    	}
+    	},
+        "localDB" : {
+            deps:["underscore"]  
+        }
     }
 });
 
 //requirejs loads js file in global aspects. Dev Note: Include only those files which are required in global space
-requirejs(["xml2json","forcetkextn","underscore","jquerymobile","logger"]);
+requirejs(["xml2json","forcetkextn","underscore","jquerymobile","logger","localDB"]);
 //require loads a module and execute callback method once module is load
 require(["main"],function(){log.info("All Script Loaded");});

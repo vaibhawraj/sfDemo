@@ -29,7 +29,7 @@ define(["json!appconfig"],
 					width:675
 				}).click();
 				/* @endif */
-				/* @if NODE_NEV='apk' */
+				/* @if NODE_ENV='apk' */
 					var oauthPlugin = cordova.require("com.salesforce.plugin.oauth");
 					// Call getAuthCredentials to get the initial session credentials
         			oauthPlugin.getAuthCredentials(
