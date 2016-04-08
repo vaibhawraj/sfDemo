@@ -52,7 +52,7 @@ module.exports = function(grunt) {
                 srcDir : 'src',
                 context: {NODE_ENV: 'development',COMPRESS:false}  //NODE_ENV -- developement / apk
               },
-              src : ["js/controller/*.js","js/helper/*.js", "js/sfdc/*.js", "js/*.js"],
+              src : ["js/controller/*.js","js/helper/*.js", "js/sfdc/*.js","js/localDB/", "js/*.js"],
               cwd : "src",
               dest : "build",
               expand : true
