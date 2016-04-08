@@ -17,7 +17,9 @@
   <!-- Include the AngularJS library -->
   <!--<script src="lib/angularjs/angular.min.js"></script>-->
   <!-- Include the forceTk library -->
-          <script type="text/javascript" src="cordova.js"></script>
+  <!--  @if NODE_ENV='apk' !>
+  <script type="text/javascript" src="cordova.js"></script>
+  <!-- @endif -->
   <script src="lib/forcetk/forcetk.js"></script>
   <script src="js/helper/logger.js"></script>
   
@@ -64,14 +66,18 @@
 </head>
 <body>
 
-<div data-role="page" id="splash"></div>
-<div data-role="page" id="home" ng-controller="homecontroller"></div>
-<div data-role="page" id="listview" ng-controller="listcontroller"></div>
-<div data-role="page" id="detailview" ng-controller="detailcontroller"></div>
-<div data-role="page" id="editview" ng-controller="editcontroller"></div>
+<div data-role="page" id="splash">
+  <!-- @include-static template/splash.html -->
+</div>
+<div data-role="page" id="home" ng-controller="homecontroller">
+  <!-- @include-static template/home.html -->
+</div>
+
 <!-- Menu -->
 <div data-theme="b" data-role="panel" data-dismissible="true" data-swipe-close="true" data-position-fixed="true" data-display="overlay"
-id="menupanel" ng-controller="menucontroller"></div>  
+id="menupanel" ng-controller="menucontroller">
+  <!-- @include-static template/menu.html -->
+</div>  
 
 </body>
 <script data-main="js/import" src="lib/requirejs/require.js"></script>
