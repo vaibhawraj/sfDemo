@@ -43,7 +43,6 @@ require.config({
         //JSON CONFIG Files
         "appScope" : "../config/appScope.json",
         "appconfig" : "../config/appconfig.json",
-        "tabs" : "../config/tabs.json",
         "localDB" : "localDB/localDB",
         //Helper
         "logger" : "helper/logger"

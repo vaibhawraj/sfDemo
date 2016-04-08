@@ -1,7 +1,7 @@
 //loadTabs Module
 //Description : Retrieve Tab information Metadata
 
-define(['json!tabs'],function(tabs){
+define([],function(){
 	return {
 		name:'Retrieve Tab Metadata',
 		status: 'Loading Tab Metadata',

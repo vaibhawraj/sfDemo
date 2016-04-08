@@ -1,7 +1,7 @@
 //loadTabs Module
 //Description : Retrieve List View For Sobject
 
-define(['json!tabs','logger'],function(tabs,log){
+define(['logger'],function(log){
 	return {
 		name:'Retrieve List View For',
 		status: 'Loading List View',
