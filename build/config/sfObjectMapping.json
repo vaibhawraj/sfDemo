@@ -1,0 +1,21 @@
+{
+	"sfObjectName" : "outlet_form__c",
+	"table" : "outlet",
+	"fields" : [
+		{"sf_api":"id","table_api":"id","form_label":null},
+		{"sf_api":"","table_api":"name","form_label":"Outlet/RC Name"},
+		{"sf_api":"","table_api":"taskstage","form_label":"Task Stage"},
+		{"sf_api":"","table_api":"mobile","form_label":"Mobile Number"},
+		{"sf_api":"","table_api":"email","form_label":"Email"},
+		{"sf_api":"","table_api":"type","form_label":"Outlet Type"},
+		{"sf_api":"","table_api":"retailownername","form_label":"Retail Owner Name"},
+		{"sf_api":"","table_api":"address","form_label":"Address"},
+		{"sf_api":"","table_api":"pincode","form_label":"Pincode"},
+		{"sf_api":"","table_api":"city","form_label":"City"},
+		{"sf_api":"","table_api":"landmark","form_label":"Landmark"},
+		{"sf_api":"","table_api":"state","form_label":"State"},
+		{"sf_api":"","table_api":"document","form_label":"Document not available"},
+		{"sf_api":"","table_api":"reasonfordocument","form_label":"Reason"},
+		{"sf_api":"","table_api":"reasonfordenied","form_label":"Reason for Denied"}
+	]
+}

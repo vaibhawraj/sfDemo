@@ -64,7 +64,8 @@ module.exports = function(grunt) {
             },
             files: {
                 "build/config/appconfig.json": "src/config/appconfig.js",
-                "build/config/appScope.json": "src/config/appScope.json"
+                "build/config/appScope.json": "src/config/appScope.json",
+                "build/config/sfObjectMapping.json": "src/config/sfObjectMapping.json"
             }
           },
 
@@ -85,6 +86,11 @@ module.exports = function(grunt) {
       scripts: {
         files:['src/js/**/*.js'],
         tasks:['preprocess:build_js_dev'],
+        options:{spawn:false}
+      },
+      configs : {
+        files:['src/config/*.js','src/config/*.json'],
+        tasks:['preprocess:build_config_dev'],
         options:{spawn:false}
       }
     }
