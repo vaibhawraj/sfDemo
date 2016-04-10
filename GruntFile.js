@@ -80,9 +80,17 @@ module.exports = function(grunt) {
                 "build/bootconfig.json" : "src/config/bootconfig.json",
             }
           }
+    },
+    watch:{
+      scripts: {
+        files:['src/js/**/*.js'],
+        tasks:['preprocess:build_js_dev'],
+        options:{spawn:false}
+      }
     }
   });
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks("grunt-preprocess");
 
