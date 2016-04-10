@@ -67,15 +67,14 @@
 			}
 			if(localStorage.getItem('cookie')==null) {localStorage.setItem('cookie','{}')};
 			var cookie = JSON.parse(localStorage.getItem('cookie'));
-			cookie[encode(key)] = stringifyCookieValue(value);
+			
+			if(typeof options.expires == "undefined") {
+					cookie[encode(key)] = stringifyCookieValue(value);	
+			} else if(options.expires >= new Date()) {
+					cookie[encode(key)] = stringifyCookieValue(value);	
+			}
 			localStorage.setItem('cookie',JSON.stringify(cookie));
-			return (document.cookie = [
-				encode(key), '=', stringifyCookieValue(value),
-				options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
-				options.path    ? '; path=' + options.path : '',
-				options.domain  ? '; domain=' + options.domain : '',
-				options.secure  ? '; secure' : ''
-			].join(''));
+			return true;
 		}
 
 		// Read
@@ -107,7 +106,7 @@
 		var cookie = JSON.parse(localStorage.getItem('cookie'));
 		if(typeof (cookie[encode(key)]) !== "undefined" ) 
 			return cookie[encode(key)];
-		return result;
+		else return null;
 	};
 
 	config.defaults = {};
@@ -115,19 +114,27 @@
 	$.removeCookie = function (key, options) {
 		if(localStorage.getItem('cookie')==null) {localStorage.setItem('cookie','{}')};
 		var cookie = JSON.parse(localStorage.getItem('cookie'));
-		if(typeof (cookie[encode(key)]) !== "undefined" ) 
-			return false;
-		delete cookie[encode(key)];
-		localStorage.setItem('cookie',JSON.stringify(cookie));
-		return true;
+		if(typeof (cookie[encode(key)]) !== "undefined") 
+		{
+			delete cookie[encode(key)];
+			localStorage.setItem('cookie',JSON.stringify(cookie));
+		}
 		
-		if ($.cookie(key) === undefined) {
-			return false;
+		if ($.cookie(key) !== undefined) {
+			$.cookie(key, '', $.extend({}, options, { expires: -1 }));
 		}
 
 		// Must not alter options, thus extending a fresh object...
-		$.cookie(key, '', $.extend({}, options, { expires: -1 }));
-		return !$.cookie(key);
+		
+		return true;
 	};
 
 }));
+
+
+/*
+Testing
+
+localDB.openDatabase('sfData');
+
+*/

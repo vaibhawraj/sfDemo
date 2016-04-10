@@ -13,7 +13,6 @@
 					oauthResponse[parts[0]] = unescape(parts[1]);
 				}
     		}
-    		localStorage.setItem('alpha',JSON.stringify(oauthResponse));
 			window.opener.G.sessionCallback(oauthResponse);
 			window.close();
 		}

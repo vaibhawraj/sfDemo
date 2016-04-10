@@ -12,10 +12,11 @@ define(["json!appconfig"],
 				G.client.setRefreshToken($.cookie('refresh_token'));
 				G.client.refreshAccessToken(function (oauthResponse) {
 						$.cookie('access_token',oauthResponse.access_token,1)
+						$.cookie('refresh_token',oauthResponse.refresh_token,1)
 						loginHandler.setForcetkAccessToken(oauthResponse.access_token,oauthResponse.instance_url,$.cookie('refresh_token'));
                 },function(){
                 	console.log("Login Failure");
-                	//$.removeCookie('access_token');
+                	$.removeCookie('access_token');
                 	loginHandler.login();
                 });
 			}
@@ -69,10 +70,13 @@ define(["json!appconfig"],
 					G.oauth = oauth;
 			    	$.cookie("access_token",oauth.access_token,1);
 			    	$.cookie("instance_url",oauth.instance_url);
+			    	console.log(oauth.userId);
 			    	if(typeof(oauth.userId)!=="undefined")
 			    		$.cookie("userid",oauth.userId);
-			    	else	
+			    	else{	
 						$.cookie("userid",oauth.id.split('/')[5]);
+						console.log(oauth.id.split('/')[5]);
+					}
 					if(typeof(oauth.orgId)!=="undefined")
 			    		$.cookie("orgid",oauth.orgId);
 			    	else	
@@ -89,8 +93,14 @@ define(["json!appconfig"],
 			 //Since this process asynchronous therefore to resume and tell angular app to resume processing, scope.$apply() needs to call externally
 			 var scope = angular.element($("#load")).scope();
 			 scope.resume(G.client);
+		},
+		logout:function() {
+			$.removeCookie('access_token');
+			$.removeCookie('userid');
+			$.removeCookie('orgid');
 		}
 	};
+	window.loginHandler = loginHandler;
 	G.sessionCallback = loginHandler.sessionCallback;
 	return loginHandler;
 });

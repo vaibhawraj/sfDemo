@@ -1,5 +1,9 @@
 /*
 	Name : localDB.js
+	Author : Vaibhaw Raj(vaibhaw.raj@comprotechnologies.com)
+	Description : localDB manages all interaction with local Database of app. It features offline data management
+	              at its lowest level.
+	Created On : 8th April 2016
 */
 define(['underscore'],function(_){
 	var storage = window.localStorage;
@@ -20,8 +24,8 @@ define(['underscore'],function(_){
 				this._storage = {};
 				this._name = name;
 				log.info('localDB ' + name + ' created');
-				this.commit();
 				this._dbLoaded = true;
+				this.commit();
 			}
 		},
 		createTable : function(name,fields){
@@ -30,12 +34,18 @@ define(['underscore'],function(_){
 				return;
 			}
 			if(_.has(this._storage,name)) {
-				this._storage[name] = null;
+				log.error('Cannot create table with name ' + name,'Table already exists');
+				return;
 			}
-			fields.push('timeStamp');
-			fields.push('uuid');
+			if(!_.isArray(fields)) {
+				log.error('Fields must be Array',typeof fields);
+			}
+			var fieldList = [];
+			_.each(fields,function(key,index,list){fieldList.push(key.toLowerCase());});
+			fieldList.push('timestamp');
+			fieldList.push('uuid');
 			var table = {
-				fields : fields,
+				fields : fieldList,
 				name : name,
 				count : 0,
 				records : []
@@ -44,42 +54,96 @@ define(['underscore'],function(_){
 			log.info('Table ' + name + ' created');
 		},
 		insertRow : function(table,rec){
-			if(!this.isTableExist(table) && _.isObject(rec))
-				return;
+			if(!this.isTableExist(table))
+			{
+				log.error('Table not exist ['+table+']');
+				return null;
+			} else if(!_.isObject(rec)){
+				log.error('Record is not object : ['+rec+']');
+			 	return null;
+			}
 			var record = {};
-			_.each(this._storage[table].fields,function(element,index,list){
-				if(_.has(rec,element)){
-					record[element] = rec[element];
+			//UUID should not be set while insertion
+			if(_.has(rec,'uuid')) {
+				log.error('UUID cannot be set in insertRow : ['+rec+']');
+			 	return null;
+			}
+			var that = this;
+			_.each(_.keys(rec),function(element,index,list){
+				console.log(that._storage[table].fields,_.contains(that._storage[table].fields,element.toLowerCase()),element);
+				if(_.contains(that._storage[table].fields,element.toLowerCase())){
+					record[element.toLowerCase()] = rec[element];
 				}
-			})
+			});
 			record.timeStamp = (new Date()).getTime();
 			record.uuid = this._storage[table].count +1;
 			this._storage[table].count += 1
 			this._storage[table].records.push(record);
+			return record.uuid;
 		},
 		updateRow : function(table,rec){
-			if(!this.isTableExist(table) && _.isObject(rec)) return false;
+			if(!this.isTableExist(table))
+			{
+				log.error('Table not exist ['+table+']');
+				return null;
+			} else if(!_.isObject(rec)){
+				log.error('Record is not object : ['+rec+']');
+			 	return null;
+			}
+			
 			var updateStatus = false;
 			var errorMsg = '';
 			if(_.has(rec,'uuid')) {
+				var that = this;
 				_.each(this._storage[table].records,function(element,index,list){
 					if(element.uuid == rec.uuid) {
 						var temp = element;
-						//For each key in rec, assign new value to temprory record
-						//Replace previous entry with new entry
-						this._storage[table].records[index] = temp;
+						_.each(_.keys(rec),function(key,ind,list){
+							if(_.has(element,key.toLowerCase())){
+								that._storage[table].records[index][key.toLowerCase()] = rec[key];
+							}else{
+								log.warn('Field not found ['+key+'] in ['+element+']');
+							}
+						});
 						updateStatus=true;
 					}
+					if(updateStatus){
+						return;
+					}
 				});
+				if(!updateStatus) {
+					log.error('Update failed for ['+rec+']. UUID not found ['+rec.uuid+']');
+				}
 				return updateStatus;
 			} else {
 				log.error('UUID is not specified for table "'+table + '" : Record ' + rec);
 				return false;
 			}
 		},
-		queryRow : function(){},
-		purgeTable : function(){},
-		deleteRow : function(){},
+		queryRow : function(table,rec){
+			var queryStatus = false;
+			var queryResult = [];
+			if(!this.isTableExist(table))
+			{
+				log.error('Table not exist ['+table+']');
+				return null;
+			} else if(!_.isObject(rec)){
+				log.error('Record is not object : ['+rec+']');
+			 	return null;
+			}
+			_.each(this._storage[table].records,function(element,index,list){
+					if(_.isMatch(element,rec)){
+						queryResult.push(element);
+						queryStatus = true;
+					}
+				});
+				if(!queryStatus) {
+					log.warn('Record not found ['+rec+']');
+				}
+			return queryResult;	//Always return either empty array or list of result
+		},
+		purgeTable : function(){},	//TO-DO
+		deleteRow : function(){},  //TO-DO
 
 		isTableExist : function(table){
 			if(!this._dbLoaded) {
@@ -89,15 +153,28 @@ define(['underscore'],function(_){
 			return _.has(this._storage,table);
 		},
 		commit : function(){
-			if(this._storage == null || this._name == null) {
+			if(!this._dbLoaded) {
 				log.error('No database loaded',this._name,this._storage);
-				return new error('No database is loaded');
 			}
 			localStorage.setItem(this._name,JSON.stringify(this._storage));
 		},
-		rollback : function(){},
+		rollback : function(){
+			if(!this._dbLoaded) {
+				log.error('No database loaded',this._name,this._storage);
+			}
+			this._storage = JSON.parse(localStorage.getItem(this._name));
+		},
 	};
 	if(typeof (window.localDB) === "undefined") {
 		window.localDB = localDB;
 	}
 });
+
+
+/*
+localDB.openDatabase('sfData');
+var fields = ["names","outlettype","message","pic","pic2"];
+localDB.createTable('outlet',fields);
+var rec = {naMes:"vaibhaw",message:"hello"}
+localDB.insertRow('outlet',rec);
+*/

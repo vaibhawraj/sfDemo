@@ -30,28 +30,58 @@ var log = new function(){
  		var fname = stack.split('\n')[4];
  		return fname.substr(fname.lastIndexOf('/')+1);
  	};
- 	this.debug=function(message){
+ 	this.debug=function(){
  		if(that.LogLevel >= that.Level.DEBUG) {
- 			console.debug('[Debug ' + that.parseError() + ']',message);
+ 			var message = '';
+ 			for(i=0;i<arguments.length;i++){
+ 				if(i!=0)
+ 					message = message + ',';
+ 				message = message + 'arguments['+i+']';
+ 			}
+ 			eval('console.debug(\'[Debug ' + that.parseError() + ']\','+message+');');
  		}
  	}
- 	this.error=function(message){
+ 	this.error=function(){
  		if(that.LogLevel >= that.Level.ERROR) {
- 			console.error('[Error ' + that.parseError() + ']',message);
+ 			var message = '';
+ 			for(i=0;i<arguments.length;i++){
+ 				if(i!=0)
+ 					message = message + ',';
+ 				message = message + 'arguments['+i+']';
+ 			}
+ 			eval('console.error(\'[Error ' + that.parseError() + ']\','+message+');');
  		}	
  	}
- 	this.warn=function(message){
+ 	this.warn=function(){
  		if(that.LogLevel >= that.Level.WARN) {
- 			console.warn('[Warn ' + that.parseError() + ']',message);
+ 			var message = '';
+ 			for(i=0;i<arguments.length;i++){
+ 				if(i!=0)
+ 					message = message + ',';
+ 				message = message + 'arguments['+i+']';
+ 			}
+ 			eval('console.warn(\'[Warn ' + that.parseError() + ']\','+message+');');
  		}	
  	}
- 	this.info=function(message){
+ 	this.info=function(){
  		if(that.LogLevel == that.Level.INFO || that.LogLevel == that.Level.ALL) {
- 			console.info('[Info ' + that.parseError() + ']',message);
+ 			var message = '';
+ 			for(i=0;i<arguments.length;i++){
+ 				if(i!=0)
+ 					message = message + ',';
+ 				message = message + 'arguments['+i+']';
+ 			}
+ 			eval('console.info(\'[Info ' + that.parseError() + ']\','+message+');');
  		}	
  	}
- 	this.log=function(message){
- 			console.log('[UserLog ' + that.parseError() + ']',message);
+ 	this.log=function(){
+ 			var message = '';
+ 			for(i=0;i<arguments.length;i++){
+ 				if(i!=0)
+ 					message = message + ',';
+ 				message = message + 'arguments['+i+']';
+ 			}
+ 			eval('console.log(\'[Log ' + that.parseError() + ']\','+message+');');
  	}
  	return this;
  }
