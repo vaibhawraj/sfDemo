@@ -1,5 +1,5 @@
 {
-	"sfObjectName" : "outlet_form__c",
+	"sfObjectName" : "contact",
 	"table" : "outlet",
 	"fields" : [
 		{"sf_api":"id","table_api":"id","form_label":null},
