@@ -164,10 +164,32 @@ define(['underscore'],function(_){
 			}
 			this._storage = JSON.parse(localStorage.getItem(this._name));
 		},
+		purgeDatabase : function(){
+			if(this._dbLoaded) {
+				localStorage.removeItem(this._name);
+				log.info('Database purged : ',this._name);
+				this._dbLoaded = false;
+				this._name = null;
+				this._storage = null;
+				return true;
+			} else {
+				log.error('No database loaded');
+			}
+		},
+		getTableFields : function(table){
+			if(this.isTableExist(table)) {
+				return this._storage['outlet'].fields;
+			} else {
+				if(this._dbLoaded) {
+					log.error('Table doesnot Exist',table);	
+				}
+			}
+		}
 	};
 	if(typeof (window.localDB) === "undefined") {
 		window.localDB = localDB;
 	}
+	return localDB;
 });
 
 
