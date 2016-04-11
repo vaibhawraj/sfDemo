@@ -1,0 +1,89 @@
+<div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow">
+  	<a ng-click="gotoHome()"  class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
+    <h1 class="ui-title">{{ record.name }}</h1>
+    <!--<div class="ui-bar ui-bar-a">
+        <h1 class="ui-title">Outlet Forms</h1>
+    </div>-->
+  </div>
+  <div data-role="main" class="ui-content detailPage">
+
+  <!-- Using Responsive Grid -->
+  <ul data-role="listview" data-inset="false" class="ui-listview">
+    <li>
+          <p>{{getFormLabel('name')}}</p>
+          <h4>{{record.name}}</h4>
+    </li>
+     <li>
+          <p>{{getFormLabel('taskstage')}}</p>
+          <h4>{{record.taskstage}}</h4>
+    </li>
+    <div class="divider"></div> <!-- only applicable for  wide screen-->
+     <li>
+          <p>{{getFormLabel('mobilenumber')}}</p>
+          <h4>{{record.mobilenumber}}</h4>
+    </li>
+     <li>
+          <p>{{getFormLabel('email')}}</p>
+          <h4>{{record.email}}</h4>
+    </li>
+    <div class="divider"></div> <!-- only applicable for  wide screen-->
+     <li>
+          <p>{{getFormLabel('type')}}</p>
+          <h4>{{record.type}}</h4>
+    </li>
+     <li>
+          <p>{{getFormLabel('retailownername')}}</p>
+          <h4>{{record.retailownername}}</h4>
+    </li>
+    <div class="divider" style="margin-bottom:5px"></div> <!-- only applicable for  wide screen-->
+    <br/>
+    <div data-role="collapsibleset" data-inset="false">
+      <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" style="margin-top:10px">
+        <h4>Address Details</h4>
+        <ul data-role="listview" data-inset="false">
+          <li>
+              <p>{{getFormLabel('address')}}</p>
+              <h4>{{record.address}}</h4>
+          </li>
+          <li>
+              <p>{{getFormLabel('city')}}</p>
+              <h4>{{record.city}}</h4>
+          </li>
+          <div class="divider"></div>
+          <li>
+              <p>{{getFormLabel('pincode')}}</p>
+              <h4>{{record.pincode}}</h4>
+          </li>
+          <li>
+              <p>{{getFormLabel('state')}}</p>
+              <h4>{{record.state}}</h4>
+          </li>
+          <div class="divider"></div>
+          <li>
+              <p>{{getFormLabel('landmark')}}</p>
+              <h4>{{record.landmark}}</h4>
+          </li>
+          
+        </ul>
+    </div>
+    <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+      <h4>Documents</h4>
+    </div>
+    <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+      <h4>Attested Documents</h4>
+    </div>
+    <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+      <h4>Not-Attested Documents</h4>
+    </div>
+  </div>
+  </ul>
+
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <h1>PayTM Demo</h1>
+  </div>
+
+
+
+</div>

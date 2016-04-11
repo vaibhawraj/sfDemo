@@ -37,6 +37,7 @@ require.config({
 
         //Salesforce Library
         "sfDataManager" : "sfdc/sfDataManager",
+        "sfMetadataHelper" : "sfdc/sfMetadataHelper",
         //Angular Controller
         "loginController" : "controller/loginController",
         "homeController" : "controller/homeController",
@@ -90,5 +91,6 @@ require.config({
 
 //requirejs loads js file in global aspects. Dev Note: Include only those files which are required in global space
 requirejs(["xml2json","forcetkextn","underscore","jquerymobile","logger","localDB","sfDataManager"]);
+
 //require loads a module and execute callback method once module is load
 require(["main"],function(){log.info("All Script Loaded");});

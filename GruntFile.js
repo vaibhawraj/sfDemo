@@ -47,6 +47,16 @@ module.exports = function(grunt) {
                 "build/proxy.php": "src/proxy.php",
             }
           },
+          build_css_dev : {
+            options: {
+                srcDir : 'src',
+                context: {NODE_ENV: 'development',COMPRESS:false}  //NODE_ENV -- developement / apk
+              },
+              src : ["css/*.css","css/**/*.css"],
+              cwd : "src",
+              dest : "build",
+              expand : true
+          },
           build_js_dev : {
               options: {
                 srcDir : 'src',
@@ -97,6 +107,11 @@ module.exports = function(grunt) {
         files:['src/template/*.html','src/*.html'],
         tasks:['preprocess:build_dev'],
         options:{spawn:false}
+      },
+      css: {
+        files:['src/css/*.css','src/css/**/*.css'],
+        tasks:['preprocess:build_css_dev'],
+        options:{spawn:false}
       }
     }
   });
@@ -105,7 +120,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks("grunt-preprocess");
 
-  grunt.registerTask('build-dev',['copy:build_dev','preprocess:build_dev','preprocess:build_js_dev','preprocess:build_config_dev']);
+  grunt.registerTask('build-dev',['copy:build_dev','preprocess:build_dev','preprocess:build_js_dev','preprocess:build_config_dev','preprocess:build_css_dev']);
   grunt.registerTask('build',['build-dev']);
   grunt.registerTask('default', 'Log some stuff.', function() {
     console.log('Please use following syntax');

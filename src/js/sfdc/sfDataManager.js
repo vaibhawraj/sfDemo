@@ -83,14 +83,24 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 				log.info('No Network Connectivity');
 			}
 		},
-		query : function(){
+		query : function(callback){	//callback should be function. and argument to callback will be array of records
 			//query only field specified on sfObjectMapping
 			if(nm.getStatus()) {
 				var query = this.sfCreateQuery();
 				//Fire and Forget : Query server and let it complete asynchronously
-				G.client.query(query,this.querySuccessHandler,this.queryErrorHandler);
+				var that = this;
+				G.client.query(query,function(res){
+					that.querySuccessHandler(res);
+					if(!_.isUndefined(callback)) {
+						log.debug(localDB.queryRow(mapping.table,{}));
+						callback(localDB.queryRow(mapping.table,{}));
+					}
+				},this.queryErrorHandler);
 				return localDB.queryRow(mapping.table,{});	//Return Local Copy
 			} else {
+				if(!_.isUndefined(callback)){
+					callback(localDB.queryRow(mapping.table,{}));
+				}
 				return localDB.queryRow(mapping.table,{});
 			}
 		},
@@ -170,7 +180,7 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 					//Check If Records Exist
 					var recordListInTable = localDB.queryRow(mapping.table,{id:rec.id});
 					if(_.isEmpty(recordListInTable)) {
-						localDB.insertRow(mapping.table,rec);
+						localDB.insertRow(mapping.table,$.extend(rec,{sync_status:"Synced"}));
 					} else {
 						var uuid = recordListInTable[0].uuid;
 						localDB.updateRow(mapping.table,_.extend(rec,{uuid:uuid}));

@@ -1,24 +1,40 @@
 //Desktop Salesforce Login Process
 //Author : Vaibhaw Raj
 //Creation Date : 7th Dec 2015
-define(["json!appconfig"],
-	function(SFDC){
+define(["json!appconfig","networkManager"],
+	function(SFDC,nm){
 	G.client = new forcetk.Client(SFDC.clientId,SFDC.loginUrl,SFDC.proxyUrl);
 	//console.log($.cookie);
 	var loginHandler = {
 		login:function(){
+			window.showPinScreen = false;
 			if($.cookie('access_token')){
+				//USER already logged in
+
+				//Initialize forceTkClient library
 				G.client.setSessionToken($.cookie('access_token'),SFDC.api_version,$.cookie('instance_url'));
 				G.client.setRefreshToken($.cookie('refresh_token'));
-				G.client.refreshAccessToken(function (oauthResponse) {
-						$.cookie('access_token',oauthResponse.access_token,1)
-						$.cookie('refresh_token',oauthResponse.refresh_token,1)
-						loginHandler.setForcetkAccessToken(oauthResponse.access_token,oauthResponse.instance_url,$.cookie('refresh_token'));
-                },function(){
-                	console.log("Login Failure");
-                	$.removeCookie('access_token');
-                	loginHandler.login();
-                });
+
+				window.showPinScreen = true;
+				window.setPinScreen = false;
+				window.resumeLoading = false;
+				//Check for network connectivity
+
+				if(nm.getStatus())
+				{
+					G.client.refreshAccessToken(function (oauthResponse) {
+							$.cookie('access_token',oauthResponse.access_token,1)
+							$.cookie('refresh_token',oauthResponse.refresh_token,1)
+							loginHandler.setForcetkAccessToken(oauthResponse.access_token,oauthResponse.instance_url,$.cookie('refresh_token'));
+	                },function(){
+	                	console.log("Login Failure");
+	                	$.removeCookie('access_token');
+	                	loginHandler.login();	//Re-Try to Login
+	                });
+				} else {
+					window.resumeLoading = true;
+				}
+				
 			}
 			else{
 				$('<div></div>').popupWindow({
@@ -28,6 +44,8 @@ define(["json!appconfig"],
 					height:524,
 					width:675
 				}).click();
+				window.showPinScreen = false;
+				window.setPinScreen = true;
 			}
 		},
 		getAuthorizeUrl:function(loginUrl, clientId, redirectUri){
@@ -55,6 +73,11 @@ define(["json!appconfig"],
 			    	}
 			    	$.cookie("refresh_token",oauth.refresh_token);
 			    	$.cookie("identity_url",oauth.id);
+			    	if(!_.isEmpty(appScope.identity)){ //If userid in app  is different from logged in user
+			    		if(appScope.identity.userid!=$.cookie('userid')) {
+			    			appScope.identity = {};
+			    		}
+			    	}
 			    	loginHandler.setForcetkAccessToken(oauth.access_token,oauth.instance_url,oauth.refresh_token);			    
 		},
 		setForcetkAccessToken:function(access_token,instance_url,refresh_token) {
@@ -63,8 +86,8 @@ define(["json!appconfig"],
 			            instance_url);
 			 G.client.setRefreshToken(refresh_token);
 			 //Since this process asynchronous therefore to resume and tell angular app to resume processing, scope.$apply() needs to call externally
-			 var scope = angular.element($("#load")).scope();
-			 scope.resume(G.client);
+		//	 angular.element('body')..resumeLoading();
+			angular.element('body').scope().resumeLoading();
 		},
 		logout:function() {
 			$.removeCookie('access_token');
