@@ -18,6 +18,12 @@ define(function(require){
 		log.debug("Loading appScope from localStorage");
 		appScope = (temp == null)?require("json!appScope"):JSON.parse(temp);
 
+	//Initialize database
+	require("sfDataManager").init();
+	
+	//Load Login Screen //TO-DO
+	require("loginHelper").login();
+
 	//Initialize Angular
 		require(['angularapp'],function(app){
 			angular.bootstrap(document,["sfapp"]);

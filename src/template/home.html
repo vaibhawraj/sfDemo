@@ -1,15 +1,18 @@
 <!-- Home Template -->
   <div data-role="header" data-position="fixed">
   	<a ng-click="toggle(event)" href="#menupanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">=</a>
-    <h1>Home</h1>
+    <h1>Outlet Forms</h1>
   </div>
 
   <div data-role="main" class="ui-content">
-    <div style="text-align:center;">
-      <img id="Picture" src={{identity.photos.thumbnail}} style="margin-left:10px;margin-right:10px;padding:5px;border:solid gray 1px;vertical-align: top">
-        <h1 style="display:inline-block;margin-top:5px;">{{ identity.display_name }}</h1><br/>
-        <span>{{ date_expression | date : format : timezone}}</span>
-    </div>
+    <ul id="outlet_forms" data-role="listview" data-inset="true">
+      <li nr-repeat="rec in recordList">
+        <a href="#">
+          <h2>{{ rec.name }}</h2>
+          <p>{{ rec.retailownername }}</p>
+        </a>
+      </li>
+    </ul>
   </div>
 
   <div data-role="footer" data-position="fixed">
@@ -18,4 +21,16 @@
 
 <!-- Menu -->
 <div data-theme="b" data-role="panel" data-dismissible="true" data-swipe-close="true" data-position-fixed="true" data-display="overlay"
-id="menupanel" ng-controller="menucontroller"></div>  
+id="menupanel" ng-controller="menucontroller">
+  <div class="ui-body ui-body-a ui-corner-all">
+    <p>
+     <center>
+      <img id="Picture" src={{identity.photos.thumbnail}} style="padding:5px;border:solid gray 1px;vertical-align: bottom" width="30%"/></center>
+      <center>
+      <span style="display:inline-block;margin-top:3px;vertical-align: bottom;font-size:1.0em">{{ identity.display_name }}</span><br/>
+      <span style="display:inline-block;margin-top:2px;vertical-align: bottom;font-size:0.8em">{{ date | date : format : timezone}}</span>
+      </center>
+    </p>
+  </div>
+
+</div>

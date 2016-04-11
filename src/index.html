@@ -64,20 +64,14 @@
     }
   </style>
 </head>
-<body>
+<body ng-controller="homecontroller">
 
 <div data-role="page" id="splash">
   <!-- @include-static template/splash.html -->
 </div>
-<div data-role="page" id="home" ng-controller="homecontroller">
+<div data-role="page" id="home">
   <!-- @include-static template/home.html -->
 </div>
-
-<!-- Menu -->
-<div data-theme="b" data-role="panel" data-dismissible="true" data-swipe-close="true" data-position-fixed="true" data-display="overlay"
-id="menupanel" ng-controller="menucontroller">
-  <!-- @include-static template/menu.html -->
-</div>  
 
 </body>
 <script data-main="js/import" src="lib/requirejs/require.js"></script>

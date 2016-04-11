@@ -7,8 +7,7 @@ define(['loginHelper','helper/loader'],
 		$scope.status = "";
 		$scope.identity = {};
 		$scope.userLocation = "";
-		$scope.queue = queue;
-		console.log($scope.queue);
+		$scope.queue = queue;		
 		$scope.cur = 0;
 		$scope.firstTime = true;
 		$scope.resume = function(client) {
@@ -89,6 +88,6 @@ define(['loginHelper','helper/loader'],
 				//Error Handling Code
 				console.log("Develop Error Handling Code");
 		}
-		loginHandler.login();
+		
 	}
 });

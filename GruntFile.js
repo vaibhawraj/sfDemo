@@ -92,6 +92,11 @@ module.exports = function(grunt) {
         files:['src/config/*.js','src/config/*.json'],
         tasks:['preprocess:build_config_dev'],
         options:{spawn:false}
+      },
+      html: {
+        files:['src/template/*.html','src/*.html'],
+        tasks:['preprocess:build_dev'],
+        options:{spawn:false}
       }
     }
   });

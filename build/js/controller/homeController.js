@@ -2,18 +2,21 @@
 
 define(function(){
 	return function($scope){
-		$scope.tabs = appScope.tabs;
 		$scope.identity = appScope.identity;
 		$scope.date = new Date();
+		$scope.recordList = [];
 		$scope.resume = function(){
-			$scope.tabs = appScope.tabs;
+			$scope.date = new Date();
+			$scope.recordList = sfDataManager.query();
+			$( "#outlet_forms" ).listview( "refresh" );
 			$scope.identity = appScope.identity;
-			log.info($scope.identity,'Detail');
-			console.log($scope.identity);
+			log.info($scope.identity);
+			$scope.$apply();
+		}
+		$scope.reRender = function(){
 			$scope.$apply();
 		}
 		$scope.toggle =function(){
-			console.log(event);
 			
 		}
 	}
