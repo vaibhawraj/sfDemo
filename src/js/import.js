@@ -50,6 +50,7 @@ require.config({
         "appconfig" : "../config/appconfig.json",
         "mapping" : "../config/sfObjectMapping.json",
         //Helper
+        "networkManager" : "helper/NetworkManager",
         "logger" : "helper/logger"
     },
     shim:{

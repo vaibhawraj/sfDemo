@@ -70,7 +70,6 @@ define(['underscore'],function(_){
 			}
 			var that = this;
 			_.each(_.keys(rec),function(element,index,list){
-				console.log(that._storage[table].fields,_.contains(that._storage[table].fields,element.toLowerCase()),element);
 				if(_.contains(that._storage[table].fields,element.toLowerCase())){
 					record[element.toLowerCase()] = rec[element];
 				}
@@ -123,6 +122,7 @@ define(['underscore'],function(_){
 		queryRow : function(table,rec){
 			var queryStatus = false;
 			var queryResult = [];
+			if(_.isUndefined(rec)) rec= {};
 			if(!this.isTableExist(table))
 			{
 				log.error('Table not exist ['+table+']');
@@ -157,6 +157,7 @@ define(['underscore'],function(_){
 				log.error('No database loaded',this._name,this._storage);
 			}
 			localStorage.setItem(this._name,JSON.stringify(this._storage));
+			log.debug('Database Committed');
 		},
 		rollback : function(){
 			if(!this._dbLoaded) {

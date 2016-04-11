@@ -70,17 +70,19 @@ define(["json!appconfig"],
 					G.oauth = oauth;
 			    	$.cookie("access_token",oauth.access_token,1);
 			    	$.cookie("instance_url",oauth.instance_url);
-			    	console.log(oauth.userId);
+			    	log.debug('oauth.userId ',oauth.userId);
 			    	if(typeof(oauth.userId)!=="undefined")
 			    		$.cookie("userid",oauth.userId);
 			    	else{	
 						$.cookie("userid",oauth.id.split('/')[5]);
-						console.log(oauth.id.split('/')[5]);
+						log.debug('oauth.userId',oauth.id.split('/')[5]);
 					}
 					if(typeof(oauth.orgId)!=="undefined")
 			    		$.cookie("orgid",oauth.orgId);
-			    	else	
+			    	else {
 			    		$.cookie("orgid",oauth.id.split('/')[4]);
+			    		log.debug('oauth.orgId',oauth.id.split('/')[4]);
+			    	}
 			    	$.cookie("refresh_token",oauth.refresh_token);
 			    	$.cookie("identity_url",oauth.id);
 			    	loginHandler.setForcetkAccessToken(oauth.access_token,oauth.instance_url,oauth.refresh_token);			    

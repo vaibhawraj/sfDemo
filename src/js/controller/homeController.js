@@ -8,7 +8,7 @@ define(function(){
 		$scope.resume = function(){
 			$scope.tabs = appScope.tabs;
 			$scope.identity = appScope.identity;
-			log.info($scope.identity,'Detail');
+			log.info($scope.identity);
 			console.log($scope.identity);
 			$scope.$apply();
 		}
