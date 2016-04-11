@@ -3,12 +3,15 @@
   "oauthRedirectURI": "trailheadapp://auth/success",
   "oauthScopes": [
     "web",
-    "api"
+    "api",
+    "refresh_token",
+    "offline_access",
+    "full"
   ],
   "isLocal": true,
   "startPage": "index.html",
   "errorPage": "error.html",
   "shouldAuthenticate": true,
-  "attemptOfflineLoad": false,
+  "attemptOfflineLoad": true,
   "androidPushNotificationClientId": ""
 }
