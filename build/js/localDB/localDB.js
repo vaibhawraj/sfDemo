@@ -94,14 +94,15 @@ define(['underscore'],function(_){
 			var errorMsg = '';
 			if(_.has(rec,'uuid')) {
 				var that = this;
+				//For each record
 				_.each(this._storage[table].records,function(element,index,list){
-					if(element.uuid == rec.uuid) {
+					if(element.uuid == rec.uuid) { //If uuid is same
 						var temp = element;
 						_.each(_.keys(rec),function(key,ind,list){
-							if(_.has(element,key.toLowerCase())){
+							if(_.contains(that.getTableFields(table),key.toLowerCase())){
 								that._storage[table].records[index][key.toLowerCase()] = rec[key];
 							}else{
-								log.warn('Field not found ['+key+'] in ['+element+']');
+								log.warn('Field not found ['+key+'] in [',element,']');
 							}
 						});
 						updateStatus=true;

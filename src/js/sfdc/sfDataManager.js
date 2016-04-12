@@ -183,7 +183,7 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 						localDB.insertRow(mapping.table,$.extend(rec,{sync_status:"Synced"}));
 					} else {
 						var uuid = recordListInTable[0].uuid;
-						localDB.updateRow(mapping.table,_.extend(rec,{uuid:uuid}));
+						localDB.updateRow(mapping.table,_.extend(rec,{uuid:uuid,sync_status:"Synced"}));
 					}
 				});
 				//Post-Sync Operation

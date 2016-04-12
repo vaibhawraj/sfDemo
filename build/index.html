@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Include jQuery Mobile stylesheets -->
   <link rel="stylesheet" href="lib/jquery-mobile/jquery.mobile-1.4.5.css">
-  <link rel="stylesheet" href="css/themes/mycum.css">
+  <!--<link rel="stylesheet" href="css/themes/mycom.min.css">-->
   <link rel="stylesheet" href="css/responsiveList.css">
   <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css">
   <!-- Include the jQuery library -->
@@ -93,7 +93,8 @@
   	<!--<img height="172px" width="250px" src="img/salesforcelogo.png"/><!1000x688-->
   	<img height="256px" width="256px" src="img/cloud_loading.gif"/><!--1000x688-->
   	<br/>
-  	<div style="position:fixed;left:0px;bottom:0px;height:70px;width:100%;text-align:center;"><center><img src="data:image/png;base64,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"/></center>
+  	<div style="position:fixed;left:0px;bottom:0px;height:70px;width:100%;text-align:center;">
+  	<center><img src="data:image/png;base64,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"/></center>
   	</div>
   	<br>
   	</div>
@@ -104,16 +105,19 @@
 </div>
 <div data-role="page" id="home">
   <!-- Home Template -->
-    <div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow" style="overflow-y:hidden">
+    <div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow home-header" style="overflow-y:hidden">
     	<a ng-click="toggle(event)" href="#menupanel" class="ui-nodisc-icon ui-btn ui-icon-bars ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">=</a>
       <img height="50px" style="position:absolute;left:35px;top:-5px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAABLCAMAAABKveUfAAAAk1BMVEX///8FLnABuvIAuPIAtvIAKm4ALG+l3/hDSn0AJGwvQHnz9Pc+wPOO1PdRx/Tx8fRuzvW85PpkcpkAAF3q+P0AG2gmN3WWnbX2/P7o6/AADmRue54AAGEWMXIAGGcAE2XCxdO4uss4ToEAH2nZ8fwACGPP0dykp73N7PuwssXg4ulJWokAAFYAsPE4RnyCi6paZY9hl7YXAAAC2ElEQVRoge2Y25KiMBBAgxA0yig6oIgXQNQBHMH//7rtpAMi4+xFV9itynmwOk3QUw3pgIQoFAqFQqFQKBQKxf/LvmuB+9hGv2uFe9iG/ta1wx2mRu9f9AKtV3lNKkZeMzkqxyMxvB7iBzxnaoMWeHkeP9PhQOAk/QS/aT/t7z3yGJfP95L1ZpVhcvW+FvibWSgSOT/+GUEU8fmfAyjV2eBW4KUbZ90TY+Pcc8YGx4aExYPeg6tiQLUKM96ixqlMUrZe8XLNTRi4Cwg/XD5xOCJ9tEJ0h/R1GcrPN3ncGD/txT2WN15AUHz1otxLb3jVPSs/HtjPe2lu0fTS4qzutfhdrytG8rwXzb94BemTXg8VDL3Y4eCLwNzwC1ngYlhjvYr7XuV939Ph9q68YFAKG+UE61Evdjkewx2tvCSTDddhs7v3F0mSxBI/aycJ7JHoBU3DsVHMcshUf9KLL7p02/QiQ/oTL2CMKiKWXhA5WK0phKj497wm0aIoihnT/tTL4F76q7wK348ZoD3m9ap6nbb1JVp5iVkr1qbXbJllFya9ihst7uXNcdXmeS5q2JaXZlIaM9knJqbZ9CI7bGgwTWvVSzOlDB2SY4A6221sll6ia9W6b2teJfGMRD7apOmCyv5FRq7ZqZcZZCQS9Yr5I89O9i9CjgfWoRfzU4JeZsOLZPk2cF0XL21rXswHAnYKyXdeULJ0AYgtoLU+AfsjgE+r33kh7ffVEry/3JBc90cgCwXRrtV61b1CHxvZYDCkWuXlHnxxrUUKn9Ja9spi2cpkE0WvuN4oykvbqhfJb1ua9KqnDmEXXuH7L7zcC3m5V85gC4pvvEgauPTKOuU5l5oIZX6p9Uqv2WY+n9OP2+SyyIcVC5HamRuBNj9F1Tzb0OGtFr0S3bIsoeChLn8L6vd48qEXtesb/g1eSTleSkb1SXtO/QyMxF8CjaRCoVAoFAqFQqFQdMIPfNlNr1T+oNcAAAAASUVORK5CYII=">
-      <h1 class="ui-title">Outlet Forms</h1>
+      <h1 class="ui-title home-title">Outlet Forms</h1>
       <!--<div class="ui-bar ui-bar-a">
           <h1 class="ui-title">Outlet Forms</h1>
       </div>-->
     </div>
+    <div class="ui-bar ui-bar-a home-title-bar-for-short-screen">
+          <center><h1 class="" style="font-size:1.4em">Outlet Forms</h1></center>
+    </div>
     <div data-role="main" class="ui-content">
-  
+      
       <ul id="outlet_forms" data-role="listview" data-inset="true" class="ui-listview">
         <li ng-repeat="rec in recordList track by rec.uuid"  ng-class="(rec.sync_status=='Synced'?'listGreen':(rec.sync_status=='In Progress')?'listOrange':'listRed')">
           <a data-rel="back" data-transition="slide" ng-click="gotoRecord($index)">
@@ -185,9 +189,10 @@
             <p>{{getFormLabel('retailownername')}}</p>
             <h4>{{record.retailownername}}</h4>
       </li>
-      <div class="divider" style="margin-bottom:5px"></div> <!-- only applicable for  wide screen-->
+      
+    </ul>
       <br/>
-      <div data-role="collapsibleset" data-inset="false">
+      <div data-role="collapsibleset" data-inset="true">
         <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" style="margin-top:10px">
           <h4>Address Details</h4>
           <ul data-role="listview" data-inset="false">
@@ -226,9 +231,7 @@
         <h4>Not-Attested Documents</h4>
       </div>
     </div>
-    </ul>
-  
-    </div>
+  </div>
   
     <div data-role="footer" data-position="fixed">
       <h1>PayTM Demo</h1>
