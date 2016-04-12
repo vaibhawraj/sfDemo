@@ -109,6 +109,10 @@
     	<a ng-click="toggle(event)" href="#menupanel" class="ui-nodisc-icon ui-btn ui-icon-bars ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">=</a>
       <img height="50px" style="position:absolute;left:35px;top:-5px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAABLCAMAAABKveUfAAAAk1BMVEX///8FLnABuvIAuPIAtvIAKm4ALG+l3/hDSn0AJGwvQHnz9Pc+wPOO1PdRx/Tx8fRuzvW85PpkcpkAAF3q+P0AG2gmN3WWnbX2/P7o6/AADmRue54AAGEWMXIAGGcAE2XCxdO4uss4ToEAH2nZ8fwACGPP0dykp73N7PuwssXg4ulJWokAAFYAsPE4RnyCi6paZY9hl7YXAAAC2ElEQVRoge2Y25KiMBBAgxA0yig6oIgXQNQBHMH//7rtpAMi4+xFV9itynmwOk3QUw3pgIQoFAqFQqFQKBQKxf/LvmuB+9hGv2uFe9iG/ta1wx2mRu9f9AKtV3lNKkZeMzkqxyMxvB7iBzxnaoMWeHkeP9PhQOAk/QS/aT/t7z3yGJfP95L1ZpVhcvW+FvibWSgSOT/+GUEU8fmfAyjV2eBW4KUbZ90TY+Pcc8YGx4aExYPeg6tiQLUKM96ixqlMUrZe8XLNTRi4Cwg/XD5xOCJ9tEJ0h/R1GcrPN3ncGD/txT2WN15AUHz1otxLb3jVPSs/HtjPe2lu0fTS4qzutfhdrytG8rwXzb94BemTXg8VDL3Y4eCLwNzwC1ngYlhjvYr7XuV939Ph9q68YFAKG+UE61Evdjkewx2tvCSTDddhs7v3F0mSxBI/aycJ7JHoBU3DsVHMcshUf9KLL7p02/QiQ/oTL2CMKiKWXhA5WK0phKj497wm0aIoihnT/tTL4F76q7wK348ZoD3m9ap6nbb1JVp5iVkr1qbXbJllFya9ihst7uXNcdXmeS5q2JaXZlIaM9knJqbZ9CI7bGgwTWvVSzOlDB2SY4A6221sll6ia9W6b2teJfGMRD7apOmCyv5FRq7ZqZcZZCQS9Yr5I89O9i9CjgfWoRfzU4JeZsOLZPk2cF0XL21rXswHAnYKyXdeULJ0AYgtoLU+AfsjgE+r33kh7ffVEry/3JBc90cgCwXRrtV61b1CHxvZYDCkWuXlHnxxrUUKn9Ja9spi2cpkE0WvuN4oykvbqhfJb1ua9KqnDmEXXuH7L7zcC3m5V85gC4pvvEgauPTKOuU5l5oIZX6p9Uqv2WY+n9OP2+SyyIcVC5HamRuBNj9F1Tzb0OGtFr0S3bIsoeChLn8L6vd48qEXtesb/g1eSTleSkb1SXtO/QyMxF8CjaRCoVAoFAqFQqFQdMIPfNlNr1T+oNcAAAAASUVORK5CYII=">
       <h1 class="ui-title home-title">Outlet Forms</h1>
+      <div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+        <a ng-click="gotoNewPage(true)" class="ui-nodisc-icon ui-btn ui-icon-plus ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">Add</a>
+        <a class="ui-nodisc-icon ui-btn ui-icon-refresh ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">Refresh</a>
+      </div>
       <!--<div class="ui-bar ui-bar-a">
           <h1 class="ui-title">Outlet Forms</h1>
       </div>-->
@@ -117,7 +121,6 @@
           <center><h1 class="" style="font-size:1.4em">Outlet Forms</h1></center>
     </div>
     <div data-role="main" class="ui-content">
-      
       <ul id="outlet_forms" data-role="listview" data-inset="true" class="ui-listview">
         <li ng-repeat="rec in recordList track by rec.uuid"  ng-class="(rec.sync_status=='Synced'?'listGreen':(rec.sync_status=='In Progress')?'listOrange':'listRed')">
           <a data-rel="back" data-transition="slide" ng-click="gotoRecord($index)">
@@ -128,7 +131,7 @@
       </ul>
     </div>
   
-    <div data-role="footer" data-position="fixed">
+    <div data-role="footer" data-position="fixed"  data-tap-toggle="false">
       <h1>PayTM Demo</h1>
     </div>
   
@@ -193,6 +196,106 @@
     </ul>
       <br/>
       <div data-role="collapsibleset" data-inset="true">
+        <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+          <h4>Address Details</h4>
+          <ul data-role="listview" data-inset="false">
+            <li>
+                <p>{{getFormLabel('address')}}</p>
+                <h4>{{record.address}}</h4>
+            </li>
+            <li>
+                <p>{{getFormLabel('city')}}</p>
+                <h4>{{record.city}}</h4>
+            </li>
+            <div class="divider"></div>
+            <li>
+                <p>{{getFormLabel('pincode')}}</p>
+                <h4>{{record.pincode}}</h4>
+            </li>
+            <li>
+                <p>{{getFormLabel('state')}}</p>
+                <h4>{{record.state}}</h4>
+            </li>
+            <div class="divider"></div>
+            <li>
+                <p>{{getFormLabel('landmark')}}</p>
+                <h4>{{record.landmark}}</h4>
+            </li>
+          </ul>
+      </div>
+      <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+        <h4>Documents</h4>
+        <ul data-role="listview" data-inset="false">
+            <li>
+                <p>{{getFormLabel('address')}}</p>
+                <h4>{{record.address}}</h4>
+            </li>
+        </ul>
+      </div>
+      <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+        <h4>Attested Documents</h4>
+      </div>
+      <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+        <h4>Not-Attested Documents</h4>
+      </div>
+    </div>
+  </div>
+  
+    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+      <h1>PayTM Demo</h1>
+    </div>
+  
+  
+  
+  </div>
+</div>
+
+<div data-role="page" id="newPage" data-transition="slide">
+  <div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow" ng-class="(record.sync_status=='Synced'?'recordSynced':(record.sync_status=='In Progress')?'recordSyncedOrange':'recordSyncedRed')">
+    	<a ng-click="gotoHome()" class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
+      <h1 class="ui-title">{{ newRecord.name }}</h1>
+      <!--<div class="ui-bar ui-bar-a">
+          <h1 class="ui-title">Outlet Forms</h1>
+      </div>-->
+    </div>
+    <div data-role="main" class="ui-content detailPage">
+  
+    <!-- Using Responsive Grid -->
+    <ul data-role="listview" data-inset="false" class="ui-listview">
+      <li>
+            <label for="name">{{getFormLabel('name')}}</label>
+            <input name="name" type="text" ng-model="newRecord.name"/>
+      </li>
+       <li>
+          <label for="name">{{getFormLabel('taskstage')}}</label>
+          <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" style="height:35.781px;width:100%;border-bottom:solid 1px rgba(0,0,0,0.17)">
+            <span class="picklist-value" ng-click="gotoPicklistScreen('taskstage')">{{newRecord.taskstage}}
+              <div class="picklist-arrow"/>
+            </span>
+          </div>          
+      </li>
+      <div class="divider"></div> <!-- only applicable for  wide screen-->
+       <li>
+            <label for="name">{{getFormLabel('mobilenumber')}}</label>
+            <input name="phone" type="phone" ng-model="newRecord.mobilenumber"/>
+      </li>
+       <li>
+            <p>{{getFormLabel('email')}}</p>
+            <h4>{{record.email}}</h4>
+      </li>
+      <div class="divider"></div> <!-- only applicable for  wide screen-->
+       <li>
+            <p>{{getFormLabel('type')}}</p>
+            <h4>{{record.type}}</h4>
+      </li>
+       <li>
+            <p>{{getFormLabel('retailownername')}}</p>
+            <h4>{{record.retailownername}}</h4>
+      </li>
+      
+    </ul>
+      <br/>
+      <div data-role="collapsibleset" data-inset="true">
         <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" style="margin-top:10px">
           <h4>Address Details</h4>
           <ul data-role="listview" data-inset="false">
@@ -238,13 +341,32 @@
     </div>
   </div>
   
-    <div data-role="footer" data-position="fixed">
+    <div data-role="footer" data-position="fixed"  data-tap-toggle="false">
       <h1>PayTM Demo</h1>
     </div>
   
   
   
   </div>
+</div>
+
+<div data-role="page" id="picklist" data-transition="slide">
+  <div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow" ng-class="(record.sync_status=='Synced'?'recordSynced':(record.sync_status=='In Progress')?'recordSyncedOrange':'recordSyncedRed')">
+    	<a ng-click="gotoHome()"  class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
+      <h1 class="ui-title">Task Stage</h1>
+  </div>
+  
+  <ul id="picklistview" data-role="listview" data-inset="false" class="ui-listview">
+      <li ng-repeat="p in picklistHelper.picklistValues">
+      	<a ng-click="picklistHelper.select('{{p}}')">
+            <label>{{p}}</label>
+          </a>
+      </li>
+  </ul>
+  
+   <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+      <h1>PayTM Demo</h1>
+    </div>
 </div>
 
 </body>

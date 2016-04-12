@@ -1,6 +1,6 @@
 <div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow" ng-class="(record.sync_status=='Synced'?'recordSynced':(record.sync_status=='In Progress')?'recordSyncedOrange':'recordSyncedRed')">
-  	<a ng-click="gotoHome()"  class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
-    <h1 class="ui-title">{{ record.name }}</h1>
+  	<a ng-click="gotoHome()" class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
+    <h1 class="ui-title">{{ newRecord.name }}</h1>
     <!--<div class="ui-bar ui-bar-a">
         <h1 class="ui-title">Outlet Forms</h1>
     </div>-->
@@ -10,17 +10,21 @@
   <!-- Using Responsive Grid -->
   <ul data-role="listview" data-inset="false" class="ui-listview">
     <li>
-          <p>{{getFormLabel('name')}}</p>
-          <h4>{{record.name}}</h4>
+          <label for="name">{{getFormLabel('name')}}</label>
+          <input name="name" type="text" ng-model="newRecord.name"/>
     </li>
      <li>
-          <p>{{getFormLabel('taskstage')}}</p>
-          <h4>{{record.taskstage}}</h4>
+        <label for="name">{{getFormLabel('taskstage')}}</label>
+        <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" style="height:35.781px;width:100%;border-bottom:solid 1px rgba(0,0,0,0.17)">
+          <span class="picklist-value" ng-click="gotoPicklistScreen('taskstage')">{{newRecord.taskstage}}
+            <div class="picklist-arrow"/>
+          </span>
+        </div>          
     </li>
     <div class="divider"></div> <!-- only applicable for  wide screen-->
      <li>
-          <p>{{getFormLabel('mobilenumber')}}</p>
-          <h4>{{record.mobilenumber}}</h4>
+          <label for="name">{{getFormLabel('mobilenumber')}}</label>
+          <input name="phone" type="phone" ng-model="newRecord.mobilenumber"/>
     </li>
      <li>
           <p>{{getFormLabel('email')}}</p>
@@ -39,7 +43,7 @@
   </ul>
     <br/>
     <div data-role="collapsibleset" data-inset="true">
-      <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+      <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" style="margin-top:10px">
         <h4>Address Details</h4>
         <ul data-role="listview" data-inset="false">
           <li>
@@ -84,7 +88,7 @@
   </div>
 </div>
 
-  <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+  <div data-role="footer" data-position="fixed"  data-tap-toggle="false">
     <h1>PayTM Demo</h1>
   </div>
 
