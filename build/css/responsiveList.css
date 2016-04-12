@@ -97,3 +97,14 @@ html body .ui-group-theme-a .ui-bar-inherit {
 	}
 
 }
+
+/* Custom Css*/
+.recordSynced {
+	box-shadow:0 1px 3px green !important;
+}
+.recordSyncedOrange {
+	box-shadow:0 1px 3px orange !important;
+}
+.recordSyncedRed {
+	box-shadow:0 1px 3px red !important;
+}

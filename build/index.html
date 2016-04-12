@@ -152,7 +152,7 @@
 
 
 <div data-role="page" id="detailView" data-transition="slide">
-  <div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow">
+  <div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow" ng-class="(record.sync_status=='Synced'?'recordSynced':(record.sync_status=='In Progress')?'recordSyncedOrange':'recordSyncedRed')">
     	<a ng-click="gotoHome()"  class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
       <h1 class="ui-title">{{ record.name }}</h1>
       <!--<div class="ui-bar ui-bar-a">
@@ -218,11 +218,16 @@
                 <p>{{getFormLabel('landmark')}}</p>
                 <h4>{{record.landmark}}</h4>
             </li>
-            
           </ul>
       </div>
       <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
         <h4>Documents</h4>
+        <ul data-role="listview" data-inset="false">
+            <li>
+                <p>{{getFormLabel('address')}}</p>
+                <h4>{{record.address}}</h4>
+            </li>
+        </ul>
       </div>
       <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
         <h4>Attested Documents</h4>
