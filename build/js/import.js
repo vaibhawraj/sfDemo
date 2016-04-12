@@ -41,7 +41,7 @@ require.config({
         //Angular Controller
         "loginController" : "controller/loginController",
         "homeController" : "controller/homeController",
-        "menuController" : "controller/menuController",
+        "listviewRender" : "helper/listviewRender",
 
         //Route Provider - Depreciated
         "routeProvider" : "routeprovider/routeprovider",

@@ -3,14 +3,15 @@
 //Creation Date : 8th Dec 2015
 
 define(["loginController",
-	"homeController"],
+	"homeController","listviewRender"],
 	function(loginController,
-		homeController){
+		homeController,listviewRender){
 
 		/*load all html pages*/
 	var app = angular.module("sfapp",[]);
 	//app.config(['$routeProvider',routeProvider]);
 	app.controller("logincontroller",loginController);
 	app.controller("homecontroller",homeController);
+	app.directive("listviewRender",listviewRender);
 	return app;
 })

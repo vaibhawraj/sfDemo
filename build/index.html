@@ -122,7 +122,7 @@
     </div>
     <div data-role="main" class="ui-content">
       <ul id="outlet_forms" data-role="listview" data-inset="true" class="ui-listview">
-        <li ng-repeat="rec in recordList track by rec.uuid"  ng-class="(rec.sync_status=='Synced'?'listGreen':(rec.sync_status=='In Progress')?'listOrange':'listRed')">
+        <li ng-repeat="rec in recordList track by rec.uuid"  ng-class="(rec.sync_status=='Synced'?'listGreen':(rec.sync_status=='In Progress')?'listOrange':'listRed')" listview-render>
           <a data-rel="back" data-transition="slide" ng-click="gotoRecord($index)">
             <h2>{{ rec.name }}</h2>
             <p>{{ rec.retailownername }}</p>
@@ -356,8 +356,8 @@
       <h1 class="ui-title">Task Stage</h1>
   </div>
   
-  <ul id="picklistview" data-role="listview" data-inset="false" class="ui-listview">
-      <li ng-repeat="p in picklistHelper.picklistValues">
+  <ul id="picklistview" data-role="listview" data-inset="false">
+      <li ng-repeat="p in picklistHelper.picklistValues" listview-render>
       	<a ng-click="picklistHelper.select('{{p}}')">
             <label>{{p}}</label>
           </a>
