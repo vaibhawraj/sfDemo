@@ -12,6 +12,12 @@ define(function(require){
     		$.mobile.hashListeningEnabled = false;
     		$.mobile.ajaxLinksEnabled = false;
             $.mobile.ajaxFormsEnabled = false;
+            $(window).resize(function(){
+            	//To-Adjust height for ul element on newPage and detailView page
+            	s=angular.element('body').scope();
+            	if(_.isNull(s.$$phase))
+            		s.$apply();
+            });
 		});
 	//Load Configuration
 		var temp = localStorage.getItem("appScope");

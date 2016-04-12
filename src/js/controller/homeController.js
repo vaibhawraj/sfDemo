@@ -92,6 +92,9 @@ define(['networkManager','sfMetadataHelper','json!mapping'],function(nm,sfMetada
 			}
 			$('body').pagecontainer("change","#newPage",{changeHash:false,transition:"slide"});
 		}
+		$scope.returnNewPage = function() {
+			$('body').pagecontainer("change","#newPage",{changeHash:false,transition:"slide",reverse:true});
+		}
 		$scope.gotoPicklistScreen = function(field){
 				if($scope.picklistHelper.init(field))
 				{
@@ -99,7 +102,11 @@ define(['networkManager','sfMetadataHelper','json!mapping'],function(nm,sfMetada
 				}
 			
 		}
-
+		$scope.gotoFileList = function(section) {
+			if($scope.fileHelper.init(section)) {
+				$('body').pagecontainer("change","#filelist",{changeHash:false,transition:"slide"});
+			}
+		}
 		//Detail View Part
 		$scope.record = {};
 		$scope.getFormLabel = function(table_api){
@@ -114,16 +121,42 @@ define(['networkManager','sfMetadataHelper','json!mapping'],function(nm,sfMetada
 		$scope.reset = function(){
 			$scope.newRecord = {};
 		}
+		$scope.getTitleForNewRecord = function(){
+			if(_.isEmpty($scope.newRecord.name))
+				return 'New Outlet Form';
+			else
+				return $scope.newRecord.name;
+		}
+		$scope.getHeight = function(elem){
+			var e = $(elem);
+			var li = $($(elem).children()[0]);
+			var liHeight = li.height();
+			var liCount = $(elem).children().length;
+			var liFloat = li.css('float');
+			var col = 1;
+			if(liFloat == 'left') {
+				col = 2;
+			}
+			return ((liCount/col)*liHeight)+'px';
+		}
+		$scope.saveNewRecord = function(){
+			log.info('Saving Record',$scope.newRecord);
+			sfDataManager.insert($scope.newRecord);
+			$scope.recordList = sfDataManager.query($scope.reRenderList);
+			$scope.reRenderList($scope.recordList);
+			$('body').pagecontainer("change","#home",{changeHash:false,transition:"slide",reverse:true});
+		}
 
 		//Picklist Helper
 		$scope.picklistHelper = {
 			selectedValue : null,
 			field : null,
+			form_label : null,
 			picklistValues : [],
 			select : function(value){
 				this.selectedValue = value;
 				if(!_.isNull(this.field)) {
-					$scope.newRecord[field] = selectedValue;
+					$scope.newRecord[this.field] = this.selectedValue;
 				}
 				//Return to page
 				$('body').pagecontainer("change","#newPage",{changeHash:false,transition:"slide",reverse:true});
@@ -144,5 +177,16 @@ define(['networkManager','sfMetadataHelper','json!mapping'],function(nm,sfMetada
 				} else return false;
 			}
 		};
+
+		//Document Helper
+		$scope.fileHelper = {
+			listOfDocuments : null,
+			label : null,
+			init : function(section) {
+				this.listOfDocuments = sfMetadataHelper.getListOfDocument(section);
+				this.label = section;
+				return true;
+			}
+		}
 	}
 });

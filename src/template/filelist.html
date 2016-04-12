@@ -1,10 +1,10 @@
-<div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow" ng-class="(record.sync_status=='Synced'?'recordSynced':(record.sync_status=='In Progress')?'recordSyncedOrange':'recordSyncedRed')">
+<div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow">
   	<a ng-click="returnNewPage()"  class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
-    <h1 class="ui-title">{{getFormLabel(picklistHelper.field)}}</h1>
+    <h1 class="ui-title">{{fileHelper.label}}</h1>
 </div>
 
 <ul id="picklistview" data-role="listview" data-inset="false">
-    <li ng-repeat="p in picklistHelper.picklistValues" listview-render data-icon="false">
+    <li ng-repeat="p in fileHelper.listOfDocuments" listview-render data-icon="false">
     	<a ng-click="picklistHelper.select(p)">
           <label>{{p}}</label>
         </a>

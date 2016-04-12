@@ -1,6 +1,7 @@
-<div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow" ng-class="(record.sync_status=='Synced'?'recordSynced':(record.sync_status=='In Progress')?'recordSyncedOrange':'recordSyncedRed')">
+<div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow" ng-class="(record.sync_status=='Synced'?'recordSynced':(record.sync_status=='In Progress')?'recordSyncedOrange':'recordSyncedRed')" data-tap-toggle="false">
   	<a ng-click="gotoHome()" class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
-    <h1 class="ui-title">{{ newRecord.name }}</h1>
+    <h1 class="ui-title">{{ getTitleForNewRecord() }}</h1>
+    <a ng-click="saveNewRecord()" class="ui-nodisc-icon ui-btn ui-icon-check ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">Save</a>
     <!--<div class="ui-bar ui-bar-a">
         <h1 class="ui-title">Outlet Forms</h1>
     </div>-->
@@ -8,13 +9,13 @@
   <div data-role="main" class="ui-content detailPage">
 
   <!-- Using Responsive Grid -->
-  <ul data-role="listview" data-inset="false" class="ui-listview">
+  <ul id="newPageList" data-role="listview" data-inset="false" class="ui-listview" style="height:{{getHeight('#newPageList')}}">
     <li>
           <label for="name">{{getFormLabel('name')}}</label>
           <input name="name" type="text" ng-model="newRecord.name"/>
     </li>
      <li>
-        <label for="name">{{getFormLabel('taskstage')}}</label>
+        <label for="taskstage">{{getFormLabel('taskstage')}}</label>
         <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" style="height:35.781px;width:100%;border-bottom:solid 1px rgba(0,0,0,0.17)">
           <span class="picklist-value" ng-click="gotoPicklistScreen('taskstage')">{{newRecord.taskstage}}
             <div class="picklist-arrow"/>
@@ -23,69 +24,76 @@
     </li>
     <div class="divider"></div> <!-- only applicable for  wide screen-->
      <li>
-          <label for="name">{{getFormLabel('mobilenumber')}}</label>
-          <input name="phone" type="phone" ng-model="newRecord.mobilenumber"/>
+          <label for="phone">{{getFormLabel('mobilenumber')}}</label>
+          <input name="phone" type="tel" ng-model="newRecord.mobilenumber"/>
     </li>
-     <li>
-          <p>{{getFormLabel('email')}}</p>
-          <h4>{{record.email}}</h4>
+    <li>
+          <label for="reasonfordocument">{{getFormLabel('reasonfordocument')}}</label>
+          <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" style="height:35.781px;width:100%;border-bottom:solid 1px rgba(0,0,0,0.17)">
+            <span class="picklist-value" ng-click="gotoPicklistScreen('reasonfordocument')">{{newRecord.reasonfordocument}}
+              <div class="picklist-arrow"/>
+            </span>
+          </div>
     </li>
     <div class="divider"></div> <!-- only applicable for  wide screen-->
      <li>
-          <p>{{getFormLabel('type')}}</p>
-          <h4>{{record.type}}</h4>
+          <label for="email">{{getFormLabel('email')}}</label>
+          <input name="email" type="text" ng-model="newRecord.email"/>
     </li>
-     <li>
-          <p>{{getFormLabel('retailownername')}}</p>
-          <h4>{{record.retailownername}}</h4>
+    <li>
+          <label for="name">{{getFormLabel('type')}}</label>
+          <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" style="height:35.781px;width:100%;border-bottom:solid 1px rgba(0,0,0,0.17)">
+            <span class="picklist-value" ng-click="gotoPicklistScreen('type')">{{newRecord.type}}
+              <div class="picklist-arrow"/>
+            </span>
+          </div>
     </li>
-    
+    <div class="divider"></div> <!-- only applicable for  wide screen-->
+    <li clear="both">
+          <label for="retailownername">{{getFormLabel('retailownername')}}</label>
+          <input name="retailownername" type="text" ng-model="newRecord.retailownername"/>
+    </li>
+     
   </ul>
-    <br/>
+    <br clear="both"/>
     <div data-role="collapsibleset" data-inset="true">
-      <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" style="margin-top:10px">
-        <h4>Address Details</h4>
+      <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" style="margin-top:10px" class="ui-nodisc-icon ui-alt-icon">
+        <h4 style="text-align:center">Address Details</h4>
         <ul data-role="listview" data-inset="false">
           <li>
-              <p>{{getFormLabel('address')}}</p>
-              <h4>{{record.address}}</h4>
+              <label for="address">{{getFormLabel('address')}}</label>
+              <input name="address" type="text" ng-model="newRecord.address"/>
           </li>
           <li>
-              <p>{{getFormLabel('city')}}</p>
-              <h4>{{record.city}}</h4>
-          </li>
-          <div class="divider"></div>
-          <li>
-              <p>{{getFormLabel('pincode')}}</p>
-              <h4>{{record.pincode}}</h4>
+              <label for="landmark">{{getFormLabel('landmark')}}</label>
+              <input name="landmark" type="text" ng-model="newRecord.landmark"/>
           </li>
           <li>
-              <p>{{getFormLabel('state')}}</p>
-              <h4>{{record.state}}</h4>
+              <label for="name">{{getFormLabel('city')}}</label>
+              <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" style="height:35.781px;width:100%;border-bottom:solid 1px rgba(0,0,0,0.17)">
+              <span class="picklist-value" ng-click="gotoPicklistScreen('city')">{{newRecord.city}}
+                <div class="picklist-arrow"/>
+              </span>
           </li>
-          <div class="divider"></div>
           <li>
-              <p>{{getFormLabel('landmark')}}</p>
-              <h4>{{record.landmark}}</h4>
+              <label for="name">{{getFormLabel('state')}}</label>
+              <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" style="height:35.781px;width:100%;border-bottom:solid 1px rgba(0,0,0,0.17)">
+              <span class="picklist-value" ng-click="gotoPicklistScreen('state')">{{newRecord.state}}
+                <span class="picklist-arrow"/>
+              </span>
+          </li>
+          <li>
+              <label for="pincode">{{getFormLabel('pincode')}}</label>
+              <input name="pincode" type="text" ng-model="newRecord.pincode"/>
           </li>
         </ul>
     </div>
-    <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-      <h4>Documents</h4>
-      <ul data-role="listview" data-inset="false">
-          <li>
-              <p>{{getFormLabel('address')}}</p>
-              <h4>{{record.address}}</h4>
-          </li>
-      </ul>
+    <div data-role="controlgroup">
+        <button class="ui-btn ui-icon-plus ui-nodisc-icon ui-alt-icon ui-btn-icon-left" ng-click="gotoFileList('Documents')">Documents</button>
+        <button class="ui-btn ui-icon-plus ui-nodisc-icon ui-alt-icon ui-btn-icon-left" ng-click="gotoFileList('Attested Documents')">Attested Documents</button>
+        <button class="ui-btn ui-icon-plus ui-nodisc-icon ui-alt-icon ui-btn-icon-left" ng-click="gotoFileList('Not Attested Documents')">Not-Attested Documents</button>
     </div>
-    <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-      <h4>Attested Documents</h4>
     </div>
-    <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-      <h4>Not-Attested Documents</h4>
-    </div>
-  </div>
 </div>
 
   <div data-role="footer" data-position="fixed"  data-tap-toggle="false">
