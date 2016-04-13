@@ -1,0 +1,34 @@
+{
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.salesforce": {
+        "source": {
+            "type": "local",
+            "path": "e:\\plugins\\SalesforceMobileSDK-CordovaPlugin"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.device": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.device"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "com.phonegap.plugins.PushPlugin": {
+        "source": {
+            "type": "local",
+            "path": "e:\\plugins\\PushPlugin"
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}

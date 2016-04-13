@@ -4,7 +4,7 @@
       build-compressed : Generates build with compression
       build-dev : Generates build for development
       build-apk-dev : Preprocess files to build project in demo/www directory in uncompressed form
-      build-apt : Generates build for Production
+      build-apk : Generates build for Production
 */
 module.exports = function(grunt) {
 
@@ -12,6 +12,9 @@ module.exports = function(grunt) {
     clean : {
       build_dev: [
         'build/*'
+      ],
+      build_apk_dev: [
+        'cordova/demo/www/*'
       ]
     },
     copy : {
@@ -32,6 +35,25 @@ module.exports = function(grunt) {
               //Src Copy
               {expand: true,cwd: 'src/',src: ['images/**/*'], dest: 'build/'},
               {expand: true,cwd: 'src/',src: ['img/**/*'], dest: 'build/'},
+              ]
+          },
+          build_apk_dev : {
+            files:[
+              {expand: true,cwd: 'lib/',src: ['angularjs/*'], dest: 'cordova/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['forcetk/*'], dest: 'cordova/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['jquery/jquery-1.12.3.js'], dest: 'cordova/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['jquery-mobile/jquery.mobile-1.4.5.js',
+                                              'jquery-mobile/jquery.mobile-1.4.5.css'
+                                              ], dest: 'cordova/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['jquery-popup/*'], dest: 'cordova/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['requirejs/*'], dest: 'cordova/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['underscore/*'], dest: 'cordova/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['xml2json/*'], dest: 'cordova/demo/www/lib/'},
+
+
+              //Src Copy
+              {expand: true,cwd: 'src/',src: ['images/**/*'], dest: 'cordova/demo/www/'},
+              {expand: true,cwd: 'src/',src: ['img/**/*'], dest: 'cordova/demo/www/'},
               ]
           }
     },
@@ -79,16 +101,48 @@ module.exports = function(grunt) {
             }
           },
 
-          //** BUILD FOR ANDROID **//
+
+          /* BUILD FOR ANDROID*/
+          build_apk_dev: {
+            options: {
+              srcDir : 'src',
+              context: {NODE_ENV: 'apk',COMPRESS:false}  //NODE_ENV -- developement / apk
+            },
+            files: {
+                "cordova/demo/www/index.html": "src/index.html",
+            }
+          },
+          build_css_apk_dev : {
+            options: {
+                srcDir : 'src',
+                context: {NODE_ENV: 'apk',COMPRESS:false}  //NODE_ENV -- developement / apk
+              },
+              src : ["css/*.css","css/**/*.css"],
+              cwd : "src",
+              dest : "cordova/demo/www",
+              expand : true
+          },
+          build_js_apk_dev : {
+              options: {
+                srcDir : 'src',
+                context: {NODE_ENV: 'apk',COMPRESS:false}  //NODE_ENV -- developement / apk
+              },
+              src : ["js/controller/*.js","js/helper/*.js", "js/sfdc/*.js","js/localDB/*.js", "js/*.js"],
+              cwd : "src",
+              dest : "cordova/demo/www",
+              expand : true
+          },
+          
           build_config_apk : {
             options: {
               srcDir : 'src',
               context: {NODE_ENV: 'apk',COMPRESS:false}  //NODE_ENV -- developement / apk
             },
             files: {
-                "build/config/appconfig.json": "src/config/appconfig.json",
-                "build/config/appScope.json": "src/config/appScope.json",
-                "build/bootconfig.json" : "src/config/bootconfig.json",
+                "cordova/demo/www/config/appconfig.json": "src/config/appconfig.js",
+                "cordova/demo/www/config/appScope.json": "src/config/appScope.json",
+                "cordova/demo/www/bootconfig.json" : "src/config/bootconfig.json",
+                "cordova/demo/www/config/sfObjectMapping.json": "src/config/sfObjectMapping.json"
             }
           }
     },
@@ -121,7 +175,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-preprocess");
 
   grunt.registerTask('build-dev',['copy:build_dev','preprocess:build_dev','preprocess:build_js_dev','preprocess:build_config_dev','preprocess:build_css_dev']);
-  grunt.registerTask('build',['build-dev']);
+  grunt.registerTask('build-apk-dev',['copy:build_apk_dev','preprocess:build_apk_dev','preprocess:build_js_apk_dev','preprocess:build_config_apk','preprocess:build_css_apk_dev']);
+  grunt.registerTask('build',['build-apk-dev']);
   grunt.registerTask('default', 'Log some stuff.', function() {
     console.log('Please use following syntax');
     console.log('\t$ grunt build-chrome')

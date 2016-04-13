@@ -72,7 +72,7 @@ define(["json!appconfig","networkManager"],
 	            	},
 	            	function (error) {
 	                	alert('Failed to authenticate user: ' + error);
-	            	}
+	            	});
 				/* @endif */
 				window.showPinScreen = false;
 				window.setPinScreen = true;
