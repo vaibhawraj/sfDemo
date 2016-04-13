@@ -26,5 +26,13 @@
 		{"sf_api":"Attested_POI__c",					"table_api":"apoi","form_label":"POI"},
 		{"sf_api":"Attested_POA__c",					"table_api":"apoa","form_label":"POA"},
 		{"sf_api":"Attested_Form__c",					"table_api":"aform","form_label":"Form"}
+	],
+	"attachments" : [
+		{"sf_api":"",								"table_api":"relateduuid"},
+		{"sf_api":"",								"table_api":"unique"},
+		{"sf_api":"Body",							"table_api":"body"},
+		{"sf_api":"ParentId",						"table_api":"parentid"},
+		{"sf_api":"ContentType",					"table_api":"contenttype"},
+		{"sf_api":"Name",							"table_api":"name"}
 	]
 }

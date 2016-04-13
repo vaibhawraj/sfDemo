@@ -180,7 +180,7 @@ define(['underscore'],function(_){
 		},
 		getTableFields : function(table){
 			if(this.isTableExist(table)) {
-				return this._storage['outlet'].fields;
+				return this._storage[table].fields;
 			} else {
 				if(this._dbLoaded) {
 					log.error('Table doesnot Exist',table);	

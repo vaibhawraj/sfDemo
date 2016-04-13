@@ -9,7 +9,7 @@ define([],function(){
 		getStatus : function() {
 			/* @if NODE_ENV='development' */
 				if(typeof(window.NetConnectivity) == "undefined") {
-					window.NetConnectivity = false;
+					window.NetConnectivity = true;
 				}
 				log.info('Net connectivity using window.NetConnectivity : ',window.NetConnectivity);
 				return window.NetConnectivity;

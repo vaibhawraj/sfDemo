@@ -2,11 +2,13 @@
   	<a ng-click="returnNewPage()"  class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
     <h1 class="ui-title">{{fileHelper.label}}</h1>
 </div>
-
-<ul id="picklistview" data-role="listview" data-inset="false">
-    <li ng-repeat="p in fileHelper.listOfDocuments" listview-render data-icon="false">
-    	<a ng-click="picklistHelper.select(p)">
-          <label>{{p}}</label>
+<ul id="filelistview" data-role="listview" data-inset="false">
+    <li ng-repeat="doc in fileHelper.listOfDocuments" data-icon="false" data-icon="false">
+    	<a ng-click="fileHelper.gotoUploadFile(doc)" class="ui-alt-icon ui-nodisc-icon">
+    	  <span ng-show="!fileHelper.isAttached(doc.table_api)" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/camera-black.png');background-repeat:no-repeat;background-position: center center"></span>
+    	  <span ng-show="fileHelper.isAttached(doc.table_api)" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
+          <label style="margin:0 0 0;">{{doc.form_label}}</label>
+          {{updatePicklistView("#filelistview",$last)}}
         </a>
     </li>
 </ul>

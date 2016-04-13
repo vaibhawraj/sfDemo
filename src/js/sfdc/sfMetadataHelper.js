@@ -6,13 +6,26 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 			return ['Option 1','Option 2','Option 3','Option 4'];
 		},
 		getListOfDocument : function(section){
-			if(section=='Documents') {
-				return ["Paytm Sticker","QR Code Sticker"];
+			var lod = [];
+			var docApis = [];
+			if(section=="Documents") {
+				docApis = ["paytmsticker","qrcode"];
 			} else if(section=='Attested Documents') {
-				return ["POI","POA","Photo","Shop Photo"];
+				docApis = ["apoi","apoa","aform"];
 			} else {
-				return ["POI","POA","FORM"];
+				docApis = ["napoi","napoa","naphoto","nashopphoto"];
 			}
+			_.each(docApis,function(doc,index,list){
+				var temp = _.findWhere(mapping.fields,{table_api:doc});
+				log.debug(temp);
+				if(_.isEmpty(temp)) {
+					log.error('Cannot Find Field Information for ',doc);
+				} else {
+					lod.push(temp);
+				}
+			});
+			log.debug(lod);
+			return lod;
 		}
 	};
 	if(_.isUndefined(window.sfDataMetadataHelper)){

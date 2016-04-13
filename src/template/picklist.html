@@ -4,13 +4,15 @@
 </div>
 
 <ul id="picklistview" data-role="listview" data-inset="false">
-    <li ng-repeat="p in picklistHelper.picklistValues" listview-render data-icon="false">
+    <li ng-repeat="p in picklistHelper.picklistValues" data-icon="false">
     	<a ng-click="picklistHelper.select(p)">
           <label>{{p}}</label>
+          {{updatePicklistView("#picklistview",$last)}}
         </a>
     </li>
 </ul>
 
- <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+ <div data-role="footer" data-position="fixed" data-tap-toggle="false"> 
     <h1>PayTM Demo</h1>
+
   </div>

@@ -119,8 +119,10 @@ define(['networkManager','sfMetadataHelper','json!mapping'],function(nm,sfMetada
 		}
 		//New Page
 		$scope.newRecord = {};
+		$scope.newAttachment = [];
 		$scope.reset = function(){
 			$scope.newRecord = {};
+			$scope.newAttachment = [];
 		}
 		$scope.getTitleForNewRecord = function(){
 			if(_.isEmpty($scope.newRecord.name))
@@ -142,7 +144,7 @@ define(['networkManager','sfMetadataHelper','json!mapping'],function(nm,sfMetada
 		}
 		$scope.saveNewRecord = function(){
 			log.info('Saving Record',$scope.newRecord);
-			sfDataManager.insert($scope.newRecord);
+			sfDataManager.insert($scope.newRecord,$scope.newAttachment);
 			$scope.recordList = sfDataManager.query($scope.reRenderList);
 			$scope.reRenderList($scope.recordList);
 			$('body').pagecontainer("change","#home",{changeHash:false,transition:"slide",reverse:true});
@@ -181,13 +183,82 @@ define(['networkManager','sfMetadataHelper','json!mapping'],function(nm,sfMetada
 
 		//Document Helper
 		$scope.fileHelper = {
-			listOfDocuments : null,
+			listOfDocuments : null,	//map : name,table_api
 			label : null,
+			curDoc : null,
 			init : function(section) {
 				this.listOfDocuments = sfMetadataHelper.getListOfDocument(section);
 				this.label = section;
 				return true;
-			}
+			},
+			isAttached : function(table_api){
+				if(_.isNull(table_api)) return false;
+				if(_.isUndefined($scope.newRecord[table_api])) return false;
+					else return $scope.newRecord[table_api];
+			},
+			gotoUploadFile:function(doc){
+				$scope.fileHelper.curDoc = doc;
+				if(!_.isNull(doc)) {
+					$scope.newRecord[doc.table_api]=true;
+					if(_.isNull($scope.$$phase)){
+						$scope.$apply();
+					}
+					log.info('setTrue',doc.table_api);
+				}
+				log.debug('1');
+				if(deviceready) {
+					//Reference : https://github.com/apache/cordova-plugin-camera#module_camera.getPicture
+					log.debug('2');
+					if(!_.isUndefined(navigator.camera)) {
+						log.debug('3');
+						var options = {
+							quality:40,
+							destinationType:navigator.camera.DATA_URL,	//Note : this is very memory intensive, can cause app to crash
+							sourceType:navigator.camera.CAMERA,
+							cameraDirection:navigator.camera.BACK
+						};
+						log.debug('4');
+						log.info('Opening Camera');
+						navigator.camera.getPicture($scope.fileHelper.successCallback,
+								$scope.fileHelper.errorCallback,
+								options
+							);
+					} else {
+						log.debug('5');
+						log.warn('Navigator is not defined');
+						$scope.fileHelper.successCallback("iVBORw0KGgoAAAANSUhEUgAAAJcAAABLCAMAAABKveUfAAAAk1BMVEX///8FLnABuvIAuPIAtvIAKm4ALG+l3/hDSn0AJGwvQHnz9Pc+wPOO1PdRx/Tx8fRuzvW85PpkcpkAAF3q+P0AG2gmN3WWnbX2/P7o6/AADmRue54AAGEWMXIAGGcAE2XCxdO4uss4ToEAH2nZ8fwACGPP0dykp73N7PuwssXg4ulJWokAAFYAsPE4RnyCi6paZY9hl7YXAAAC2ElEQVRoge2Y25KiMBBAgxA0yig6oIgXQNQBHMH//7rtpAMi4+xFV9itynmwOk3QUw3pgIQoFAqFQqFQKBQKxf/LvmuB+9hGv2uFe9iG/ta1wx2mRu9f9AKtV3lNKkZeMzkqxyMxvB7iBzxnaoMWeHkeP9PhQOAk/QS/aT/t7z3yGJfP95L1ZpVhcvW+FvibWSgSOT/+GUEU8fmfAyjV2eBW4KUbZ90TY+Pcc8YGx4aExYPeg6tiQLUKM96ixqlMUrZe8XLNTRi4Cwg/XD5xOCJ9tEJ0h/R1GcrPN3ncGD/txT2WN15AUHz1otxLb3jVPSs/HtjPe2lu0fTS4qzutfhdrytG8rwXzb94BemTXg8VDL3Y4eCLwNzwC1ngYlhjvYr7XuV939Ph9q68YFAKG+UE61Evdjkewx2tvCSTDddhs7v3F0mSxBI/aycJ7JHoBU3DsVHMcshUf9KLL7p02/QiQ/oTL2CMKiKWXhA5WK0phKj497wm0aIoihnT/tTL4F76q7wK348ZoD3m9ap6nbb1JVp5iVkr1qbXbJllFya9ihst7uXNcdXmeS5q2JaXZlIaM9knJqbZ9CI7bGgwTWvVSzOlDB2SY4A6221sll6ia9W6b2teJfGMRD7apOmCyv5FRq7ZqZcZZCQS9Yr5I89O9i9CjgfWoRfzU4JeZsOLZPk2cF0XL21rXswHAnYKyXdeULJ0AYgtoLU+AfsjgE+r33kh7ffVEry/3JBc90cgCwXRrtV61b1CHxvZYDCkWuXlHnxxrUUKn9Ja9spi2cpkE0WvuN4oykvbqhfJb1ua9KqnDmEXXuH7L7zcC3m5V85gC4pvvEgauPTKOuU5l5oIZX6p9Uqv2WY+n9OP2+SyyIcVC5HamRuBNj9F1Tzb0OGtFr0S3bIsoeChLn8L6vd48qEXtesb/g1eSTleSkb1SXtO/QyMxF8CjaRCoVAoFAqFQqFQdMIPfNlNr1T+oNcAAAAASUVORK5CYII=");
+						log.debug('6');
+					}
+					log.debug('7');
+				}else {
+						log.debug('5');
+						log.warn('deviceready is not defined');
+						$scope.fileHelper.successCallback("iVBORw0KGgoAAAANSUhEUgAAAJcAAABLCAMAAABKveUfAAAAk1BMVEX///8FLnABuvIAuPIAtvIAKm4ALG+l3/hDSn0AJGwvQHnz9Pc+wPOO1PdRx/Tx8fRuzvW85PpkcpkAAF3q+P0AG2gmN3WWnbX2/P7o6/AADmRue54AAGEWMXIAGGcAE2XCxdO4uss4ToEAH2nZ8fwACGPP0dykp73N7PuwssXg4ulJWokAAFYAsPE4RnyCi6paZY9hl7YXAAAC2ElEQVRoge2Y25KiMBBAgxA0yig6oIgXQNQBHMH//7rtpAMi4+xFV9itynmwOk3QUw3pgIQoFAqFQqFQKBQKxf/LvmuB+9hGv2uFe9iG/ta1wx2mRu9f9AKtV3lNKkZeMzkqxyMxvB7iBzxnaoMWeHkeP9PhQOAk/QS/aT/t7z3yGJfP95L1ZpVhcvW+FvibWSgSOT/+GUEU8fmfAyjV2eBW4KUbZ90TY+Pcc8YGx4aExYPeg6tiQLUKM96ixqlMUrZe8XLNTRi4Cwg/XD5xOCJ9tEJ0h/R1GcrPN3ncGD/txT2WN15AUHz1otxLb3jVPSs/HtjPe2lu0fTS4qzutfhdrytG8rwXzb94BemTXg8VDL3Y4eCLwNzwC1ngYlhjvYr7XuV939Ph9q68YFAKG+UE61Evdjkewx2tvCSTDddhs7v3F0mSxBI/aycJ7JHoBU3DsVHMcshUf9KLL7p02/QiQ/oTL2CMKiKWXhA5WK0phKj497wm0aIoihnT/tTL4F76q7wK348ZoD3m9ap6nbb1JVp5iVkr1qbXbJllFya9ihst7uXNcdXmeS5q2JaXZlIaM9knJqbZ9CI7bGgwTWvVSzOlDB2SY4A6221sll6ia9W6b2teJfGMRD7apOmCyv5FRq7ZqZcZZCQS9Yr5I89O9i9CjgfWoRfzU4JeZsOLZPk2cF0XL21rXswHAnYKyXdeULJ0AYgtoLU+AfsjgE+r33kh7ffVEry/3JBc90cgCwXRrtV61b1CHxvZYDCkWuXlHnxxrUUKn9Ja9spi2cpkE0WvuN4oykvbqhfJb1ua9KqnDmEXXuH7L7zcC3m5V85gC4pvvEgauPTKOuU5l5oIZX6p9Uqv2WY+n9OP2+SyyIcVC5HamRuBNj9F1Tzb0OGtFr0S3bIsoeChLn8L6vd48qEXtesb/g1eSTleSkb1SXtO/QyMxF8CjaRCoVAoFAqFQqFQdMIPfNlNr1T+oNcAAAAASUVORK5CYII=");
+						log.debug('6');
+					}
+				log.debug('8');
+			},
+			successCallback:function(imageData){	//Base64 data
+				log.info('Success Call back for pic');
+				log.info('Image Data',imageData);
+				var doc = $scope.fileHelper.curDoc;
+				$scope.newRecord[doc.table_api]=true;
+				var attachmentRec = {body:imageData,contenttype:'image/png;base64',name:doc.form_label+'.png'};
+				$scope.newAttachment.push(attachmentRec);
+				if(_.isNull($scope.$$phase)){
+						$scope.$apply();
+				}
+			},
+			errorCallback:function(message){log.error(message);}
 		}
+		$scope.updatePicklistView = function(id,last){
+			if(!last) return;
+			log.info('changing');
+			try{
+				$(id).listview("refresh");
+			} catch(e){}
+			return;
+		}
+		window.rootScope = $scope;
 	}
 });

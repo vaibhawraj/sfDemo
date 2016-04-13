@@ -34,6 +34,11 @@ define(function(require){
 	//Load Login Screen //TO-DO
 	require("loginHelper").login();
 
+	//Initialize
+	window.deviceready = false;
+	document.addEventListener("deviceready", function(){
+		window.deviceready = true;
+	}, false);
 	//Initialize Angular
 		require(['angularapp'],function(app){
 			angular.bootstrap(document,["sfapp"]);

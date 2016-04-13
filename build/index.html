@@ -122,10 +122,10 @@
     </div>
     <div data-role="main" class="ui-content">
       <ul id="outlet_forms" data-role="listview" data-inset="true" class="ui-listview">
-        <li ng-repeat="rec in recordList track by rec.uuid"  ng-class="(rec.sync_status=='Synced'?'listGreen':(rec.sync_status=='In Progress')?'listOrange':'listRed')" listview-render>
+        <li ng-repeat="rec in recordList track by rec.uuid"  ng-class="(rec.sync_status=='Synced'?'listGreen':(rec.sync_status=='In Progress')?'listOrange':'listRed')">
           <a data-rel="back" data-transition="slide" ng-click="gotoRecord($index)">
             <h2>{{ rec.name }}</h2>
-            <p>{{ rec.retailownername }}</p>
+            <p>{{ rec.retailownername }}</p>{{updatePicklistView("#filelistview",$last)}}
           </a>
         </li>
       </ul>
@@ -165,7 +165,7 @@
     <div data-role="main" class="ui-content detailPage">
   
     <!-- Using Responsive Grid -->
-    <ul id="detailViewList" data-role="listview" data-inset="false" class="ui-listview" style="height:{{getHeight(detailViewList)}}">
+    <ul id="detailViewList" data-role="listview" data-inset="false" class="ui-listview" style="height:{{getHeight('#detailViewList')}}">
       <li>
             <p>{{getFormLabel('name')}}</p>
             <h4>{{record.name}}</h4>
@@ -368,15 +368,17 @@
   </div>
   
   <ul id="picklistview" data-role="listview" data-inset="false">
-      <li ng-repeat="p in picklistHelper.picklistValues" listview-render data-icon="false">
+      <li ng-repeat="p in picklistHelper.picklistValues" data-icon="false">
       	<a ng-click="picklistHelper.select(p)">
             <label>{{p}}</label>
+            {{updatePicklistView("#picklistview",$last)}}
           </a>
       </li>
   </ul>
   
-   <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+   <div data-role="footer" data-position="fixed" data-tap-toggle="false"> 
       <h1>PayTM Demo</h1>
+  
     </div>
 </div>
 
@@ -385,11 +387,13 @@
     	<a ng-click="returnNewPage()"  class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
       <h1 class="ui-title">{{fileHelper.label}}</h1>
   </div>
-  
-  <ul id="picklistview" data-role="listview" data-inset="false">
-      <li ng-repeat="p in fileHelper.listOfDocuments" listview-render data-icon="false">
-      	<a ng-click="picklistHelper.select(p)">
-            <label>{{p}}</label>
+  <ul id="filelistview" data-role="listview" data-inset="false">
+      <li ng-repeat="doc in fileHelper.listOfDocuments" data-icon="false" data-icon="false">
+      	<a ng-click="fileHelper.gotoUploadFile(doc)" class="ui-alt-icon ui-nodisc-icon">
+      	  <span ng-show="!fileHelper.isAttached(doc.table_api)" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/camera-black.png');background-repeat:no-repeat;background-position: center center"></span>
+      	  <span ng-show="fileHelper.isAttached(doc.table_api)" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <label style="margin:0 0 0;">{{doc.form_label}}</label>
+            {{updatePicklistView("#filelistview",$last)}}
           </a>
       </li>
   </ul>

@@ -25,7 +25,7 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 				localDB.createTable(mapping.table,fields);
 				localDB.commit();
 
-				log.info('Database Initialized');
+				log.info('Outlet Initialized');
 			} else {
 				//Workaround for Issue at Line 57:
 				var RecordList = localDB.queryRow(mapping.table);
@@ -38,10 +38,45 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 				});
 				if(updateStatus) localDB.commit();
 			}
+			if(!localDB.isTableExist('attachments')) {
+				var localfields = [];
+				//Pick mapped field
+				//log.debug('Attachment fields',fields);
+				_.each(mapping.attachments,function(field,index,list){
+					localfields.push(field.table_api);
+				});
+				//log.debug('Attachment fields',fields);
+				//Maintain sync information
+				localfields.push('sync_status'); //Not Synced,In Progress, Synced, Failed
+				localfields.push('sfdc_error'); //If sync_status failed then sfdc_error message
+				
+				localDB.createTable('attachments',localfields);
+				localDB.commit();
+
+				log.info('Attachments Initialized');
+			} else {
+				//Workaround for Issue at Line 57:
+				var RecordList = localDB.queryRow('attachment');
+				var updateStatus = false;
+				_.each(RecordList,function(record,index,list){
+					if(record.sync_status == "In Progress") {
+						updateStatus = true;
+						localDB.updateRow(mapping.table,{uuid:record.uuid,sync_status:"Not Synced"});
+					}
+				});
+				if(updateStatus) localDB.commit();
+			}
 		},
-		insert : function(rec){
+		insert : function(rec,attachments){
 			//Insert record regardless of net connectivity in localDB
 			var rec_uuid = localDB.insertRow(mapping.table,_.extend(rec,{sync_status:"Not Synced",id:null,sfdc_error:null}));
+			log.debug('Look out for attachmemt',attachments);
+			if(!_.isUndefined(attachments) & _.isArray(attachments)){
+				_.each(attachments,function(attachment,index,attachments){
+					localDB.insertRow('attachments',_.extend(attachment,{relateduuid:rec_uuid,sync_status:"Not Synced",id:null,sfdc_error:null}));					
+					log.info('Attachment inserted');
+				});
+			}
 			localDB.commit();
 
 			//Fire asynchronous call to Server
@@ -130,12 +165,35 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 			log.info('Salesforce Record : ',sfobj);
 			return sfobj;
 		},
+		sfCreateAttachment : function(rec){
+			var sfobj = {};
+			_.each(mapping.attachments,function(field, index, list){
+				var sf_api = field.sf_api;
+				var table_api = field.table_api;
+				if(_.has(rec,table_api) && !_.isNull(sf_api) && !_.isEmpty(sf_api)) {
+					sfobj[sf_api] = rec[table_api];
+				}
+			});
+			log.debug('Salesforce Attachment : ',sfobj);
+			return sfobj;
+		},
 		insertSuccessHandler : function(arguments,rec_uuid){
 			log.debug('Success Arguments',arguments);
 			log.debug('Record ID',rec_uuid);
+			log.debug('Record SFDC ID',arguments[0].id);
+			var sfdc_id = arguments[0].id;
 			log.debug(arguments[0]);
 			if(localDB.updateRow(mapping.table,{uuid:rec_uuid,id:arguments[0].id,sync_status:"Synced"}))
 				localDB.commit();
+			var attachments = localDB.queryRow('attachments',{relateduuid:rec_uuid});
+			if(!_.isEmpty(attachments)){
+				log.info('Attaching attachments');		
+				_.each(attachments,function(rec,index,list){
+					localDB.updateRow('attachments',_.extend(rec,{parentid:sfdc_id,sync_status:'Not Synced'}));
+				});
+				localDB.commit();
+				this.insertAttachment(rec_uuid);
+			}
 		},
 		insertErrorHandler : function(arguments,rec_uuid){
 			log.debug('Failure Arguments',arguments);
@@ -154,6 +212,85 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 				errMsg = errObj.responseText;
 			}
 			if(localDB.updateRow(mapping.table,{uuid:rec_uuid,sync_status:"Failed",sfdc_error:errMsg}))
+				localDB.commit();
+		},
+		insertAttachment : function(rec_uuid){
+			var NumberOfAttachment = localDB.queryRow('attachments',{relateduuid:rec_uuid}).length;
+			var records = localDB.queryRow('attachments',{relateduuid:rec_uuid,sync_status:"Not Synced"});
+			log.info('Inserting attachment(relteduuid : '+rec_uuid+') : ' + (NumberOfAttachment-records.length)+'/'+NumberOfAttachment );
+			if(records.length>0) {
+				var record = records[0];
+				var rec_id = record.uuid;
+				log.info('Uploading '+record.name+' for '+record.parentid);
+				var that=this;
+				G.client.create(
+					'attachment',
+					this.sfCreateAttachment(record),
+					function(){
+						that.attachmentSuccessHandler(arguments,rec_uuid,rec_id);
+					},
+					function(){
+						that.attachmentErrorHandler(arguments,rec_uuid,rec_id);
+					});	
+			}else {
+				log.info('No more attachment to insert');
+			}
+		},
+		attachmentSuccessHandler:function(arguments,rec_uuid,cur_uuid){
+			log.debug('Success Arguments',arguments);
+			log.debug('Record ID',rec_uuid);
+			log.debug('Attachment ID',cur_uuid);
+			log.debug('Record SFDC ID',arguments[0].id);
+			log.debug(arguments[0]);
+			if(localDB.updateRow('attachments',{uuid:cur_uuid,sync_status:"Synced"}))
+				localDB.commit();
+			this.insertAttachment(rec_uuid);
+		},
+		attachmentErrorHandler:function(arguments,rec_uuid,cur_uuid){
+			log.debug('Failure Arguments',arguments);
+			log.debug('Record ID',rec_uuid);
+			log.debug('Attachment ID',cur_uuid);
+			log.debug(arguments[0]);
+			/*
+				Special Handling :
+				*/
+				if(_.has(arguments[0],"responseText") && arguments[1]=="parsererror"){
+					window.rT = arguments[0].responseText;
+					//Split based on Line Feed
+					var lines = arguments[0].responseText.split('\n');
+					if(!_.isEmpty(lines)){
+						var length = lines.length;
+						var responseString = lines[length-1];
+						try{
+							log.debug(lines,responseString);
+							var obj=JSON.parse(responseString);
+							arguments[0].responseJSON = [obj];
+							if(obj.success) {
+								arguments[0] = obj;
+								log.info('From Error Handler',obj);
+								this.attachmentSuccessHandler(arguments,rec_uuid,cur_uuid);
+								return;
+							}
+						}catch(e){
+							log.error('Unable to  parse');
+						}
+					}
+				}
+				/*
+			*/
+			var errObj = arguments[0];
+			var errMsg = '';
+			if(_.has(errObj,"responseJSON")) {
+				if(_.isArray(errObj.responseJSON)) {
+					errMsg = errObj.responseJSON[0].message;
+				} else {
+					errMsg = 'Error is not captured';
+					log.error('Error is not captured in responseJSON',arguments[0]);
+				}
+			} else if(_.has(errObj,"responseText")){
+				errMsg = errObj.responseText;
+			}
+			if(localDB.updateRow('attachments',{uuid:cur_uuid,sync_status:"Failed",sfdc_error:errMsg}))
 				localDB.commit();
 		},
 		querySuccessHandler:function(res){

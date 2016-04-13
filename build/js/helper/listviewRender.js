@@ -6,26 +6,39 @@ Reference : https://docs.angularjs.org/guide/directive
 https://github.com/aztack/AngularJS-translation/issues/6
 */
 define([],function(){
-	return function(){
+	return ['$interval',function($interval){
 		return {
-			restrict:'AECM',		//Only Matches to attribute name. e.g <ul my-directive>
+			restrict:'AE',		//Only Matches to attribute name. e.g <ul my-directive>
 								//Other options are E - Matches element name .e. <my-directive>
 								//					C - Matches class name
 								//					M - matches comment
+								
+								//template:"Helloworld",
+			scope:{
+				no:0
+			},
 			link: function(scope,element,attrs){
-				if(scope.$last){
+				if(element[0].nodeName=="UL"){
 					//In single digest, scope is called upto max 10 times or until changes has been incorporated in scope model
 					//for reference : https://docs.angularjs.org/guide/directive & 
 					//log.info('Testing',element);
-					if($(element[0].parentElement).hasClass('ui-listview')) { //Check if listView is initialized or not
-						$(element[0].parentElement).listview("refresh");
-     				} 
-					else {
-						$(element[0].parentElement).listview();
-     				}
-					
+					//log.info('No Of elem ',element,element[0].nodeName);
+					element.on('$destroy', function() {
+      					$interval.cancel(timeoutId);
+    				});
+
+					timeoutId = $interval(function() {
+							if($(element[0]).hasClass('ui-listview')) { //Check if listView is initialized or not
+								try{
+									$(element[0]).listview("refresh");
+								} catch(e){}
+		     				} 
+							else {
+								$(element[0]).listview();
+		     				}
+    				}, 0);
 				}
 			}
 		};
-	};
+	}];
 });
