@@ -55,6 +55,25 @@ module.exports = function(grunt) {
               {expand: true,cwd: 'src/',src: ['images/**/*'], dest: 'cordova/demo/www/'},
               {expand: true,cwd: 'src/',src: ['img/**/*'], dest: 'cordova/demo/www/'},
               ]
+          },
+          build_apk_dev2 : {
+            files:[
+              {expand: true,cwd: 'lib/',src: ['angularjs/*'], dest: 'planB/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['forcetk/*'], dest: 'planB/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['jquery/jquery-1.12.3.js'], dest: 'planB/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['jquery-mobile/jquery.mobile-1.4.5.js',
+                                              'jquery-mobile/jquery.mobile-1.4.5.css'
+                                              ], dest: 'planB/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['jquery-popup/*'], dest: 'planB/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['requirejs/*'], dest: 'planB/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['underscore/*'], dest: 'planB/demo/www/lib/'},
+              {expand: true,cwd: 'lib/',src: ['xml2json/*'], dest: 'planB/demo/www/lib/'},
+
+
+              //Src Copy
+              {expand: true,cwd: 'src/',src: ['images/**/*'], dest: 'planB/demo/www/'},
+              {expand: true,cwd: 'src/',src: ['img/**/*'], dest: 'planB/demo/www/'},
+              ]
           }
     },
     preprocess: {
@@ -144,6 +163,51 @@ module.exports = function(grunt) {
                 "cordova/demo/www/bootconfig.json" : "src/config/bootconfig.json",
                 "cordova/demo/www/config/sfObjectMapping.json": "src/config/sfObjectMapping.json"
             }
+          },
+
+          /* BUILD PLAN B Android*/
+          /* BUILD FOR ANDROID*/
+          build_apk_dev2: {
+            options: {
+              srcDir : 'src',
+              context: {NODE_ENV: 'apk',COMPRESS:false}  //NODE_ENV -- developement / apk
+            },
+            files: {
+                "planB/demo/www/index.html": "src/index.html",
+                "planB/demo/www/oauth.html": "src/oauth.html"
+            }
+          },
+          build_css_apk_dev2 : {
+            options: {
+                srcDir : 'src',
+                context: {NODE_ENV: 'apk',COMPRESS:false}  //NODE_ENV -- developement / apk
+              },
+              src : ["css/*.css","css/**/*.css"],
+              cwd : "src",
+              dest : "planB/demo/www",
+              expand : true
+          },
+          build_js_apk_dev2 : {
+              options: {
+                srcDir : 'src',
+                context: {NODE_ENV: 'apk2',COMPRESS:false}  //NODE_ENV -- developement / apk
+              },
+              src : ["js/controller/*.js","js/helper/*.js", "js/sfdc/*.js","js/localDB/*.js", "js/*.js"],
+              cwd : "src",
+              dest : "planB/demo/www",
+              expand : true
+          },
+          
+          build_config_apk2 : {
+            options: {
+              srcDir : 'src',
+              context: {NODE_ENV: 'apk2',COMPRESS:false}  //NODE_ENV -- developement / apk
+            },
+            files: {
+                "planB/demo/www/config/appconfig.json": "src/config/appconfig.js",
+                "planB/demo/www/config/appScope.json": "src/config/appScope.json",
+                "planB/demo/www/config/sfObjectMapping.json": "src/config/sfObjectMapping.json"
+            }
           }
     },
     watch:{
@@ -176,7 +240,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build-dev',['copy:build_dev','preprocess:build_dev','preprocess:build_js_dev','preprocess:build_config_dev','preprocess:build_css_dev']);
   grunt.registerTask('build-apk-dev',['copy:build_apk_dev','preprocess:build_apk_dev','preprocess:build_js_apk_dev','preprocess:build_config_apk','preprocess:build_css_apk_dev']);
+  grunt.registerTask('build-apk-dev2',['copy:build_apk_dev2','preprocess:build_apk_dev2','preprocess:build_js_apk_dev2','preprocess:build_config_apk2','preprocess:build_css_apk_dev2']);
   grunt.registerTask('build',['build-apk-dev']);
+  grunt.registerTask('build2',['build-apk-dev2']);
   grunt.registerTask('default', 'Log some stuff.', function() {
     console.log('Please use following syntax');
     console.log('\t$ grunt build-chrome')

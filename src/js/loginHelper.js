@@ -47,7 +47,7 @@ define(["json!appconfig","networkManager"],
 				}).click();
 				/* @endif */
 				/* @if NODE_ENV='apk' */
-					var oauthPlugin = cordova.require("com.salesforce.plugin.oauth");
+					/*var oauthPlugin = cordova.require("com.salesforce.plugin.oauth");
 					// Call getAuthCredentials to get the initial session credentials
         			oauthPlugin.getAuthCredentials(
             		// Callback method when authentication succeeds.
@@ -72,7 +72,21 @@ define(["json!appconfig","networkManager"],
 	            	},
 	            	function (error) {
 	                	alert('Failed to authenticate user: ' + error);
-	            	});
+	            	});*/
+				/* @endif */
+				/* @if NODE_ENV='apk2' */
+					loginLocation = loginHandler.getAuthorizeUrl(SFDC.loginUrl, SFDC.clientId, SFDC.redirectUri);
+					log.info('Login Location ' + loginLocation);
+					log.info('Current Location ' , location.href );
+					/*$('<div></div>').popupWindow({
+					windowURL: loginHandler.getAuthorizeUrl(SFDC.loginUrl, SFDC.clientId, SFDC.redirectUri),
+					windowName: 'Connect',
+					centerBrowser: 1,
+					height:524,
+					width:675
+				}).click();*/
+
+					location.href = loginLocation;
 				/* @endif */
 				window.showPinScreen = false;
 				window.setPinScreen = true;

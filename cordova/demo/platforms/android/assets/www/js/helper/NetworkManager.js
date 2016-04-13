@@ -7,6 +7,11 @@
 define([],function(){
 	return {
 		getStatus : function() {
+				if(typeof(window.NetConnectivity) == "undefined") {
+					window.NetConnectivity = true;
+				}
+				log.info('Net connectivity using window.NetConnectivity : ',window.NetConnectivity);
+				return window.NetConnectivity;
 		}
 	};
 });

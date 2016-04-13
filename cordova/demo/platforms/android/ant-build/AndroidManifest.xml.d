@@ -1,2 +1,2 @@
-c:\xampp\htdocs\sfDemo\cordova\demo\platforms\android\ant-build\AndroidManifest.xml : \
-c:\xampp\htdocs\sfDemo\cordova\demo\platforms\android\AndroidManifest.xml \
+/var/www/html/sfDemo/cordova/demo/platforms/android/ant-build/AndroidManifest.xml : \
+/var/www/html/sfDemo/cordova/demo/platforms/android/AndroidManifest.xml \

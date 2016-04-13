@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>OAuth Callback</title>
+    <script src="lib/jquery/jquery-1.12.3"></script>
+    <script src="js/helper/j.cookie.mod.js"></script>
+    <script>
+    	function onloadCallback(){
+			var oauthResponse = {};
+			console.log(window.location.hash);
+			if (window.location.hash) {
+				var message = window.location.hash.substr(1);
+				var nvps = message.split('&');
+				for (var nvp in nvps) {
+				    var parts = nvps[nvp].split('=');
+					oauthResponse[parts[0]] = unescape(parts[1]);
+				}
+    		}
+    		console.log(oauthResponse);
+			//window.opener.G.sessionCallback(oauthResponse);
+			//window.close();
+		}
+		$(document).ready(function(){
+			onloadCallback();
+		});
+    </script>
+  </head>
+  <body>
+  </body>
+</html>  

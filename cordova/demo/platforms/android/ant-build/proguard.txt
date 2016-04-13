@@ -1,5 +1,5 @@
 # view AndroidManifest.xml #generated:6
--keep class com.compro.paytm.PayTMDemo { <init>(...); }
+-keep class com.compro.paytm.CordovaApp { <init>(...); }
 
 # view AndroidManifest.xml #generated:13
 -keep class com.plugin.gcm.CordovaGCMBroadcastReceiver { <init>(...); }

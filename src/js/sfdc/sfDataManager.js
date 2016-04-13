@@ -311,8 +311,8 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 							}
 						}
 					});
-					log.debug('Mapped record',rec);
-					log.debug('Mapped from',record);
+					//log.debug('Mapped record',rec);
+					//log.debug('Mapped from',record);
 
 					//Check If Records Exist
 					var recordListInTable = localDB.queryRow(mapping.table,{id:rec.id});

@@ -31,8 +31,7 @@ define(function(require){
 	//Initialize database
 	require("sfDataManager").init();
 	window.resumeLoading = false;
-	//Load Login Screen //TO-DO
-	require("loginHelper").login();
+	
 
 	//Initialize
 	window.deviceready = false;
@@ -45,6 +44,8 @@ define(function(require){
 			if(window.resumeLoading) {
 				angular.element('body').scope().resumeLoading();
 			}
+			//Load Login Screen //TO-DO
+			require("loginHelper").login();
 		});
 
 });

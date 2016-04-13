@@ -37,7 +37,7 @@ define(["json!appconfig","networkManager"],
 				
 			}
 			else{
-					var oauthPlugin = cordova.require("com.salesforce.plugin.oauth");
+					/*var oauthPlugin = cordova.require("com.salesforce.plugin.oauth");
 					// Call getAuthCredentials to get the initial session credentials
         			oauthPlugin.getAuthCredentials(
             		// Callback method when authentication succeeds.
@@ -62,7 +62,7 @@ define(["json!appconfig","networkManager"],
 	            	},
 	            	function (error) {
 	                	alert('Failed to authenticate user: ' + error);
-	            	});
+	            	});*/
 				window.showPinScreen = false;
 				window.setPinScreen = true;
 			}

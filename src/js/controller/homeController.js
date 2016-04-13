@@ -65,7 +65,7 @@ define(['networkManager','sfMetadataHelper','json!mapping'],function(nm,sfMetada
 			$scope.recordList = recList;
 			if(_.isNull($scope.$$phase))
 				$scope.$apply();
-			$( "#outlet_forms" ).listview( "refresh" );		
+			//$( "#outlet_forms" ).listview( "refresh" );		
 		}
 		$scope.toggle =function(){
 			

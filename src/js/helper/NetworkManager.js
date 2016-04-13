@@ -13,7 +13,21 @@ define([],function(){
 				}
 				log.info('Net connectivity using window.NetConnectivity : ',window.NetConnectivity);
 				return window.NetConnectivity;
-			/* @endif
+			/* @endif */
+			/* @if NODE_ENV='apk' */
+				if(typeof(window.NetConnectivity) == "undefined") {
+					window.NetConnectivity = true;
+				}
+				log.info('Net connectivity using window.NetConnectivity : ',window.NetConnectivity);
+				return window.NetConnectivity;
+			/* @endif */
+			/* @if NODE_ENV='apk2' */
+				if(typeof(window.NetConnectivity) == "undefined") {
+					window.NetConnectivity = true;
+				}
+				log.info('Net connectivity using window.NetConnectivity : ',window.NetConnectivity);
+				return window.NetConnectivity;
+			/* @endif */
 		}
 	};
 });

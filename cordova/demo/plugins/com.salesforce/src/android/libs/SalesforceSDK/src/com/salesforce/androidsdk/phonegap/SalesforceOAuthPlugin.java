@@ -26,12 +26,16 @@
  */
 package com.salesforce.androidsdk.phonegap;
 
+import java.net.InetAddress;
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.util.Log;
 
 import com.salesforce.androidsdk.app.SalesforceSDKManager;
@@ -57,6 +61,20 @@ public class SalesforceOAuthPlugin extends ForcePlugin {
     public boolean execute(String actionStr, JavaScriptPluginVersion jsVersion, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
         // Figure out action.
+    	
+    	try {
+            InetAddress ipAddr = InetAddress.getByName("google.com"); //You can replace it with your name
+
+            if (ipAddr.equals("")) {
+                return false;
+            }
+
+        } catch (Exception e) {
+            return false;
+        }
+    	
+    		  
+    
         Action action = null;
         try {
             action = Action.valueOf(actionStr);
@@ -70,6 +88,8 @@ public class SalesforceOAuthPlugin extends ForcePlugin {
         } catch (IllegalArgumentException e) {
             return false;
         }
+    	
+        
     }
 
     /**
