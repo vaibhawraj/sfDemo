@@ -3,7 +3,7 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 		init : function(){},
 		getPicklistValues : function(field){
 			log.debug(field);
-			return ['Option 1','My Name is Khan','You are my hero','FOO'];
+			return ['Option 1','Option 2','Option 3','Option 4'];
 		},
 		getListOfDocument : function(section){
 			if(section=='Documents') {

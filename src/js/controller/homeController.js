@@ -110,6 +110,7 @@ define(['networkManager','sfMetadataHelper','json!mapping'],function(nm,sfMetada
 		//Detail View Part
 		$scope.record = {};
 		$scope.getFormLabel = function(table_api){
+			if(_.isEmpty(table_api)) return 'NaN'; //As $scope.$digest run at beginning. And at that time table_api is not defined in layout
 			var field = _.find(mapping.fields,function(field){
 				return (field.table_api.toLowerCase() == table_api.toLowerCase())
 			});
