@@ -36,10 +36,13 @@ id="menupanel">
   <div class="ui-body ui-body-a ui-corner-all">
     <p>
      <center>
-      <img id="Picture" src={{identity.photos.thumbnail}} style="padding:5px;border:solid gray 1px;vertical-align: bottom" width="30%"/></center>
+      <!--<img id="Picture" src={{identity.photos.thumbnail}} style="padding:5px;border:solid gray 1px;vertical-align: bottom" width="30%"/></center>-->
       <center>
       <span style="display:inline-block;margin-top:3px;vertical-align: bottom;font-size:1.0em">{{ identity.display_name }}</span><br/>
-      <span style="display:inline-block;margin-top:2px;vertical-align: bottom;font-size:0.8em">{{ date | date : format : timezone}}</span>
+      <span style="display:inline-block;margin-top:2px;vertical-align: bottom;font-size:0.8em">{{ date | date : format : timezone}}</span><br/>
+      <span style="display:inline-block;margin-top:2px;vertical-align: bottom;font-size:0.8em;color:green" ng-show="onlineStatus()">I'm Online</span>
+      <span style="display:inline-block;margin-top:2px;vertical-align: bottom;font-size:0.8em;color:red" ng-show="!onlineStatus()">Oh! I'm Offline</span>
+      <button class="ui-btn" ng-click="logout()" ng-show="onlineStatus()">Logout</button>
       </center>
     </p>
   </div>

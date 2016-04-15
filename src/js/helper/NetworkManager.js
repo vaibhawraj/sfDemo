@@ -9,7 +9,7 @@ define([],function(){
 		getStatus : function() {
 			/* @if NODE_ENV='development' */
 				if(typeof(window.NetConnectivity) == "undefined") {
-					window.NetConnectivity = true;
+					window.NetConnectivity = false;
 				}
 				log.info('Net connectivity using window.NetConnectivity : ',window.NetConnectivity);
 				return window.NetConnectivity;
@@ -35,7 +35,6 @@ define([],function(){
 				} else { 
 					log.error('navigator is not defined');
 				}
-				log.info('Net connectivity using window.NetConnectivity : ',window.NetConnectivity);
 				return window.NetConnectivity;
 			/* @endif */
 			/* @if NODE_ENV='apk2' */

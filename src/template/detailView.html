@@ -1,4 +1,4 @@
-<div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow" ng-class="(record.sync_status=='Synced'?'recordSynced':(record.sync_status=='In Progress')?'recordSyncedOrange':'recordSyncedRed')">
+<div data-role="header" data-position="fixed" class="ui-shadow" ng-class="(record.sync_status=='Synced'?'recordSynced':(record.sync_status=='In Progress')?'recordSyncedOrange':'recordSyncedRed')">
   	<a ng-click="gotoHome()"  class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
     <h1 class="ui-title">{{ record.name }}</h1>
     <a ng-click="sync(record.uuid)" ng-show="showSyncButton()" class="ui-nodisc-icon ui-btn ui-icon-recycle ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">Save</a>

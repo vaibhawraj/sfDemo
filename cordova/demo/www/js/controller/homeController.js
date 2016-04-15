@@ -88,8 +88,12 @@ define(['networkManager','sfMetadataHelper','json!mapping'],function(nm,sfMetada
 				$scope.$apply();
 			//$( "#outlet_forms" ).listview( "refresh" );		
 		}
-		$scope.toggle =function(){
-			
+		$scope.logout = function(){
+			var oauthPlugin = cordova.require("com.salesforce.plugin.oauth");
+			oauthPlugin.logout();
+		}
+		$scope.onlineStatus =function(){
+			return nm.getStatus();
 		}
 
 		//Navigation

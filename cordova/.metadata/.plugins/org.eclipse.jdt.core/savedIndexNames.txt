@@ -1,15 +1,8 @@
 INDEX VERSION 1.126+/var/www/html/sfDemo/cordova/.metadata/.plugins/org.eclipse.jdt.core
-1043316652.index
-3903547104.index
 4011074120.index
 1767014742.index
-1731678515.index
 231295820.index
 3880196736.index
-1222328309.index
-2128643124.index
-3738494097.index
-712457499.index
 3255705129.index
 2388388997.index
 4199092083.index
@@ -22,4 +15,3 @@ INDEX VERSION 1.126+/var/www/html/sfDemo/cordova/.metadata/.plugins/org.eclipse.
 2546585662.index
 1764138343.index
 1214917171.index
-4023666246.index

@@ -39,6 +39,24 @@ define(function(require){
 	document.addEventListener("deviceready", function(){
 		window.deviceready = true;
 		window.ImageHelper.init();
+		window.addEventListener("online",function(){
+			log.info("App is now online");
+			if(typeof angular != "undefined") {
+				var scope = angular.element("body").scope();
+				if(scope.$$phase==null) {
+					scope.$apply();
+				}
+			}
+		});
+		window.addEventListener("offline",function(){
+			log.info("App is now offline");
+			if(typeof angular != "undefined") {
+				var scope = angular.element("body").scope();
+				if(scope.$$phase==null) {
+					scope.$apply();
+				}
+			}
+		});
 	}, false);
 	//Initialize Angular
 		require(['angularapp'],function(app){

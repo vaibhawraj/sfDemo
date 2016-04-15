@@ -27,7 +27,6 @@ define([],function(){
 				} else { 
 					log.error('navigator is not defined');
 				}
-				log.info('Net connectivity using window.NetConnectivity : ',window.NetConnectivity);
 				return window.NetConnectivity;
 		}
 	};
