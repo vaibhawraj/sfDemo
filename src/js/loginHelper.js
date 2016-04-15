@@ -8,6 +8,39 @@ define(["json!appconfig","networkManager"],
 	var loginHandler = {
 		login:function(){
 			window.showPinScreen = false;
+			/* @if NODE_ENV='apk' */
+					var oauthPlugin = cordova.require("com.salesforce.plugin.oauth");
+					// Call getAuthCredentials to get the initial session credentials
+        			log.debug('getAuthCredential initiated. Waiting for response');
+        			oauthPlugin.getAuthCredentials(
+            		// Callback method when authentication succeeds.
+	            	function (creds) {
+		                // Create forcetk client instance for rest API calls
+		                //var forceClient = new forcetk.Client(creds.clientId, creds.loginUrl);
+		                //forceClient.setSessionToken(creds.accessToken, "v33.0", creds.instanceUrl);
+		                //forceClient.setRefreshToken(creds.refreshToken);
+
+		                // Call success handler and handover the forcetkClient
+		                //successHandler(forceClient);
+		                log.debug(creds);
+		                var oauth = {
+		                	access_token : creds.accessToken,
+		                	instance_url : creds.instanceUrl,
+		                	refresh_token : creds.refreshToken,
+		                	userId : creds.userId,
+		                	orgId : creds.orgId,
+		                	id : creds.identityUrl
+		                };
+	                	G.sessionCallback(oauth);
+	                	window.showPinScreen = false;
+						window.setPinScreen = true;
+	            	},
+	            	function (error) {
+	                	alert('Failed to authenticate user: ' + error);
+	            	});
+	            	return;
+				/* @endif */
+				/* @if NODE_ENV='development' */
 			if($.cookie('access_token')){
 				//USER already logged in
 
@@ -33,11 +66,13 @@ define(["json!appconfig","networkManager"],
 	                });
 				} else {
 					window.resumeLoading = true;
+					if(!_.isUndefined(angular)){
+						angular.element('body').scope().resumeLoading();
+					}
 				}
 				
 			}
 			else{
-				/* @if NODE_ENV='development' */
 				$('<div></div>').popupWindow({
 					windowURL: loginHandler.getAuthorizeUrl(SFDC.loginUrl, SFDC.clientId, SFDC.redirectUri),
 					windowName: 'Connect',
@@ -45,35 +80,6 @@ define(["json!appconfig","networkManager"],
 					height:524,
 					width:675
 				}).click();
-				/* @endif */
-				/* @if NODE_ENV='apk' */
-					/*var oauthPlugin = cordova.require("com.salesforce.plugin.oauth");
-					// Call getAuthCredentials to get the initial session credentials
-        			oauthPlugin.getAuthCredentials(
-            		// Callback method when authentication succeeds.
-	            	function (creds) {
-		                // Create forcetk client instance for rest API calls
-		                //var forceClient = new forcetk.Client(creds.clientId, creds.loginUrl);
-		                //forceClient.setSessionToken(creds.accessToken, "v33.0", creds.instanceUrl);
-		                //forceClient.setRefreshToken(creds.refreshToken);
-
-		                // Call success handler and handover the forcetkClient
-		                //successHandler(forceClient);
-		                log.debug(creds);
-		                var oauth = {
-		                	access_token : creds.accessToken,
-		                	instance_url : creds.instanceUrl,
-		                	refresh_token : creds.refresh_token,
-		                	userId : creds.userId,
-		                	orgId : creds.orgId,
-		                	id : creds.identityUrl
-		                };
-	                	G.sessionCallback(oauth);
-	            	},
-	            	function (error) {
-	                	alert('Failed to authenticate user: ' + error);
-	            	});*/
-				/* @endif */
 				/* @if NODE_ENV='apk2' */
 					loginLocation = loginHandler.getAuthorizeUrl(SFDC.loginUrl, SFDC.clientId, SFDC.redirectUri);
 					log.info('Login Location ' + loginLocation);
@@ -90,7 +96,8 @@ define(["json!appconfig","networkManager"],
 				/* @endif */
 				window.showPinScreen = false;
 				window.setPinScreen = true;
-			}
+				}
+				/* @endif */
 		},
 		getAuthorizeUrl:function(loginUrl, clientId, redirectUri){
 			return loginUrl+'services/oauth2/authorize?display=popup'+
@@ -117,8 +124,10 @@ define(["json!appconfig","networkManager"],
 			    	}
 			    	$.cookie("refresh_token",oauth.refresh_token);
 			    	$.cookie("identity_url",oauth.id);
+			    	log.debug("AppScope.Identity value before resumeLoading " , appScope.identity);
+			    	//TO-DO Check if appScope
 			    	if(!_.isEmpty(appScope.identity)){ //If userid in app  is different from logged in user
-			    		if(appScope.identity.userid!=$.cookie('userid')) {
+			    		if(appScope.identity.user_id!=$.cookie('userid')) {
 			    			appScope.identity = {};
 			    		}
 			    	}

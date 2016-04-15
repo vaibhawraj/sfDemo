@@ -52,6 +52,7 @@ require.config({
         "mapping" : "../config/sfObjectMapping.json",
         //Helper
         "networkManager" : "helper/NetworkManager",
+        "ImageHelper" : "ImageHelper",
         "logger" : "helper/logger"
     },
     shim:{

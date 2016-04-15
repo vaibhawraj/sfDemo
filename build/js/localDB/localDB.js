@@ -139,7 +139,11 @@ define(['underscore'],function(_){
 					}
 				});
 				if(!queryStatus) {
-					log.warn('Record not found ['+rec+']');
+					if(_.isUndefined(rec)) {
+						log.warn('Record not found [',table,']');
+					} else {
+						log.warn('Record not found [',table,' & ',rec,']');
+					}
 				}
 			return queryResult;	//Always return either empty array or list of result
 		},

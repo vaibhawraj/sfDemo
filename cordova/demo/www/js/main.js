@@ -18,6 +18,7 @@ define(function(require){
             	if(_.isNull(s.$$phase))
             		s.$apply();
             });
+            $("body").css('display','block');
 		});
 	//Load Configuration
 		var temp = localStorage.getItem("appScope");
@@ -31,12 +32,13 @@ define(function(require){
 	//Initialize database
 	require("sfDataManager").init();
 	window.resumeLoading = false;
-	
+	require("ImageHelper");
 
 	//Initialize
 	window.deviceready = false;
 	document.addEventListener("deviceready", function(){
 		window.deviceready = true;
+		window.ImageHelper.init();
 	}, false);
 	//Initialize Angular
 		require(['angularapp'],function(app){

@@ -8,37 +8,9 @@ define(["json!appconfig","networkManager"],
 	var loginHandler = {
 		login:function(){
 			window.showPinScreen = false;
-			if($.cookie('access_token')){
-				//USER already logged in
-
-				//Initialize forceTkClient library
-				G.client.setSessionToken($.cookie('access_token'),SFDC.api_version,$.cookie('instance_url'));
-				G.client.setRefreshToken($.cookie('refresh_token'));
-
-				window.showPinScreen = true;
-				window.setPinScreen = false;
-				window.resumeLoading = false;
-				//Check for network connectivity
-
-				if(nm.getStatus())
-				{
-					G.client.refreshAccessToken(function (oauthResponse) {
-							$.cookie('access_token',oauthResponse.access_token,1)
-							$.cookie('refresh_token',oauthResponse.refresh_token,1)
-							loginHandler.setForcetkAccessToken(oauthResponse.access_token,oauthResponse.instance_url,$.cookie('refresh_token'));
-	                },function(){
-	                	console.log("Login Failure");
-	                	$.removeCookie('access_token');
-	                	loginHandler.login();	//Re-Try to Login
-	                });
-				} else {
-					window.resumeLoading = true;
-				}
-				
-			}
-			else{
-					/*var oauthPlugin = cordova.require("com.salesforce.plugin.oauth");
+					var oauthPlugin = cordova.require("com.salesforce.plugin.oauth");
 					// Call getAuthCredentials to get the initial session credentials
+        			log.debug('getAuthCredential initiated. Waiting for response');
         			oauthPlugin.getAuthCredentials(
             		// Callback method when authentication succeeds.
 	            	function (creds) {
@@ -53,19 +25,19 @@ define(["json!appconfig","networkManager"],
 		                var oauth = {
 		                	access_token : creds.accessToken,
 		                	instance_url : creds.instanceUrl,
-		                	refresh_token : creds.refresh_token,
+		                	refresh_token : creds.refreshToken,
 		                	userId : creds.userId,
 		                	orgId : creds.orgId,
 		                	id : creds.identityUrl
 		                };
 	                	G.sessionCallback(oauth);
+	                	window.showPinScreen = false;
+						window.setPinScreen = true;
 	            	},
 	            	function (error) {
 	                	alert('Failed to authenticate user: ' + error);
-	            	});*/
-				window.showPinScreen = false;
-				window.setPinScreen = true;
-			}
+	            	});
+	            	return;
 		},
 		getAuthorizeUrl:function(loginUrl, clientId, redirectUri){
 			return loginUrl+'services/oauth2/authorize?display=popup'+
@@ -92,8 +64,10 @@ define(["json!appconfig","networkManager"],
 			    	}
 			    	$.cookie("refresh_token",oauth.refresh_token);
 			    	$.cookie("identity_url",oauth.id);
+			    	log.debug("AppScope.Identity value before resumeLoading " , appScope.identity);
+			    	//TO-DO Check if appScope
 			    	if(!_.isEmpty(appScope.identity)){ //If userid in app  is different from logged in user
-			    		if(appScope.identity.userid!=$.cookie('userid')) {
+			    		if(appScope.identity.user_id!=$.cookie('userid')) {
 			    			appScope.identity = {};
 			    		}
 			    	}

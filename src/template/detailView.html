@@ -1,9 +1,16 @@
 <div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow" ng-class="(record.sync_status=='Synced'?'recordSynced':(record.sync_status=='In Progress')?'recordSyncedOrange':'recordSyncedRed')">
   	<a ng-click="gotoHome()"  class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
     <h1 class="ui-title">{{ record.name }}</h1>
+    <a ng-click="sync(record.uuid)" ng-show="showSyncButton()" class="ui-nodisc-icon ui-btn ui-icon-recycle ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">Save</a>
     <!--<div class="ui-bar ui-bar-a">
         <h1 class="ui-title">Outlet Forms</h1>
     </div>-->
+  </div>
+  <div data-role="popup" id="noNet">
+    <p>Oh! No Network Connectivity</p>
+  </div>
+  <div data-role="popup" id="reqQueued">
+    <p>Request Queued</p>
   </div>
   <div data-role="main" class="ui-content detailPage">
 
@@ -71,18 +78,81 @@
     </div>
     <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-nodisc-icon ui-alt-icon">
       <h4>Documents</h4>
-      <ul data-role="listview" data-inset="false">
-          <li>
-              <p>{{getFormLabel('address')}}</p>
-              <h4>{{record.address}}</h4>
-          </li>
+      <ul id="docDetailListView" data-role="listview" data-inset="false">
+        <li data-icon="false" data-icon="false">
+          <a class="ui-alt-icon ui-nodisc-icon">
+            <span ng-show="!record.paytmsticker" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <span ng-show="record.paytmsticker" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <label style="margin:0 0 0;">{{getFormLabel('paytmsticker')}}</label>
+          </a>
+        </li>
+        <li data-icon="false" data-icon="false">
+          <a class="ui-alt-icon ui-nodisc-icon">
+            <span ng-show="!record.qrcode" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <span ng-show="record.qrcode" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <label style="margin:0 0 0;">{{getFormLabel('qrcode')}}</label>
+          </a>
+        </li>
       </ul>
     </div>
     <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-nodisc-icon ui-alt-icon">
       <h4>Attested Documents</h4>
+      <ul id="docDetailListView" data-role="listview" data-inset="false">
+        <li data-icon="false" data-icon="false">
+          <a class="ui-alt-icon ui-nodisc-icon">
+            <span ng-show="!record.apoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <span ng-show="record.apoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <label style="margin:0 0 0;">{{getFormLabel('apoi')}}</label>
+          </a>
+        </li>
+        <li data-icon="false" data-icon="false">
+          <a class="ui-alt-icon ui-nodisc-icon">
+            <span ng-show="!record.apoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <span ng-show="record.apoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <label style="margin:0 0 0;">{{getFormLabel('apoa')}}</label>
+          </a>
+        </li>
+        <li data-icon="false" data-icon="false">
+          <a class="ui-alt-icon ui-nodisc-icon">
+            <span ng-show="!record.aform" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <span ng-show="record.aform" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <label style="margin:0 0 0;">{{getFormLabel('aform')}}</label>
+          </a>
+        </li>
+      </ul>
     </div>
     <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-nodisc-icon ui-alt-icon">
       <h4>Not-Attested Documents</h4>
+      <ul id="docDetailListView" data-role="listview" data-inset="false">
+        <li data-icon="false" data-icon="false">
+          <a class="ui-alt-icon ui-nodisc-icon">
+            <span ng-show="!record.napoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <span ng-show="record.napoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <label style="margin:0 0 0;">{{getFormLabel('napoi')}}</label>
+          </a>
+        </li>
+        <li data-icon="false" data-icon="false">
+          <a class="ui-alt-icon ui-nodisc-icon">
+            <span ng-show="!record.napoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <span ng-show="record.napoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <label style="margin:0 0 0;">{{getFormLabel('napoa')}}</label>
+          </a>
+        </li>
+        <li data-icon="false" data-icon="false">
+          <a class="ui-alt-icon ui-nodisc-icon">
+            <span ng-show="!record.naphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <span ng-show="record.naphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <label style="margin:0 0 0;">{{getFormLabel('naphoto')}}</label>
+          </a>
+        </li>
+        <li data-icon="false" data-icon="false">
+          <a class="ui-alt-icon ui-nodisc-icon">
+            <span ng-show="!record.nashopphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <span ng-show="record.nashopphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <label style="margin:0 0 0;">{{getFormLabel('nashopphoto')}}</label>
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

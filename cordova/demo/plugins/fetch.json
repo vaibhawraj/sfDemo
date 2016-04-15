@@ -16,5 +16,35 @@
             "type": "registry",
             "id": "org.apache.cordova.device"
         }
+    },
+    "cordova-plugin-camera": {
+        "source": {
+            "type": "local",
+            "path": "../plugin/cordova-plugin-camera"
+        }
+    },
+    "cordova-plugin-compat": {
+        "source": {
+            "type": "local",
+            "path": "../plugin/cordova-plugin-compat"
+        }
+    },
+    "cordova-plugin-network-information": {
+        "source": {
+            "type": "local",
+            "path": "../plugin/cordova-plugin-network-information"
+        }
+    },
+    "cordova-plugin-file": {
+        "source": {
+            "type": "local",
+            "path": "../plugin/cordova-plugin-file"
+        }
+    },
+    "cordova-plugin-vibration": {
+        "source": {
+            "type": "local",
+            "path": "../plugin/cordova-plugin-vibration"
+        }
     }
 }

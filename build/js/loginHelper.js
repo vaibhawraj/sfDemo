@@ -33,6 +33,9 @@ define(["json!appconfig","networkManager"],
 	                });
 				} else {
 					window.resumeLoading = true;
+					if(!_.isUndefined(angular)){
+						angular.element('body').scope().resumeLoading();
+					}
 				}
 				
 			}
@@ -46,7 +49,7 @@ define(["json!appconfig","networkManager"],
 				}).click();
 				window.showPinScreen = false;
 				window.setPinScreen = true;
-			}
+				}
 		},
 		getAuthorizeUrl:function(loginUrl, clientId, redirectUri){
 			return loginUrl+'services/oauth2/authorize?display=popup'+
@@ -73,8 +76,10 @@ define(["json!appconfig","networkManager"],
 			    	}
 			    	$.cookie("refresh_token",oauth.refresh_token);
 			    	$.cookie("identity_url",oauth.id);
+			    	log.debug("AppScope.Identity value before resumeLoading " , appScope.identity);
+			    	//TO-DO Check if appScope
 			    	if(!_.isEmpty(appScope.identity)){ //If userid in app  is different from logged in user
-			    		if(appScope.identity.userid!=$.cookie('userid')) {
+			    		if(appScope.identity.user_id!=$.cookie('userid')) {
 			    			appScope.identity = {};
 			    		}
 			    	}

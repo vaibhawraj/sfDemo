@@ -15,8 +15,25 @@ define([],function(){
 				return window.NetConnectivity;
 			/* @endif */
 			/* @if NODE_ENV='apk' */
+				/*Using navigator.connection plugin [Reference : https://github.com/apache/cordova-plugin-network-information]*/
+				/*https://cordova.apache.org/docs/en/3.0.0/cordova/connection/connection.html*/
 				if(typeof(window.NetConnectivity) == "undefined") {
 					window.NetConnectivity = true;
+				}
+				if(typeof(navigator)!="undefined") {
+					if(typeof(navigator.connection)!="undefined") {
+						if(navigator.connection.type == Connection.NONE || navigator.connection.type == Connection.UNKNOWN) {
+							window.NetConnectivity = false;
+						}
+						else {
+							window.NetConnectivity = true;
+						}
+					}
+					else {
+						log.error('connection plugin is not defined');
+					}
+				} else { 
+					log.error('navigator is not defined');
 				}
 				log.info('Net connectivity using window.NetConnectivity : ',window.NetConnectivity);
 				return window.NetConnectivity;

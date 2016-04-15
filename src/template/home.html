@@ -5,7 +5,7 @@
     <h1 class="ui-title home-title">Outlet Forms</h1>
     <div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
       <a ng-click="gotoNewPage(true)" class="ui-nodisc-icon ui-btn ui-icon-plus ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">Add</a>
-      <a class="ui-nodisc-icon ui-btn ui-icon-refresh ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">Refresh</a>
+      <a ng-click="refreshClicked()" ng-show="showRefresh()" class="ui-nodisc-icon ui-btn ui-icon-refresh ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">Refresh</a>
     </div>
     <!--<div class="ui-bar ui-bar-a">
         <h1 class="ui-title">Outlet Forms</h1>

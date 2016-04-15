@@ -56,7 +56,7 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 				log.info('Attachments Initialized');
 			} else {
 				//Workaround for Issue at Line 57:
-				var RecordList = localDB.queryRow('attachment');
+				var RecordList = localDB.queryRow('attachments');
 				var updateStatus = false;
 				_.each(RecordList,function(record,index,list){
 					if(record.sync_status == "In Progress") {
@@ -223,6 +223,8 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 				var rec_id = record.uuid;
 				log.info('Uploading '+record.name+' for '+record.parentid);
 				var that=this;
+				this.processAttachment(rec_uuid,rec_id,record);
+				/*
 				G.client.create(
 					'attachment',
 					this.sfCreateAttachment(record),
@@ -231,10 +233,32 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 					},
 					function(){
 						that.attachmentErrorHandler(arguments,rec_uuid,rec_id);
-					});	
+					});*/	
 			}else {
 				log.info('No more attachment to insert');
 			}
+		},
+		processAttachment : function(rec_uuid,rec_id,record){
+			var filename = record.body.substr(record.body.lastIndexOf('/')+1);
+			var that=this;
+			ImageHelper.listFiles(function(entries){
+				var imgEntry = _.find(entries,function(entry){
+					return (entry.name == filename);
+				});
+				ImageHelper.readImage(imgEntry,function(blob){
+					log.debug('Creating record for ',record,' with blob ',blob);
+					record.body = blob;
+					G.client.create(
+					'attachment',
+					sfDataManager.sfCreateAttachment(record),
+					function(){
+						that.attachmentSuccessHandler(arguments,rec_uuid,rec_id);
+					},
+					function(){
+						that.attachmentErrorHandler(arguments,rec_uuid,rec_id);
+					});
+				});
+			});
 		},
 		attachmentSuccessHandler:function(arguments,rec_uuid,cur_uuid){
 			log.debug('Success Arguments',arguments);

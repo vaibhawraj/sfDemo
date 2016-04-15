@@ -230,6 +230,12 @@ module.exports = function(grunt) {
         files:['src/css/*.css','src/css/**/*.css'],
         tasks:['preprocess:build_css_dev'],
         options:{spawn:false}
+      },
+      /*WATCH FOR APK*/
+      for_apk: {
+        files:['src/js/**/*.js','src/config/*.js','src/config/*.json','src/template/*.html','src/*.html','src/css/*.css','src/css/**/*.css'],
+        tasks:['preprocess:build_js_apk_dev','preprocess:build_config_apk','preprocess:build_apk_dev','preprocess:build_css_apk_dev','prepare-cordova-apk'],
+        options:{spawn:false}
       }
     }
   });
@@ -237,12 +243,19 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks("grunt-preprocess");
+  grunt.registerTask("prepare-cordova-apk",function(){
+    var t = require("child_process").exec;
+    t('cd cordova/demo;cordova prepare android',function(error,stdout,stderr){
+      grunt.log.write('stdout',stdout).ok();
+    });
+  });
 
   grunt.registerTask('build-dev',['copy:build_dev','preprocess:build_dev','preprocess:build_js_dev','preprocess:build_config_dev','preprocess:build_css_dev']);
-  grunt.registerTask('build-apk-dev',['copy:build_apk_dev','preprocess:build_apk_dev','preprocess:build_js_apk_dev','preprocess:build_config_apk','preprocess:build_css_apk_dev']);
+  grunt.registerTask('build-apk-dev',['copy:build_apk_dev','preprocess:build_js_apk_dev','preprocess:build_config_apk','preprocess:build_apk_dev','preprocess:build_css_apk_dev','prepare-cordova-apk']);
   grunt.registerTask('build-apk-dev2',['copy:build_apk_dev2','preprocess:build_apk_dev2','preprocess:build_js_apk_dev2','preprocess:build_config_apk2','preprocess:build_css_apk_dev2']);
   grunt.registerTask('build',['build-apk-dev']);
   grunt.registerTask('build2',['build-apk-dev2']);
+  grunt.registerTask('watch-apk',['watch:for_apk']);
   grunt.registerTask('default', 'Log some stuff.', function() {
     console.log('Please use following syntax');
     console.log('\t$ grunt build-chrome')

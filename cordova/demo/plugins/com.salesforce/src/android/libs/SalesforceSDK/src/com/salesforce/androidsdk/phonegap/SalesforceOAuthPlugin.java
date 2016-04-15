@@ -62,16 +62,6 @@ public class SalesforceOAuthPlugin extends ForcePlugin {
 
         // Figure out action.
     	
-    	try {
-            InetAddress ipAddr = InetAddress.getByName("google.com"); //You can replace it with your name
-
-            if (ipAddr.equals("")) {
-                return false;
-            }
-
-        } catch (Exception e) {
-            return false;
-        }
     	
     		  
     
