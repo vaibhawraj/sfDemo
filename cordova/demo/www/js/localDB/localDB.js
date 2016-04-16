@@ -163,6 +163,7 @@ define(['underscore'],function(_){
 			}
 			localStorage.setItem(this._name,JSON.stringify(this._storage));
 			log.debug('Database Committed');
+			window.dispatchEvent(new Event("commit"));	//Alert window that localDb has been changed/updated
 		},
 		rollback : function(){
 			if(!this._dbLoaded) {

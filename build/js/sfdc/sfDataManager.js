@@ -211,6 +211,7 @@ define(['localDB','json!mapping','networkManager'],function(localDB,mapping,nm){
 			} else if(_.has(errObj,"responseText")){
 				errMsg = errObj.responseText;
 			}
+			
 			if(localDB.updateRow(mapping.table,{uuid:rec_uuid,sync_status:"Failed",sfdc_error:errMsg}))
 				localDB.commit();
 		},

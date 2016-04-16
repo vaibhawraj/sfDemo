@@ -57,11 +57,27 @@ define(function(require){
 				}
 			}
 		});
-		window.addEventListener("backbutton", function(){
+		document.addEventListener("backbutton", function(){
 			log.info("Exiting");
-			log.info(confirm("Do you want to exit?"));
+			if(confirm("Press ok to exit!")) {
+				navigator.app.exitApp();
+			}
 		}, false);
+		window.addEventListener("commit",function(){
+			if(typeof angular != "undefined") {
+				var scope = angular.element("body").scope();
+				if(scope.$$phase==null) {
+					scope.$apply();
+				}
+			}
+			log.debug("Commit Event");
+		});
 	}, false);
+	
+	cordova = {};
+	document.dispatchEvent(new Event("deviceready"));
+	window.deviceready = false;
+	/**/
 	//Initialize Angular
 		require(['angularapp'],function(app){
 			angular.bootstrap(document,["sfapp"]);

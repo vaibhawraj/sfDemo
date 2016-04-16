@@ -174,7 +174,7 @@
       <p>Request Queued</p>
     </div>
     <div data-role="main" class="ui-content detailPage">
-  
+    <p style="text-align:center;color:red" ng-show="record.sync_status=='Failed'"><i>{{record.sfdc_error}}</i></p>
     <!-- Using Responsive Grid -->
     <ul id="detailViewList" data-role="listview" data-inset="false" class="ui-listview" style="height:{{getHeight('#detailViewList')}}">
       <li>
@@ -191,8 +191,8 @@
             <h4>{{record.mobilenumber}}</h4>
       </li>
       <li>
-            <p>{{getFormLabel('reasonfordocument')}}</p>
-            <h4>{{record.reasonfordocument}}</h4>
+            <p>{{getFormLabel('reasonfordenied')}}</p>
+            <h4>{{record.reasonfordenied}}</h4>
       </li>
       <div class="divider"></div>
        <li>
@@ -361,9 +361,9 @@
             <input name="phone" type="tel" ng-model="newRecord.mobilenumber"/>
       </li>
       <li>
-            <label for="reasonfordocument">{{getFormLabel('reasonfordocument')}}</label>
+            <label for="reasonfordenied">{{getFormLabel('reasonfordenied')}}</label>
             <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" style="height:35.781px;width:100%;border-bottom:solid 1px rgba(0,0,0,0.17)">
-              <span class="picklist-value" ng-click="gotoPicklistScreen('reasonfordocument')">{{newRecord.reasonfordocument}}
+              <span class="picklist-value" ng-click="gotoPicklistScreen('reasonfordenied')">{{newRecord.reasonfordenied}}
                 <div class="picklist-arrow"/>
               </span>
             </div>

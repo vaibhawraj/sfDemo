@@ -63,7 +63,23 @@ define(function(require){
 				navigator.app.exitApp();
 			}
 		}, false);
+		window.addEventListener("commit",function(){
+			if(typeof angular != "undefined") {
+				var scope = angular.element("body").scope();
+				if(scope.$$phase==null) {
+					scope.$apply();
+				}
+			}
+			log.debug("Commit Event");
+		});
 	}, false);
+	
+	/* @if NODE_ENV='development' */
+	cordova = {};
+	document.dispatchEvent(new Event("deviceready"));
+	window.deviceready = false;
+	/* @endif */
+	/**/
 	//Initialize Angular
 		require(['angularapp'],function(app){
 			angular.bootstrap(document,["sfapp"]);

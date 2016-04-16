@@ -175,7 +175,7 @@
       <p>Request Queued</p>
     </div>
     <div data-role="main" class="ui-content detailPage">
-  
+    <p style="text-align:center;color:red" ng-show="record.sync_status=='Failed'"><i>{{record.sfdc_error}}</i></p>
     <!-- Using Responsive Grid -->
     <ul id="detailViewList" data-role="listview" data-inset="false" class="ui-listview" style="height:{{getHeight('#detailViewList')}}">
       <li>
