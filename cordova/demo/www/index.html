@@ -192,8 +192,8 @@
             <h4>{{record.mobilenumber}}</h4>
       </li>
       <li>
-            <p>{{getFormLabel('reasonfordocument')}}</p>
-            <h4>{{record.reasonfordocument}}</h4>
+            <p>{{getFormLabel('reasonfordenied')}}</p>
+            <h4>{{record.reasonfordenied}}</h4>
       </li>
       <div class="divider"></div>
        <li>
@@ -362,9 +362,9 @@
             <input name="phone" type="tel" ng-model="newRecord.mobilenumber"/>
       </li>
       <li>
-            <label for="reasonfordocument">{{getFormLabel('reasonfordocument')}}</label>
+            <label for="reasonfordenied">{{getFormLabel('reasonfordenied')}}</label>
             <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset" style="height:35.781px;width:100%;border-bottom:solid 1px rgba(0,0,0,0.17)">
-              <span class="picklist-value" ng-click="gotoPicklistScreen('reasonfordocument')">{{newRecord.reasonfordocument}}
+              <span class="picklist-value" ng-click="gotoPicklistScreen('reasonfordenied')">{{newRecord.reasonfordenied}}
                 <div class="picklist-arrow"/>
               </span>
             </div>
@@ -441,7 +441,7 @@
 
 <div data-role="page" id="picklist" data-transition="slide">
   <div data-role="header" data-position="fixed" role="banner" class="ui-header ui-bar-inherit ui-header-fixed slidedown ui-shadow" ng-class="(record.sync_status=='Synced'?'recordSynced':(record.sync_status=='In Progress')?'recordSyncedOrange':'recordSyncedRed')">
-    	<a ng-click="returnNewPage()"  class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
+    	<a href="javascript:void(0)" ng-click="returnNewPage()"  class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
       <h1 class="ui-title">{{getFormLabel(picklistHelper.field)}}</h1>
   </div>
   

@@ -57,6 +57,12 @@ define(function(require){
 				}
 			}
 		});
+		document.addEventListener("backbutton", function(){
+			log.info("Exiting");
+			if(confirm("Press ok to exit!")) {
+				navigator.app.exitApp();
+			}
+		}, false);
 	}, false);
 	//Initialize Angular
 		require(['angularapp'],function(app){
