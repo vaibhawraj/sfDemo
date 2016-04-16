@@ -332,7 +332,7 @@
   <div data-role="header" data-position="fixed" ng-class="(onlineStatus()?'recordSynced':'recordSyncedRed')" data-tap-toggle="false">
     	<a ng-click="gotoHome()" class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
       <h1 class="ui-title">{{ getTitleForNewRecord() }}</h1>
-      <a ng-click="saveNewRecord()" class="ui-nodisc-icon ui-btn ui-icon-check ui-alt-icon" style="background-color:transparent;border:0px;">Save</a>
+      <a ng-click="saveNewRecord()" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-nodisc-icon ui-icon-check ui-alt-icon" style="background-color:transparent;">Save</a>
       <!--<div class="ui-bar ui-bar-a">
           <h1 class="ui-title">Outlet Forms</h1>
       </div>-->
@@ -476,13 +476,10 @@
       </li>
   </ul>
   
-   <div data-role="footer" data-position="fixed" data-tap-toggle="false">
-      <div data-role="navbar">
-          <ul>
-              <li><a ng-click="returnNewPage()">Done</a></li>
-          </ul>
-      </div>
-      <h1>PayTM Demo</h1>
+   <div data-role="footer" data-position="fixed" role="" data-tap-toggle="false">
+      <div data-role="navbar" data-iconpos="top">
+        <ul><li><a data-icon="check" class="ui-nodisc-icon ui-alt-icon" ng-click="returnNewPage()">Done</a></li></ul>
+      </div>
     </div>
 </div>
 

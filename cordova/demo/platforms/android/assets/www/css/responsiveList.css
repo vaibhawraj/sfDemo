@@ -152,3 +152,7 @@ html body .ui-group-theme-a .ui-bar-inherit {
     background-repeat:no-repeat;
     background-position:center center;
 }
+.ui-btn:focus {
+	-webkit-box-shadow:none!important;
+	box-shadow:none!important;
+}
