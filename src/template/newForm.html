@@ -1,10 +1,13 @@
-<div data-role="header" data-position="fixed" ng-class="(record.sync_status=='Synced'?'recordSynced':(record.sync_status=='In Progress')?'recordSyncedOrange':'recordSyncedRed')" data-tap-toggle="false">
+<div data-role="header" data-position="fixed" ng-class="(onlineStatus()?'recordSynced':'recordSyncedRed')" data-tap-toggle="false">
   	<a ng-click="gotoHome()" class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
     <h1 class="ui-title">{{ getTitleForNewRecord() }}</h1>
-    <a ng-click="saveNewRecord()" class="ui-nodisc-icon ui-btn ui-icon-check ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">Save</a>
+    <a ng-click="saveNewRecord()" class="ui-nodisc-icon ui-btn ui-icon-check ui-alt-icon" style="background-color:transparent;border:0px;">Save</a>
     <!--<div class="ui-bar ui-bar-a">
         <h1 class="ui-title">Outlet Forms</h1>
     </div>-->
+  </div>
+  <div data-role="popup" id="newFormAlert">
+    <p>Specify Outlet/RC Name</p>
   </div>
   <div data-role="main" class="ui-content detailPage">
 

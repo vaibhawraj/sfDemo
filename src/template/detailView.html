@@ -51,7 +51,7 @@
   </ul>
     <br clear="both"/>
     <div data-role="collapsibleset" data-inset="true">
-      <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+      <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-nodisc-icon ui-alt-icon">
         <h4>Address Details</h4>
         <ul data-role="listview" data-inset="false">
           <li>
@@ -81,14 +81,14 @@
       <ul id="docDetailListView" data-role="listview" data-inset="false">
         <li data-icon="false" data-icon="false">
           <a class="ui-alt-icon ui-nodisc-icon">
-            <span ng-show="!record.paytmsticker" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <!--<span ng-show="!record.paytmsticker" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
             <span ng-show="record.paytmsticker" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
             <label style="margin:0 0 0;">{{getFormLabel('paytmsticker')}}</label>
           </a>
         </li>
         <li data-icon="false" data-icon="false">
           <a class="ui-alt-icon ui-nodisc-icon">
-            <span ng-show="!record.qrcode" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <!--<span ng-show="!record.qrcode" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
             <span ng-show="record.qrcode" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
             <label style="margin:0 0 0;">{{getFormLabel('qrcode')}}</label>
           </a>
@@ -100,21 +100,21 @@
       <ul id="docDetailListView" data-role="listview" data-inset="false">
         <li data-icon="false" data-icon="false">
           <a class="ui-alt-icon ui-nodisc-icon">
-            <span ng-show="!record.apoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <!-- <span ng-show="!record.apoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span> -->
             <span ng-show="record.apoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
             <label style="margin:0 0 0;">{{getFormLabel('apoi')}}</label>
           </a>
         </li>
         <li data-icon="false" data-icon="false">
           <a class="ui-alt-icon ui-nodisc-icon">
-            <span ng-show="!record.apoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <!--<span ng-show="!record.apoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
             <span ng-show="record.apoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
             <label style="margin:0 0 0;">{{getFormLabel('apoa')}}</label>
           </a>
         </li>
         <li data-icon="false" data-icon="false">
           <a class="ui-alt-icon ui-nodisc-icon">
-            <span ng-show="!record.aform" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <!--<span ng-show="!record.aform" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
             <span ng-show="record.aform" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
             <label style="margin:0 0 0;">{{getFormLabel('aform')}}</label>
           </a>
@@ -126,28 +126,28 @@
       <ul id="docDetailListView" data-role="listview" data-inset="false">
         <li data-icon="false" data-icon="false">
           <a class="ui-alt-icon ui-nodisc-icon">
-            <span ng-show="!record.napoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <!--<span ng-show="!record.napoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
             <span ng-show="record.napoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
             <label style="margin:0 0 0;">{{getFormLabel('napoi')}}</label>
           </a>
         </li>
         <li data-icon="false" data-icon="false">
           <a class="ui-alt-icon ui-nodisc-icon">
-            <span ng-show="!record.napoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <!--<span ng-show="!record.napoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
             <span ng-show="record.napoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
             <label style="margin:0 0 0;">{{getFormLabel('napoa')}}</label>
           </a>
         </li>
         <li data-icon="false" data-icon="false">
           <a class="ui-alt-icon ui-nodisc-icon">
-            <span ng-show="!record.naphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <!--<span ng-show="!record.naphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
             <span ng-show="record.naphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
             <label style="margin:0 0 0;">{{getFormLabel('naphoto')}}</label>
           </a>
         </li>
         <li data-icon="false" data-icon="false">
           <a class="ui-alt-icon ui-nodisc-icon">
-            <span ng-show="!record.nashopphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+            <!--<span ng-show="!record.nashopphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
             <span ng-show="record.nashopphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
             <label style="margin:0 0 0;">{{getFormLabel('nashopphoto')}}</label>
           </a>

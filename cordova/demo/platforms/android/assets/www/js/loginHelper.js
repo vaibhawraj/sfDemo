@@ -40,7 +40,7 @@ define(["json!appconfig","networkManager"],
 	            	return;
 		},
 		getAuthorizeUrl:function(loginUrl, clientId, redirectUri){
-			return loginUrl+'services/oauth2/authorize?display=popup'+
+			return loginUrl+'/services/oauth2/authorize?display=popup'+
 			'&response_type=token&client_id='+escape(clientId)+
 			'&redirect_uri='+escape(redirectUri);
 		},

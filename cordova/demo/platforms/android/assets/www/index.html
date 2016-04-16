@@ -77,7 +77,7 @@
   </style>
 </head>
 <body ng-controller="homecontroller" style="display:none">
-<div data-role="page" id="splash">
+<div data-role="page" id="splash" style="">
   <!-- Splash.html
   	
   	Author: Vaibhaw Raj
@@ -91,8 +91,8 @@
   <!-- splashscreen -->
   <div data-role="main" class="ui-content">
   	<div id="load">
-  	<!--<img height="172px" width="250px" src="img/salesforcelogo.png"/><!1000x688-->
-  	<img height="256px" width="256px" src="img/cloud_loading.gif"/><!--1000x688-->
+  	<img width="250px" src="img/Salesforce.png"/><!--1000x688-->
+  	<!--<img height="256px" width="256px" src="img/cloud_loading.gif"/><!-1000x688-->
   	<br/>
   	<div style="position:fixed;left:0px;bottom:0px;height:70px;width:100%;text-align:center;">
   	<center><img src="data:image/png;base64,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"/></center>
@@ -100,7 +100,7 @@
   	<br>
   	</div>
   	<center>
-  		<h2 id="splash_status"></h2><br/>
+  		<h2 id="splash_status">Loading</h2><br/>
   	</center>
   </div>
 </div>
@@ -124,7 +124,7 @@
     <div data-role="main" class="ui-content">
       <ul id="outlet_forms" data-role="listview" data-inset="true" class="ui-listview">
         <li ng-repeat="rec in recordList track by rec.uuid"  ng-class="(rec.sync_status=='Synced'?'listGreen':(rec.sync_status=='In Progress')?'listOrange':'listRed')">
-          <a data-rel="back" data-transition="slide" ng-click="gotoRecord($index)">
+          <a data-rel="back" class="ui-alt-icon ui-nodisc-icon" data-transition="slide" ng-click="gotoRecord($index)">
             <h2>{{ rec.name }}</h2>
             <p>{{ rec.retailownername }}</p>
             {{updatePicklistView("#outlet_forms",$last)}}
@@ -213,7 +213,7 @@
     </ul>
       <br clear="both"/>
       <div data-role="collapsibleset" data-inset="true">
-        <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+        <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-nodisc-icon ui-alt-icon">
           <h4>Address Details</h4>
           <ul data-role="listview" data-inset="false">
             <li>
@@ -243,14 +243,14 @@
         <ul id="docDetailListView" data-role="listview" data-inset="false">
           <li data-icon="false" data-icon="false">
             <a class="ui-alt-icon ui-nodisc-icon">
-              <span ng-show="!record.paytmsticker" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+              <!--<span ng-show="!record.paytmsticker" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
               <span ng-show="record.paytmsticker" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
               <label style="margin:0 0 0;">{{getFormLabel('paytmsticker')}}</label>
             </a>
           </li>
           <li data-icon="false" data-icon="false">
             <a class="ui-alt-icon ui-nodisc-icon">
-              <span ng-show="!record.qrcode" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+              <!--<span ng-show="!record.qrcode" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
               <span ng-show="record.qrcode" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
               <label style="margin:0 0 0;">{{getFormLabel('qrcode')}}</label>
             </a>
@@ -262,21 +262,21 @@
         <ul id="docDetailListView" data-role="listview" data-inset="false">
           <li data-icon="false" data-icon="false">
             <a class="ui-alt-icon ui-nodisc-icon">
-              <span ng-show="!record.apoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+              <!-- <span ng-show="!record.apoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span> -->
               <span ng-show="record.apoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
               <label style="margin:0 0 0;">{{getFormLabel('apoi')}}</label>
             </a>
           </li>
           <li data-icon="false" data-icon="false">
             <a class="ui-alt-icon ui-nodisc-icon">
-              <span ng-show="!record.apoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+              <!--<span ng-show="!record.apoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
               <span ng-show="record.apoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
               <label style="margin:0 0 0;">{{getFormLabel('apoa')}}</label>
             </a>
           </li>
           <li data-icon="false" data-icon="false">
             <a class="ui-alt-icon ui-nodisc-icon">
-              <span ng-show="!record.aform" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+              <!--<span ng-show="!record.aform" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
               <span ng-show="record.aform" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
               <label style="margin:0 0 0;">{{getFormLabel('aform')}}</label>
             </a>
@@ -288,28 +288,28 @@
         <ul id="docDetailListView" data-role="listview" data-inset="false">
           <li data-icon="false" data-icon="false">
             <a class="ui-alt-icon ui-nodisc-icon">
-              <span ng-show="!record.napoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+              <!--<span ng-show="!record.napoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
               <span ng-show="record.napoi" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
               <label style="margin:0 0 0;">{{getFormLabel('napoi')}}</label>
             </a>
           </li>
           <li data-icon="false" data-icon="false">
             <a class="ui-alt-icon ui-nodisc-icon">
-              <span ng-show="!record.napoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+              <!--<span ng-show="!record.napoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
               <span ng-show="record.napoa" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
               <label style="margin:0 0 0;">{{getFormLabel('napoa')}}</label>
             </a>
           </li>
           <li data-icon="false" data-icon="false">
             <a class="ui-alt-icon ui-nodisc-icon">
-              <span ng-show="!record.naphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+              <!--<span ng-show="!record.naphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
               <span ng-show="record.naphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
               <label style="margin:0 0 0;">{{getFormLabel('naphoto')}}</label>
             </a>
           </li>
           <li data-icon="false" data-icon="false">
             <a class="ui-alt-icon ui-nodisc-icon">
-              <span ng-show="!record.nashopphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>
+              <!--<span ng-show="!record.nashopphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/delete-black.png');background-repeat:no-repeat;background-position: center center"></span>-->
               <span ng-show="record.nashopphoto" style="float:right;height:20px;width:14px;background-image:url('images/icons-png/check-black.png');background-repeat:no-repeat;background-position: center center"></span>
               <label style="margin:0 0 0;">{{getFormLabel('nashopphoto')}}</label>
             </a>
@@ -329,13 +329,16 @@
 </div>
 
 <div data-role="page" id="newPage" data-transition="slide">
-  <div data-role="header" data-position="fixed" ng-class="(record.sync_status=='Synced'?'recordSynced':(record.sync_status=='In Progress')?'recordSyncedOrange':'recordSyncedRed')" data-tap-toggle="false">
+  <div data-role="header" data-position="fixed" ng-class="(onlineStatus()?'recordSynced':'recordSyncedRed')" data-tap-toggle="false">
     	<a ng-click="gotoHome()" class="ui-nodisc-icon ui-btn ui-icon-arrow-l ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">No Text</a>
       <h1 class="ui-title">{{ getTitleForNewRecord() }}</h1>
-      <a ng-click="saveNewRecord()" class="ui-nodisc-icon ui-btn ui-icon-check ui-alt-icon ui-btn-icon-notext" style="background-color:transparent;border:0px;">Save</a>
+      <a ng-click="saveNewRecord()" class="ui-nodisc-icon ui-btn ui-icon-check ui-alt-icon" style="background-color:transparent;border:0px;">Save</a>
       <!--<div class="ui-bar ui-bar-a">
           <h1 class="ui-title">Outlet Forms</h1>
       </div>-->
+    </div>
+    <div data-role="popup" id="newFormAlert">
+      <p>Specify Outlet/RC Name</p>
     </div>
     <div data-role="main" class="ui-content detailPage">
   
@@ -474,6 +477,11 @@
   </ul>
   
    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+      <div data-role="navbar">
+          <ul>
+              <li><a ng-click="returnNewPage()">Done</a></li>
+          </ul>
+      </div>
       <h1>PayTM Demo</h1>
     </div>
 </div>

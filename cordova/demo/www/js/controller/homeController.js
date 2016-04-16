@@ -184,6 +184,11 @@ define(['networkManager','sfMetadataHelper','json!mapping'],function(nm,sfMetada
 		}
 		$scope.saveNewRecord = function(){
 			log.info('Saving Record',$scope.newRecord);
+			if(_.isEmpty($scope.newRecord.name)) {
+				log.info('Ignoring Blank Record');
+				$("#newFormAlert").popup('open');
+				return;
+			}
 			sfDataManager.insert($scope.newRecord,$scope.newAttachment);
 			$scope.recordList = sfDataManager.query($scope.reRenderList);
 			$scope.reRenderList($scope.recordList);
@@ -238,14 +243,8 @@ define(['networkManager','sfMetadataHelper','json!mapping'],function(nm,sfMetada
 			},
 			gotoUploadFile:function(doc){
 				$scope.fileHelper.curDoc = doc;
+				if($scope.newRecord[doc.table_api]==true) return;
 				var dummyPayTMFile = "iVBORw0KGgoAAAANSUhEUgAAAJcAAABLCAMAAABKveUfAAAAk1BMVEX///8FLnABuvIAuPIAtvIAKm4ALG+l3/hDSn0AJGwvQHnz9Pc+wPOO1PdRx/Tx8fRuzvW85PpkcpkAAF3q+P0AG2gmN3WWnbX2/P7o6/AADmRue54AAGEWMXIAGGcAE2XCxdO4uss4ToEAH2nZ8fwACGPP0dykp73N7PuwssXg4ulJWokAAFYAsPE4RnyCi6paZY9hl7YXAAAC2ElEQVRoge2Y25KiMBBAgxA0yig6oIgXQNQBHMH//7rtpAMi4+xFV9itynmwOk3QUw3pgIQoFAqFQqFQKBQKxf/LvmuB+9hGv2uFe9iG/ta1wx2mRu9f9AKtV3lNKkZeMzkqxyMxvB7iBzxnaoMWeHkeP9PhQOAk/QS/aT/t7z3yGJfP95L1ZpVhcvW+FvibWSgSOT/+GUEU8fmfAyjV2eBW4KUbZ90TY+Pcc8YGx4aExYPeg6tiQLUKM96ixqlMUrZe8XLNTRi4Cwg/XD5xOCJ9tEJ0h/R1GcrPN3ncGD/txT2WN15AUHz1otxLb3jVPSs/HtjPe2lu0fTS4qzutfhdrytG8rwXzb94BemTXg8VDL3Y4eCLwNzwC1ngYlhjvYr7XuV939Ph9q68YFAKG+UE61Evdjkewx2tvCSTDddhs7v3F0mSxBI/aycJ7JHoBU3DsVHMcshUf9KLL7p02/QiQ/oTL2CMKiKWXhA5WK0phKj497wm0aIoihnT/tTL4F76q7wK348ZoD3m9ap6nbb1JVp5iVkr1qbXbJllFya9ihst7uXNcdXmeS5q2JaXZlIaM9knJqbZ9CI7bGgwTWvVSzOlDB2SY4A6221sll6ia9W6b2teJfGMRD7apOmCyv5FRq7ZqZcZZCQS9Yr5I89O9i9CjgfWoRfzU4JeZsOLZPk2cF0XL21rXswHAnYKyXdeULJ0AYgtoLU+AfsjgE+r33kh7ffVEry/3JBc90cgCwXRrtV61b1CHxvZYDCkWuXlHnxxrUUKn9Ja9spi2cpkE0WvuN4oykvbqhfJb1ua9KqnDmEXXuH7L7zcC3m5V85gC4pvvEgauPTKOuU5l5oIZX6p9Uqv2WY+n9OP2+SyyIcVC5HamRuBNj9F1Tzb0OGtFr0S3bIsoeChLn8L6vd48qEXtesb/g1eSTleSkb1SXtO/QyMxF8CjaRCoVAoFAqFQqFQdMIPfNlNr1T+oNcAAAAASUVORK5CYII=";
-				if(!_.isNull(doc)) {
-					$scope.newRecord[doc.table_api]=true;
-					if(_.isNull($scope.$$phase)){
-						$scope.$apply();
-					}
-					log.info('setTrue',doc.table_api);
-				}
 				if(deviceready) {
 					//Reference : https://github.com/apache/cordova-plugin-camera#module_camera.getPicture
 					if(!_.isUndefined(navigator.camera)) {
@@ -284,7 +283,12 @@ define(['networkManager','sfMetadataHelper','json!mapping'],function(nm,sfMetada
 						$scope.$apply();
 				}
 			},
-			errorCallback:function(message){log.error(message);}
+			errorCallback:function(message){log.error(message);
+				$scope.newRecord[doc.table_api]=false;
+				if(_.isNull($scope.$$phase)){
+						$scope.$apply();
+				}
+			}
 		}
 		$scope.updatePicklistView = function(id,last){
 			if(!last) return;

@@ -17,7 +17,7 @@
   <div data-role="main" class="ui-content">
     <ul id="outlet_forms" data-role="listview" data-inset="true" class="ui-listview">
       <li ng-repeat="rec in recordList track by rec.uuid"  ng-class="(rec.sync_status=='Synced'?'listGreen':(rec.sync_status=='In Progress')?'listOrange':'listRed')">
-        <a data-rel="back" data-transition="slide" ng-click="gotoRecord($index)">
+        <a data-rel="back" class="ui-alt-icon ui-nodisc-icon" data-transition="slide" ng-click="gotoRecord($index)">
           <h2>{{ rec.name }}</h2>
           <p>{{ rec.retailownername }}</p>
           {{updatePicklistView("#outlet_forms",$last)}}
