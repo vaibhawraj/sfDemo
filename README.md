@@ -1,5 +1,17 @@
 # README
 
+## Setup Development Environment
+
+* Java SDK
+* Eclipse for Java
+    * Android Development Tools (ADT) Plugin
+* Android SDK/ Android Build Tool
+* Git
+* NodeJS
+* Cordova
+* GruntJS
+* Putting Altogether
+
 ## How to build using Grunt
 
 1. Install Node.js[https://nodejs.org/en/]
